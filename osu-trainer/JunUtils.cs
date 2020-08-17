@@ -28,7 +28,7 @@ namespace osu_trainer
 
         public static string NormalizeText(string str)
         {
-            return str.Replace("\"", "").Replace("*", "").Replace("\\", "").Replace("/", "").Replace("?", "").Replace("<", "").Replace(">", "").Replace("|", "");
+            return str.Replace("\"", "").Replace("*", "").Replace("\\", "").Replace("/", "").Replace("?", "").Replace("<", "").Replace(">", "").Replace("|", "").Replace(":", "");
         }
 
         public static string GetTempFilename(string ext)
