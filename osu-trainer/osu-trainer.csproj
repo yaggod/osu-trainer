@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>osu_trainer</RootNamespace>
     <AssemblyName>osu-trainer</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
@@ -35,7 +35,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -46,7 +46,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -83,9 +83,6 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="osu!BMAPI">
-      <HintPath>BMAPI\obj\Debug\osu!BMAPI.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -93,7 +90,7 @@
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Resources.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -229,24 +226,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="FsBeatmapParser\FsBeatmapProcessor.fsproj">
-      <Project>{85dd50fb-a4e8-4124-8379-c2b95333d007}</Project>
-      <Name>FsBeatmapProcessor</Name>
-    </ProjectReference>
-    <ProjectReference Include="globalKeyboardHook\key preview.csproj">
-      <Project>{8340f8a9-185e-48d4-b544-3809c10cbd62}</Project>
-      <Name>key preview</Name>
-    </ProjectReference>
-    <ProjectReference Include="OsuMemoryDataProvider\OsuMemoryDataProvider.csproj">
-      <Project>{d117800f-072d-4ae4-9679-3e2a129a1a3c}</Project>
-      <Name>OsuMemoryDataProvider</Name>
-    </ProjectReference>
-    <ProjectReference Include="ProcessMemoryDataFinder\ProcessMemoryDataFinder.csproj">
-      <Project>{9960d641-300a-432c-aa04-c351a99b9adb}</Project>
-      <Name>ProcessMemoryDataFinder</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.6 %28x86 and x64%29</ProductName>
@@ -257,6 +236,23 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="submodules\FsBeatmapParser\FsBeatmapProcessor.fsproj">
+      <Project>{c0d3b730-5f38-459d-a4a1-9e9953a31b68}</Project>
+      <Name>FsBeatmapProcessor</Name>
+    </ProjectReference>
+    <ProjectReference Include="submodules\globalKeyboardHook\key preview.csproj">
+      <Project>{8340f8a9-185e-48d4-b544-3809c10cbd62}</Project>
+      <Name>key preview</Name>
+    </ProjectReference>
+    <ProjectReference Include="submodules\ProcessMemoryDataFinder\OsuMemoryDataProvider\OsuMemoryDataProvider.csproj">
+      <Project>{b7eedcdd-8f5a-46a9-97af-4294d7ff912f}</Project>
+      <Name>OsuMemoryDataProvider</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

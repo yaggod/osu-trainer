@@ -39,9 +39,10 @@ namespace osu_trainer
         private List<OsuCheckBox> checkControls;
 
         // Single Object Instances
+        private readonly globalKeyboardHook kbhook = new globalKeyboardHook();
+        private bool hooked = true;
         private readonly SoundPlayer sound = new SoundPlayer();
         private readonly BeatmapEditor editor;
-        private readonly globalKeyboardHook kbhook = new globalKeyboardHook();
 
         // other
         private string previousBeatmapRead;
@@ -113,15 +114,15 @@ namespace osu_trainer
             editor.ControlsModified += UpdateLockButtons;
             editor.ControlsModified += UpdateChecks;
 
-            // need controls to show up as initially disabled
-            editor.ForceEventStateChanged();
-            editor.ForceEventBeatmapSwitched();
-            editor.ForceEventControlsModified();
-
             // Install keyboard hooks
             // (note! this is only for the create map hotkey!!)
             kbhook.HookedKeys.Add(Keys.X);
             kbhook.KeyDown += new KeyEventHandler(CreateMapHotkeyHandler);
+
+            // need controls to show up as initially disabled
+            editor.ForceEventStateChanged();
+            editor.ForceEventBeatmapSwitched();
+            editor.ForceEventControlsModified();
 
             BeatmapUpdateTimer.Start();
             OsuRunningTimer.Start();
@@ -748,6 +749,17 @@ namespace osu_trainer
                 mapSelectScreen = true;
             else
                 mapSelectScreen = false;
+
+            if (mapSelectScreen && !hooked)
+            {
+                kbhook.hook();
+                hooked = true;
+            }
+            if (!mapSelectScreen && hooked)
+            {
+                kbhook.unhook();
+                hooked = false;
+            }
         }
 
         #endregion Timer events
