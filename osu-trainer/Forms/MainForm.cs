@@ -609,6 +609,14 @@ namespace osu_trainer
         {
             NewBpmTextBox_Submit();
         }
+        private void NewBpmTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.ToString() == " ")
+            {
+                e.Handled = true;
+                BpmLockCheck.Checked = !BpmLockCheck.Checked;
+            }
+        }
 
         private void ResetButton_Click(object sender, EventArgs e) => editor.ResetBeatmap();
 
