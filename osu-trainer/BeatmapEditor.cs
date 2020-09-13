@@ -28,16 +28,17 @@ namespace osu_trainer
         EMPTY_MAP
     }
 
-    // note: this code suffers from possible race conditions due to async functions modifying shared resources (OriginalBeatmap, NewBeatmap)
-    // however, enough mechanisms are put in place so that this doesn't really happen in during real usage
-    // possible race condition:
-    //
-    //    user changes bpm:                              user selects another beatmap:
-    //       NewBeatmap.TimingPoints are modified           NewBeatmap changes
-    //
-
     internal class BeatmapEditor
     {
+        class ZeroARException
+        {
+            public ZeroARException()
+            {
+#if DEBUG
+                throw new Exception("AR is zero.");
+#endif
+            }
+        }
         private MainForm mainform;
         public BadBeatmapReason NotReadyReason;
 
@@ -129,7 +130,13 @@ namespace osu_trainer
         {
             Beatmap newBeatmap = new Beatmap(beatmapFilename);
             if (newBeatmap.ApproachRate == -1M)
-                newBeatmap.ApproachRate = newBeatmap.OverallDifficulty;　// i can't believe this is how old maps used to work...
+            {
+                newBeatmap.ApproachRate = newBeatmap.OverallDifficulty; // i can't believe this is how old maps used to work...
+                if (newBeatmap.ApproachRate == 0)
+                {
+                    var _ = new ZeroARException();
+                }
+            }
             return newBeatmap;
         }
         public void GenerateBeatmap()
@@ -149,6 +156,10 @@ namespace osu_trainer
             if (compensateForDT)
             {
                 exportBeatmap.ApproachRate      = DifficultyCalculator.CalculateMultipliedAR(NewBeatmap, 1 / 1.5M);
+                if (exportBeatmap.ApproachRate == 0)
+                {
+                    var _ = new ZeroARException();
+                }
                 exportBeatmap.OverallDifficulty = DifficultyCalculator.CalculateMultipliedOD(NewBeatmap, 1 / 1.5M);
                 decimal compensatedRate = (NewBeatmap.Bpm / OriginalBeatmap.Bpm) / 1.5M;
                 exportBeatmap.SetRate(compensatedRate);
@@ -353,12 +364,23 @@ namespace osu_trainer
 
                     // Apply bpm scaled settings
                     if (ScaleAR) NewBeatmap.ApproachRate = DifficultyCalculator.CalculateMultipliedAR(candidateOriginalBeatmap, BpmMultiplier);
+                    if (NewBeatmap.ApproachRate == 0)
+                    {
+                        var _ = new ZeroARException();
+                    }
                     if (ScaleOD) NewBeatmap.OverallDifficulty = DifficultyCalculator.CalculateMultipliedOD(candidateOriginalBeatmap, BpmMultiplier);
 
                     // Apply locked settings
                     if (HpIsLocked) NewBeatmap.HPDrainRate = lockedHP;
                     if (CsIsLocked) NewBeatmap.CircleSize = lockedCS;
-                    if (ArIsLocked) NewBeatmap.ApproachRate = lockedAR;
+                    if (ArIsLocked)
+                    {
+                        NewBeatmap.ApproachRate = lockedAR;
+                        if (NewBeatmap.ApproachRate == 0)
+                        {
+                            var _ = new ZeroARException();
+                        }
+                    }
                     if (OdIsLocked) NewBeatmap.OverallDifficulty = lockedOD;
                     if (BpmIsLocked) SetBpm(lockedBpm);
 
@@ -461,9 +483,19 @@ namespace osu_trainer
             if (State != EditorState.READY)
                 return;
 
+            if (value == 0)
+            {
+                var _ = new ZeroARException();
+            }
             NewBeatmap.ApproachRate = value;
             if (ArIsLocked)
+            {
                 lockedAR = value;
+                if (lockedAR == 0)
+                {
+                    var _ = new ZeroARException();
+                }
+            }
 
             ScaleAR = false;
             BeatmapModified?.Invoke(this, EventArgs.Empty);
@@ -490,6 +522,10 @@ namespace osu_trainer
             // not applicable for taiko or mania
             if (ScaleAR && NewBeatmap.Mode != GameMode.Taiko && NewBeatmap.Mode != GameMode.Mania)
             {
+                if (DifficultyCalculator.CalculateMultipliedAR(OriginalBeatmap, BpmMultiplier) == 0)
+                {
+                    var _ = new ZeroARException();
+                }
                 NewBeatmap.ApproachRate = DifficultyCalculator.CalculateMultipliedAR(OriginalBeatmap, BpmMultiplier);
                 BeatmapModified?.Invoke(this, EventArgs.Empty);
             }
@@ -795,6 +831,10 @@ namespace osu_trainer
                 return;
             NewBeatmap.HPDrainRate = OriginalBeatmap.HPDrainRate;
             NewBeatmap.CircleSize = OriginalBeatmap.CircleSize;
+            if (OriginalBeatmap.ApproachRate == 0)
+            {
+                var _ = new ZeroARException();
+            }
             NewBeatmap.ApproachRate = OriginalBeatmap.ApproachRate;
             NewBeatmap.OverallDifficulty = OriginalBeatmap.OverallDifficulty;
             HpIsLocked = false;

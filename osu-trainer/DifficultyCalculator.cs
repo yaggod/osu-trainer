@@ -80,13 +80,12 @@ namespace osu_trainer
             {
                 StartInfo = new ProcessStartInfo
                 {
-                    FileName = Path.Combine("oppai", "oppai.exe"),
+                    FileName = Path.Combine("binaries", "oppai.exe"),
                     Arguments = $"\"{tempBeatmapPath}\" -ojson",
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     CreateNoWindow = true,
-                    // fix this omg 
-                    //StandardOutputEncoding = Encoding.UTF8
+                    StandardOutputEncoding = Encoding.UTF8
                 }
             };
             oppai.Start();

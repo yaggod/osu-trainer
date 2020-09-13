@@ -138,10 +138,10 @@
     <Compile Include="Controls\ToggleIconButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DeleteMp3sForm.cs">
+    <Compile Include="Forms\DeleteMp3sForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DeleteMp3sForm.Designer.cs">
+    <Compile Include="Forms\DeleteMp3sForm.Designer.cs">
       <DependentUpon>DeleteMp3sForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DifficultyCalculator.cs" />
@@ -153,10 +153,10 @@
     </Compile>
     <Compile Include="Icons.cs" />
     <Compile Include="JunUtils.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\NumericUpDownFix.cs">
@@ -178,13 +178,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="SongsFolderForm.cs">
+    <Compile Include="Forms\SongsFolderForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SongsFolderForm.Designer.cs">
+    <Compile Include="Forms\SongsFolderForm.Designer.cs">
       <DependentUpon>SongsFolderForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Speed Changer Stuff\SongSpeedChanger.cs" />
+    <Compile Include="SongSpeedChanger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -197,7 +197,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="oppai\oppai.exe">
+    <Content Include="binaries\oppai.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="resources\Comfortaa-Bold.ttf" />
@@ -218,28 +218,28 @@
     <None Include="resources\taiko.png" />
     <None Include="resources\trash-alt-solid.png" />
     <None Include="resources\undo-alt-solid.png" />
-    <Content Include="Speed Changer Stuff\lame.exe">
+    <Content Include="binaries\lame.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\oof.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Speed Changer Stuff\soundstretch.exe">
+    <Content Include="binaries\soundstretch.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DeleteMp3sForm.resx">
+    <EmbeddedResource Include="Forms\DeleteMp3sForm.resx">
       <DependentUpon>DeleteMp3sForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="SongsFolderForm.resx">
+    <EmbeddedResource Include="Forms\SongsFolderForm.resx">
       <DependentUpon>SongsFolderForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
