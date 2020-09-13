@@ -13,6 +13,7 @@ using System.Linq;
 using System.Media;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -47,7 +48,6 @@ namespace osu_trainer
         // other
         private string previousBeatmapRead;
 
-        private int beatmapFindFailCounter = 0;
         private bool? gameLoaded = null;
         private bool mapSelectScreen = false;
 
@@ -535,8 +535,12 @@ namespace osu_trainer
             {
                 case EditorState.READY:
                     enabled = editor.NewMapIsDifferent() ? true : false;
+                    SongsFolderButton.Visible = false;
                     break;
                 case EditorState.NOT_READY:
+                    enabled = false;
+                    SongsFolderButton.Visible = true;
+                    break;
                 case EditorState.GENERATING_BEATMAP:
                     enabled = false;
                     break;
@@ -684,35 +688,7 @@ namespace osu_trainer
             // Try to locate the beatmap
             string absoluteFilename = Path.Combine(userSongsFolder, beatmapFolder, beatmapFilename);
             if (!File.Exists(absoluteFilename))
-            {
-                if (++beatmapFindFailCounter == 7)
-                {
-                    string msg = "Automatic beatmap detection failed 7 times in a row. ";
-                    msg += "Your songs folder is probably not in your osu! install folder. ";
-                    msg += "Please manually locate your Songs folder in the following window.";
-                    MessageBox.Show(msg, "Having trouble finding your beatmaps...", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-                    using (var folderDialog = new OpenFileDialog())
-                    {
-                        folderDialog.Title = "Select your osu! installation folder";
-                        folderDialog.ValidateNames = false;
-                        folderDialog.CheckFileExists = false;
-                        folderDialog.CheckPathExists = true;
-                        folderDialog.FileName = "Select Folder";
-                        if (folderDialog.ShowDialog() != DialogResult.OK)
-                            return;
-
-                        userSongsFolder = Path.GetDirectoryName(folderDialog.FileName);
-                        Properties.Settings.Default.SongsFolder = userSongsFolder;
-                        Properties.Settings.Default.Save();
-                        // try again
-                        absoluteFilename = Path.Combine(userSongsFolder, beatmapFolder, beatmapFilename);
-                        if (!File.Exists(absoluteFilename))
-                            return;
-                    }
-                }
                 return;
-            }
-            beatmapFindFailCounter = 0;
 
             // signal the editor class to load this beatmap sometime in the future
             editor.RequestBeatmapLoad(absoluteFilename);
@@ -734,7 +710,7 @@ namespace osu_trainer
                 else if (gameLoaded == null)
                     gameLoaded = true;
 
-                if (userSongsFolder == null)
+                if (userSongsFolder == null || userSongsFolder == "")
                 {
                     // Try to get osu songs folder
                     var osuExePath = processes[0].MainModule.FileName;
@@ -743,9 +719,11 @@ namespace osu_trainer
                     Properties.Settings.Default.Save();
                 }
             }
-            int status = 0;
-            osuReader.GetCurrentStatus(out status);
-            if (status == 5)
+            int intStatus = 0;
+            osuReader.GetCurrentStatus(out intStatus);
+            OsuMemoryStatus status = (OsuMemoryStatus)intStatus;
+
+            if (status == OsuMemoryStatus.SongSelect || status == OsuMemoryStatus.MultiplayerRoom || status == OsuMemoryStatus.MultiplayerSongSelect)
                 mapSelectScreen = true;
             else
                 mapSelectScreen = false;
@@ -851,6 +829,22 @@ namespace osu_trainer
         private void HRCheck_CheckedChanged(object sender, EventArgs e)
         {
             editor.ToggleHrEmulation();
+        }
+
+        private void SongsFolderButton_Click(object sender, EventArgs e)
+        {
+            var songsFolderForm = new SongsFolderForm(userSongsFolder);
+            if (songsFolderForm.ShowDialog() == DialogResult.OK)
+            {
+                if (!Directory.Exists(songsFolderForm.SongsFolder))
+                {
+                    MessageBox.Show("Could not find that directory. Make sure it was typed correctly and that it actually exists.");
+                    return;
+                }
+                userSongsFolder = songsFolderForm.SongsFolder.TrimEnd(Path.DirectorySeparatorChar);
+                Properties.Settings.Default.SongsFolder = userSongsFolder;
+                Properties.Settings.Default.Save();
+            }
         }
     }
 }

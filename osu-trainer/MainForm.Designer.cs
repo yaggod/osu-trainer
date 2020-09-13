@@ -34,54 +34,55 @@ namespace osu_trainer
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.BeatmapUpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.Panel3 = new System.Windows.Forms.Panel();
+            this.BpmMultiplierTextBox = new System.Windows.Forms.TextBox();
+            this.NewBpmTextBox = new System.Windows.Forms.TextBox();
+            this.NewBpmRangeTextBox = new System.Windows.Forms.TextBox();
+            this.OriginalBpmRangeTextBox = new System.Windows.Forms.TextBox();
+            this.OriginalBpmTextBox = new System.Windows.Forms.TextBox();
+            this.Middle1Panel = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.ODDisplay = new System.Windows.Forms.TextBox();
+            this.ARDisplay = new System.Windows.Forms.TextBox();
+            this.CSDisplay = new System.Windows.Forms.TextBox();
+            this.HPDisplay = new System.Windows.Forms.TextBox();
+            this.BottomPanel = new System.Windows.Forms.Panel();
+            this.TopPanel = new System.Windows.Forms.Panel();
+            this.OsuRunningTimer = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.AimLabel = new System.Windows.Forms.Label();
+            this.SpeedLabel = new System.Windows.Forms.Label();
+            this.BackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.closeButton = new System.Windows.Forms.Button();
+            this.minimizeButton = new System.Windows.Forms.Button();
+            this.titlePanel = new System.Windows.Forms.Panel();
             this.BpmLockCheck = new osu_trainer.Controls.ToggleIconButton();
+            this.SongsFolderButton = new osu_trainer.Controls.OsuButton();
             this.BpmSlider = new osu_trainer.OptionSlider();
             this.ChangePitchCheck = new osu_trainer.Controls.OsuCheckBox();
             this.NoSpinnersCheck = new osu_trainer.Controls.OsuCheckBox();
             this.HRCheck = new osu_trainer.Controls.OsuCheckBox();
             this.ScaleODCheck = new osu_trainer.Controls.OsuCheckBox();
             this.ScaleARCheck = new osu_trainer.Controls.OsuCheckBox();
-            this.BpmMultiplierTextBox = new System.Windows.Forms.TextBox();
-            this.NewBpmTextBox = new System.Windows.Forms.TextBox();
-            this.NewBpmRangeTextBox = new System.Windows.Forms.TextBox();
-            this.OriginalBpmRangeTextBox = new System.Windows.Forms.TextBox();
-            this.OriginalBpmTextBox = new System.Windows.Forms.TextBox();
             this.OriginalBpmLabel = new osu_trainer.Controls.AntiAliasedLabel();
             this.NewBpmLabel = new osu_trainer.Controls.AntiAliasedLabel();
             this.BpmMultiplierLabel = new osu_trainer.Controls.AntiAliasedLabel();
-            this.Middle1Panel = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ODLockCheck = new osu_trainer.Controls.ToggleIconButton();
             this.ARLockCheck = new osu_trainer.Controls.ToggleIconButton();
             this.CSLockCheck = new osu_trainer.Controls.ToggleIconButton();
             this.odlabel = new osu_trainer.Controls.AntiAliasedLabel();
-            this.ODDisplay = new System.Windows.Forms.TextBox();
             this.ODSlider = new osu_trainer.OptionSlider();
             this.arlabel = new osu_trainer.Controls.AntiAliasedLabel();
-            this.ARDisplay = new System.Windows.Forms.TextBox();
             this.ARSlider = new osu_trainer.OptionSlider();
             this.cslabel = new osu_trainer.Controls.AntiAliasedLabel();
-            this.CSDisplay = new System.Windows.Forms.TextBox();
             this.CSSlider = new osu_trainer.OptionSlider();
             this.hplabel = new osu_trainer.Controls.AntiAliasedLabel();
-            this.HPDisplay = new System.Windows.Forms.TextBox();
             this.HPSlider = new osu_trainer.OptionSlider();
             this.HPLockCheck = new osu_trainer.Controls.ToggleIconButton();
-            this.BottomPanel = new System.Windows.Forms.Panel();
+            this.StarsDisplay = new osu_trainer.Controls.StarsDisplay();
             this.DeleteButton = new osu_trainer.Controls.OsuButton();
             this.ResetButton = new osu_trainer.Controls.OsuButton();
             this.GenerateMapButton = new osu_trainer.Controls.OsuButton();
-            this.TopPanel = new System.Windows.Forms.Panel();
             this.SongDisplay = new osu_trainer.Controls.SongDisplay();
-            this.OsuRunningTimer = new System.Windows.Forms.Timer(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.AimLabel = new System.Windows.Forms.Label();
-            this.SpeedLabel = new System.Windows.Forms.Label();
-            this.StarsDisplay = new osu_trainer.Controls.StarsDisplay();
-            this.BackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.closeButton = new System.Windows.Forms.Button();
-            this.minimizeButton = new System.Windows.Forms.Button();
-            this.titlePanel = new System.Windows.Forms.Panel();
             this.Panel3.SuspendLayout();
             this.Middle1Panel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -99,6 +100,7 @@ namespace osu_trainer
             // Panel3
             // 
             this.Panel3.Controls.Add(this.BpmLockCheck);
+            this.Panel3.Controls.Add(this.SongsFolderButton);
             this.Panel3.Controls.Add(this.BpmSlider);
             this.Panel3.Controls.Add(this.ChangePitchCheck);
             this.Panel3.Controls.Add(this.NoSpinnersCheck);
@@ -120,118 +122,6 @@ namespace osu_trainer
             this.Panel3.Size = new System.Drawing.Size(427, 128);
             this.Panel3.TabIndex = 7;
             this.Panel3.Click += new System.EventHandler(this.Unfocus);
-            // 
-            // BpmLockCheck
-            // 
-            this.BpmLockCheck.CheckedImage = global::osu_trainer.Properties.Resources.lock_solid;
-            this.BpmLockCheck.Location = new System.Drawing.Point(136, 62);
-            this.BpmLockCheck.Name = "BpmLockCheck";
-            this.BpmLockCheck.Size = new System.Drawing.Size(21, 21);
-            this.BpmLockCheck.TabIndex = 15;
-            this.BpmLockCheck.UncheckedImage = global::osu_trainer.Properties.Resources.unlock_solid;
-            this.BpmLockCheck.UseVisualStyleBackColor = true;
-            this.BpmLockCheck.CheckedChanged += new System.EventHandler(this.BpmLockCheck_CheckedChanged);
-            // 
-            // BpmSlider
-            // 
-            this.BpmSlider.BodyColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
-            this.BpmSlider.FillDraggingNipple = false;
-            this.BpmSlider.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.BpmSlider.Location = new System.Drawing.Point(136, 2);
-            this.BpmSlider.MaxValue = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.BpmSlider.MinValue = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-            this.BpmSlider.Name = "BpmSlider";
-            this.BpmSlider.NippleColor = System.Drawing.Color.White;
-            this.BpmSlider.NippleDiameter = 15;
-            this.BpmSlider.NippleExpandedDiameter = 18;
-            this.BpmSlider.NippleIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.BpmSlider.NippleStrokeWidth = 0;
-            this.BpmSlider.Size = new System.Drawing.Size(131, 23);
-            this.BpmSlider.TabIndex = 23;
-            this.BpmSlider.Text = "bpmSlider";
-            this.BpmSlider.Thickness = 4;
-            this.BpmSlider.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.BpmSlider.ValueChanged += new System.EventHandler(this.BpmSlider_ValueChanged);
-            // 
-            // ChangePitchCheck
-            // 
-            this.ChangePitchCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ChangePitchCheck.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
-            this.ChangePitchCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.ChangePitchCheck.Location = new System.Drawing.Point(287, 74);
-            this.ChangePitchCheck.Name = "ChangePitchCheck";
-            this.ChangePitchCheck.Size = new System.Drawing.Size(130, 24);
-            this.ChangePitchCheck.TabIndex = 22;
-            this.ChangePitchCheck.Text = "Change pitch";
-            this.ChangePitchCheck.UseVisualStyleBackColor = true;
-            this.ChangePitchCheck.CheckedChanged += new System.EventHandler(this.ChangePitchButton_CheckedChanged);
-            // 
-            // NoSpinnersCheck
-            // 
-            this.NoSpinnersCheck.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
-            this.NoSpinnersCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.NoSpinnersCheck.Location = new System.Drawing.Point(293, 99);
-            this.NoSpinnersCheck.Name = "NoSpinnersCheck";
-            this.NoSpinnersCheck.Size = new System.Drawing.Size(124, 24);
-            this.NoSpinnersCheck.TabIndex = 20;
-            this.NoSpinnersCheck.Text = "No Spinners";
-            this.NoSpinnersCheck.UseVisualStyleBackColor = true;
-            this.NoSpinnersCheck.CheckedChanged += new System.EventHandler(this.NoSpinnerCheckBox_CheckedChanged);
-            // 
-            // HRCheck
-            // 
-            this.HRCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.HRCheck.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
-            this.HRCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.HRCheck.Location = new System.Drawing.Point(295, 0);
-            this.HRCheck.Name = "HRCheck";
-            this.HRCheck.Size = new System.Drawing.Size(122, 24);
-            this.HRCheck.TabIndex = 20;
-            this.HRCheck.Text = "Emulate HR";
-            this.HRCheck.UseVisualStyleBackColor = true;
-            this.HRCheck.CheckedChanged += new System.EventHandler(this.HRCheck_CheckedChanged);
-            // 
-            // ScaleODCheck
-            // 
-            this.ScaleODCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ScaleODCheck.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
-            this.ScaleODCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.ScaleODCheck.Location = new System.Drawing.Point(313, 49);
-            this.ScaleODCheck.Name = "ScaleODCheck";
-            this.ScaleODCheck.Size = new System.Drawing.Size(104, 25);
-            this.ScaleODCheck.TabIndex = 21;
-            this.ScaleODCheck.Text = "Scale OD";
-            this.ScaleODCheck.UseVisualStyleBackColor = true;
-            this.ScaleODCheck.CheckedChanged += new System.EventHandler(this.ScaleODCheck_CheckedChanged);
-            // 
-            // ScaleARCheck
-            // 
-            this.ScaleARCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ScaleARCheck.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
-            this.ScaleARCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.ScaleARCheck.Location = new System.Drawing.Point(315, 24);
-            this.ScaleARCheck.Name = "ScaleARCheck";
-            this.ScaleARCheck.Size = new System.Drawing.Size(102, 24);
-            this.ScaleARCheck.TabIndex = 20;
-            this.ScaleARCheck.Text = "Scale AR";
-            this.ScaleARCheck.UseVisualStyleBackColor = true;
-            this.ScaleARCheck.CheckedChanged += new System.EventHandler(this.ScaleARCheck_CheckedChanged);
             // 
             // BpmMultiplierTextBox
             // 
@@ -308,44 +198,6 @@ namespace osu_trainer
             this.OriginalBpmTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.OriginalBpmTextBox.Enter += new System.EventHandler(this.Unfocus);
             // 
-            // OriginalBpmLabel
-            // 
-            this.OriginalBpmLabel.AutoSize = true;
-            this.OriginalBpmLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OriginalBpmLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.OriginalBpmLabel.Location = new System.Drawing.Point(18, 36);
-            this.OriginalBpmLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.OriginalBpmLabel.Name = "OriginalBpmLabel";
-            this.OriginalBpmLabel.Size = new System.Drawing.Size(62, 16);
-            this.OriginalBpmLabel.TabIndex = 9;
-            this.OriginalBpmLabel.Text = "Old BPM";
-            this.OriginalBpmLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // NewBpmLabel
-            // 
-            this.NewBpmLabel.AutoSize = true;
-            this.NewBpmLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewBpmLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.NewBpmLabel.Location = new System.Drawing.Point(15, 65);
-            this.NewBpmLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.NewBpmLabel.Name = "NewBpmLabel";
-            this.NewBpmLabel.Size = new System.Drawing.Size(67, 16);
-            this.NewBpmLabel.TabIndex = 9;
-            this.NewBpmLabel.Text = "New BPM";
-            this.NewBpmLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // BpmMultiplierLabel
-            // 
-            this.BpmMultiplierLabel.AutoSize = true;
-            this.BpmMultiplierLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.BpmMultiplierLabel.Location = new System.Drawing.Point(47, 7);
-            this.BpmMultiplierLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.BpmMultiplierLabel.Name = "BpmMultiplierLabel";
-            this.BpmMultiplierLabel.Size = new System.Drawing.Size(35, 16);
-            this.BpmMultiplierLabel.TabIndex = 1;
-            this.BpmMultiplierLabel.Text = "Rate";
-            this.BpmMultiplierLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // Middle1Panel
             // 
             this.Middle1Panel.Controls.Add(this.tableLayoutPanel1);
@@ -393,53 +245,6 @@ namespace osu_trainer
             this.tableLayoutPanel1.Size = new System.Drawing.Size(402, 113);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // ODLockCheck
-            // 
-            this.ODLockCheck.CheckedImage = ((System.Drawing.Image)(resources.GetObject("ODLockCheck.CheckedImage")));
-            this.ODLockCheck.Location = new System.Drawing.Point(379, 87);
-            this.ODLockCheck.Name = "ODLockCheck";
-            this.ODLockCheck.Size = new System.Drawing.Size(20, 21);
-            this.ODLockCheck.TabIndex = 15;
-            this.ODLockCheck.UncheckedImage = ((System.Drawing.Image)(resources.GetObject("ODLockCheck.UncheckedImage")));
-            this.ODLockCheck.UseVisualStyleBackColor = true;
-            this.ODLockCheck.CheckedChanged += new System.EventHandler(this.OdLockCheck_CheckedChanged);
-            // 
-            // ARLockCheck
-            // 
-            this.ARLockCheck.CheckedImage = ((System.Drawing.Image)(resources.GetObject("ARLockCheck.CheckedImage")));
-            this.ARLockCheck.Location = new System.Drawing.Point(379, 59);
-            this.ARLockCheck.Name = "ARLockCheck";
-            this.ARLockCheck.Size = new System.Drawing.Size(20, 21);
-            this.ARLockCheck.TabIndex = 14;
-            this.ARLockCheck.UncheckedImage = ((System.Drawing.Image)(resources.GetObject("ARLockCheck.UncheckedImage")));
-            this.ARLockCheck.UseVisualStyleBackColor = true;
-            this.ARLockCheck.CheckedChanged += new System.EventHandler(this.ArLockCheck_CheckedChanged);
-            // 
-            // CSLockCheck
-            // 
-            this.CSLockCheck.CheckedImage = ((System.Drawing.Image)(resources.GetObject("CSLockCheck.CheckedImage")));
-            this.CSLockCheck.Location = new System.Drawing.Point(379, 31);
-            this.CSLockCheck.Name = "CSLockCheck";
-            this.CSLockCheck.Size = new System.Drawing.Size(20, 21);
-            this.CSLockCheck.TabIndex = 13;
-            this.CSLockCheck.UncheckedImage = ((System.Drawing.Image)(resources.GetObject("CSLockCheck.UncheckedImage")));
-            this.CSLockCheck.UseVisualStyleBackColor = true;
-            this.CSLockCheck.CheckedChanged += new System.EventHandler(this.CsLockCheck_CheckedChanged);
-            // 
-            // odlabel
-            // 
-            this.odlabel.AutoSize = true;
-            this.odlabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.odlabel.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9.75F, System.Drawing.FontStyle.Bold);
-            this.odlabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.odlabel.Location = new System.Drawing.Point(9, 93);
-            this.odlabel.Margin = new System.Windows.Forms.Padding(9, 9, 3, 0);
-            this.odlabel.Name = "odlabel";
-            this.odlabel.Size = new System.Drawing.Size(26, 20);
-            this.odlabel.TabIndex = 9;
-            this.odlabel.Text = "OD";
-            this.odlabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // ODDisplay
             // 
             this.ODDisplay.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -456,58 +261,6 @@ namespace osu_trainer
             this.ODDisplay.Text = "0.0";
             this.ODDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ODDisplay.Enter += new System.EventHandler(this.Unfocus);
-            // 
-            // ODSlider
-            // 
-            this.ODSlider.BodyColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
-            this.ODSlider.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ODSlider.FillDraggingNipple = false;
-            this.ODSlider.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.ODSlider.Location = new System.Drawing.Point(82, 87);
-            this.ODSlider.MaxValue = new decimal(new int[] {
-            11,
-            0,
-            0,
-            0});
-            this.ODSlider.MinValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.ODSlider.Name = "ODSlider";
-            this.ODSlider.NippleColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
-            this.ODSlider.NippleDiameter = 15;
-            this.ODSlider.NippleExpandedDiameter = 18;
-            this.ODSlider.NippleIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ODSlider.NippleStrokeWidth = 0;
-            this.ODSlider.Size = new System.Drawing.Size(291, 23);
-            this.ODSlider.TabIndex = 11;
-            this.ODSlider.Text = "HPSlider";
-            this.ODSlider.Thickness = 4;
-            this.ODSlider.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.ODSlider.ValueChanged += new System.EventHandler(this.OdSlider_ValueChanged);
-            // 
-            // arlabel
-            // 
-            this.arlabel.AutoSize = true;
-            this.arlabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.arlabel.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9.75F, System.Drawing.FontStyle.Bold);
-            this.arlabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.arlabel.Location = new System.Drawing.Point(9, 65);
-            this.arlabel.Margin = new System.Windows.Forms.Padding(9, 9, 3, 0);
-            this.arlabel.Name = "arlabel";
-            this.arlabel.Size = new System.Drawing.Size(26, 19);
-            this.arlabel.TabIndex = 6;
-            this.arlabel.Text = "AR";
-            this.arlabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // ARDisplay
             // 
@@ -526,58 +279,6 @@ namespace osu_trainer
             this.ARDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ARDisplay.Enter += new System.EventHandler(this.Unfocus);
             // 
-            // ARSlider
-            // 
-            this.ARSlider.BodyColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
-            this.ARSlider.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ARSlider.FillDraggingNipple = false;
-            this.ARSlider.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.ARSlider.Location = new System.Drawing.Point(82, 59);
-            this.ARSlider.MaxValue = new decimal(new int[] {
-            11,
-            0,
-            0,
-            0});
-            this.ARSlider.MinValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.ARSlider.Name = "ARSlider";
-            this.ARSlider.NippleColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
-            this.ARSlider.NippleDiameter = 15;
-            this.ARSlider.NippleExpandedDiameter = 18;
-            this.ARSlider.NippleIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ARSlider.NippleStrokeWidth = 0;
-            this.ARSlider.Size = new System.Drawing.Size(291, 22);
-            this.ARSlider.TabIndex = 8;
-            this.ARSlider.Text = "HPSlider";
-            this.ARSlider.Thickness = 4;
-            this.ARSlider.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.ARSlider.ValueChanged += new System.EventHandler(this.ArSlider_ValueChanged);
-            // 
-            // cslabel
-            // 
-            this.cslabel.AutoSize = true;
-            this.cslabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cslabel.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9.75F, System.Drawing.FontStyle.Bold);
-            this.cslabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.cslabel.Location = new System.Drawing.Point(9, 37);
-            this.cslabel.Margin = new System.Windows.Forms.Padding(9, 9, 3, 0);
-            this.cslabel.Name = "cslabel";
-            this.cslabel.Size = new System.Drawing.Size(26, 19);
-            this.cslabel.TabIndex = 3;
-            this.cslabel.Text = "CS";
-            this.cslabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // CSDisplay
             // 
             this.CSDisplay.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -594,59 +295,6 @@ namespace osu_trainer
             this.CSDisplay.Text = "0.0";
             this.CSDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.CSDisplay.Enter += new System.EventHandler(this.Unfocus);
-            // 
-            // CSSlider
-            // 
-            this.CSSlider.BodyColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
-            this.CSSlider.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CSSlider.FillDraggingNipple = false;
-            this.CSSlider.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.CSSlider.Location = new System.Drawing.Point(82, 31);
-            this.CSSlider.Margin = new System.Windows.Forms.Padding(3, 3, 28, 3);
-            this.CSSlider.MaxValue = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.CSSlider.MinValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.CSSlider.Name = "CSSlider";
-            this.CSSlider.NippleColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
-            this.CSSlider.NippleDiameter = 15;
-            this.CSSlider.NippleExpandedDiameter = 18;
-            this.CSSlider.NippleIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.CSSlider.NippleStrokeWidth = 0;
-            this.CSSlider.Size = new System.Drawing.Size(266, 22);
-            this.CSSlider.TabIndex = 5;
-            this.CSSlider.Text = "HPSlider";
-            this.CSSlider.Thickness = 4;
-            this.CSSlider.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.CSSlider.ValueChanged += new System.EventHandler(this.CsSlider_ValueChanged);
-            // 
-            // hplabel
-            // 
-            this.hplabel.AutoSize = true;
-            this.hplabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.hplabel.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9.75F, System.Drawing.FontStyle.Bold);
-            this.hplabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.hplabel.Location = new System.Drawing.Point(9, 9);
-            this.hplabel.Margin = new System.Windows.Forms.Padding(9, 9, 3, 0);
-            this.hplabel.Name = "hplabel";
-            this.hplabel.Size = new System.Drawing.Size(26, 19);
-            this.hplabel.TabIndex = 0;
-            this.hplabel.Text = "HP";
-            this.hplabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // HPDisplay
             // 
@@ -666,56 +314,6 @@ namespace osu_trainer
             this.HPDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.HPDisplay.Enter += new System.EventHandler(this.Unfocus);
             // 
-            // HPSlider
-            // 
-            this.HPSlider.BodyColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
-            this.HPSlider.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HPSlider.FillDraggingNipple = false;
-            this.HPSlider.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.HPSlider.Location = new System.Drawing.Point(82, 3);
-            this.HPSlider.Margin = new System.Windows.Forms.Padding(3, 3, 28, 3);
-            this.HPSlider.MaxValue = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.HPSlider.MinValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.HPSlider.Name = "HPSlider";
-            this.HPSlider.NippleColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
-            this.HPSlider.NippleDiameter = 15;
-            this.HPSlider.NippleExpandedDiameter = 18;
-            this.HPSlider.NippleIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.HPSlider.NippleStrokeWidth = 0;
-            this.HPSlider.Size = new System.Drawing.Size(266, 22);
-            this.HPSlider.TabIndex = 2;
-            this.HPSlider.Text = "HPSlider";
-            this.HPSlider.Thickness = 4;
-            this.HPSlider.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.HPSlider.ValueChanged += new System.EventHandler(this.HpSlider_ValueChanged);
-            // 
-            // HPLockCheck
-            // 
-            this.HPLockCheck.CheckedImage = global::osu_trainer.Properties.Resources.lock_solid;
-            this.HPLockCheck.Location = new System.Drawing.Point(379, 3);
-            this.HPLockCheck.Name = "HPLockCheck";
-            this.HPLockCheck.Size = new System.Drawing.Size(20, 21);
-            this.HPLockCheck.TabIndex = 12;
-            this.HPLockCheck.UncheckedImage = global::osu_trainer.Properties.Resources.unlock_solid;
-            this.HPLockCheck.UseVisualStyleBackColor = true;
-            this.HPLockCheck.CheckedChanged += new System.EventHandler(this.HpLockCheck_CheckedChanged);
-            // 
             // BottomPanel
             // 
             this.BottomPanel.Controls.Add(this.DeleteButton);
@@ -729,73 +327,6 @@ namespace osu_trainer
             this.BottomPanel.TabIndex = 11;
             this.BottomPanel.Click += new System.EventHandler(this.Unfocus);
             // 
-            // DeleteButton
-            // 
-            this.DeleteButton.BrightnessRange = 0.01F;
-            this.DeleteButton.Color = System.Drawing.Color.Gray;
-            this.DeleteButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteButton.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteButton.ForeColor = System.Drawing.Color.White;
-            this.DeleteButton.Location = new System.Drawing.Point(10, 46);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Progress = 0F;
-            this.DeleteButton.ProgressColor = System.Drawing.Color.Transparent;
-            this.DeleteButton.Size = new System.Drawing.Size(130, 28);
-            this.DeleteButton.Subtext = "";
-            this.DeleteButton.SubtextColor = System.Drawing.Color.Empty;
-            this.DeleteButton.TabIndex = 1;
-            this.DeleteButton.Text = "Clean Up";
-            this.DeleteButton.TextYOffset = 0;
-            this.DeleteButton.TriangleCount = 30;
-            this.DeleteButton.UseVisualStyleBackColor = true;
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
-            // 
-            // ResetButton
-            // 
-            this.ResetButton.BrightnessRange = 0.01F;
-            this.ResetButton.Color = System.Drawing.Color.SteelBlue;
-            this.ResetButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.ResetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ResetButton.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ResetButton.ForeColor = System.Drawing.Color.White;
-            this.ResetButton.Location = new System.Drawing.Point(10, 12);
-            this.ResetButton.Name = "ResetButton";
-            this.ResetButton.Progress = 0F;
-            this.ResetButton.ProgressColor = System.Drawing.Color.Transparent;
-            this.ResetButton.Size = new System.Drawing.Size(130, 28);
-            this.ResetButton.Subtext = "";
-            this.ResetButton.SubtextColor = System.Drawing.Color.Empty;
-            this.ResetButton.TabIndex = 1;
-            this.ResetButton.Text = "Reset";
-            this.ResetButton.TextYOffset = 0;
-            this.ResetButton.TriangleCount = 30;
-            this.ResetButton.UseVisualStyleBackColor = true;
-            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
-            // 
-            // GenerateMapButton
-            // 
-            this.GenerateMapButton.BackColor = System.Drawing.Color.Transparent;
-            this.GenerateMapButton.BrightnessRange = 0.01F;
-            this.GenerateMapButton.Color = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(51)))), ((int)(((byte)(131)))));
-            this.GenerateMapButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GenerateMapButton.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GenerateMapButton.ForeColor = System.Drawing.Color.White;
-            this.GenerateMapButton.Location = new System.Drawing.Point(146, 12);
-            this.GenerateMapButton.Margin = new System.Windows.Forms.Padding(30, 3, 30, 3);
-            this.GenerateMapButton.Name = "GenerateMapButton";
-            this.GenerateMapButton.Progress = 0F;
-            this.GenerateMapButton.ProgressColor = System.Drawing.Color.SpringGreen;
-            this.GenerateMapButton.Size = new System.Drawing.Size(271, 62);
-            this.GenerateMapButton.Subtext = "Ctrl+Shift+X";
-            this.GenerateMapButton.SubtextColor = System.Drawing.Color.Plum;
-            this.GenerateMapButton.TabIndex = 0;
-            this.GenerateMapButton.Text = "Create Map";
-            this.GenerateMapButton.TextYOffset = -3;
-            this.GenerateMapButton.TriangleCount = 30;
-            this.GenerateMapButton.UseVisualStyleBackColor = false;
-            this.GenerateMapButton.Click += new System.EventHandler(this.GenerateMapButton_Click);
-            // 
             // TopPanel
             // 
             this.TopPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
@@ -806,20 +337,6 @@ namespace osu_trainer
             this.TopPanel.Padding = new System.Windows.Forms.Padding(10);
             this.TopPanel.Size = new System.Drawing.Size(427, 121);
             this.TopPanel.TabIndex = 12;
-            // 
-            // SongDisplay
-            // 
-            this.SongDisplay.Artist = null;
-            this.SongDisplay.Cover = null;
-            this.SongDisplay.Difficulty = null;
-            this.SongDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SongDisplay.ErrorMessage = null;
-            this.SongDisplay.Location = new System.Drawing.Point(10, 10);
-            this.SongDisplay.Name = "SongDisplay";
-            this.SongDisplay.Size = new System.Drawing.Size(407, 101);
-            this.SongDisplay.TabIndex = 7;
-            this.SongDisplay.Text = "songDisplay1";
-            this.SongDisplay.Title = null;
             // 
             // OsuRunningTimer
             // 
@@ -865,19 +382,6 @@ namespace osu_trainer
             this.SpeedLabel.TabIndex = 23;
             this.SpeedLabel.Text = "1.0 speed";
             this.SpeedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // StarsDisplay
-            // 
-            this.StarsDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.StarsDisplay.Enabled = false;
-            this.StarsDisplay.Font = new System.Drawing.Font("Microsoft Tai Le", 16F, System.Drawing.FontStyle.Bold);
-            this.StarsDisplay.GameMode = FsBeatmapProcessor.GameMode.osu;
-            this.StarsDisplay.Location = new System.Drawing.Point(307, 3);
-            this.StarsDisplay.Name = "StarsDisplay";
-            this.StarsDisplay.Size = new System.Drawing.Size(93, 35);
-            this.StarsDisplay.Stars = 0F;
-            this.StarsDisplay.TabIndex = 22;
-            this.StarsDisplay.Text = "starsDisplay1";
             // 
             // BackgroundWorker
             // 
@@ -934,6 +438,526 @@ namespace osu_trainer
             this.titlePanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelMove_MouseDown);
             this.titlePanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelMove_MouseMove);
             this.titlePanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PanelMove_MouseUp);
+            // 
+            // BpmLockCheck
+            // 
+            this.BpmLockCheck.CheckedImage = global::osu_trainer.Properties.Resources.lock_solid;
+            this.BpmLockCheck.Location = new System.Drawing.Point(136, 62);
+            this.BpmLockCheck.Name = "BpmLockCheck";
+            this.BpmLockCheck.Size = new System.Drawing.Size(21, 21);
+            this.BpmLockCheck.TabIndex = 15;
+            this.BpmLockCheck.UncheckedImage = global::osu_trainer.Properties.Resources.unlock_solid;
+            this.BpmLockCheck.UseVisualStyleBackColor = true;
+            this.BpmLockCheck.CheckedChanged += new System.EventHandler(this.BpmLockCheck_CheckedChanged);
+            // 
+            // SongsFolderButton
+            // 
+            this.SongsFolderButton.BrightnessRange = 0.01F;
+            this.SongsFolderButton.Color = System.Drawing.Color.DarkGoldenrod;
+            this.SongsFolderButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.SongsFolderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SongsFolderButton.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SongsFolderButton.ForeColor = System.Drawing.Color.White;
+            this.SongsFolderButton.Location = new System.Drawing.Point(10, 100);
+            this.SongsFolderButton.Name = "SongsFolderButton";
+            this.SongsFolderButton.Progress = 0F;
+            this.SongsFolderButton.ProgressColor = System.Drawing.Color.Transparent;
+            this.SongsFolderButton.Size = new System.Drawing.Size(130, 28);
+            this.SongsFolderButton.Subtext = "";
+            this.SongsFolderButton.SubtextColor = System.Drawing.Color.Empty;
+            this.SongsFolderButton.TabIndex = 1;
+            this.SongsFolderButton.Text = "Songs Folder";
+            this.SongsFolderButton.TextYOffset = 0;
+            this.SongsFolderButton.TriangleCount = 30;
+            this.SongsFolderButton.UseVisualStyleBackColor = true;
+            this.SongsFolderButton.Click += new System.EventHandler(this.SongsFolderButton_Click);
+            // 
+            // BpmSlider
+            // 
+            this.BpmSlider.BodyColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
+            this.BpmSlider.FillDraggingNipple = false;
+            this.BpmSlider.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.BpmSlider.Location = new System.Drawing.Point(136, 2);
+            this.BpmSlider.MaxValue = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.BpmSlider.MinValue = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.BpmSlider.Name = "BpmSlider";
+            this.BpmSlider.NippleColor = System.Drawing.Color.White;
+            this.BpmSlider.NippleDiameter = 15;
+            this.BpmSlider.NippleExpandedDiameter = 18;
+            this.BpmSlider.NippleIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.BpmSlider.NippleStrokeWidth = 0;
+            this.BpmSlider.Size = new System.Drawing.Size(131, 23);
+            this.BpmSlider.TabIndex = 23;
+            this.BpmSlider.Text = "bpmSlider";
+            this.BpmSlider.Thickness = 4;
+            this.BpmSlider.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.BpmSlider.ValueChanged += new System.EventHandler(this.BpmSlider_ValueChanged);
+            // 
+            // ChangePitchCheck
+            // 
+            this.ChangePitchCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ChangePitchCheck.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
+            this.ChangePitchCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
+            this.ChangePitchCheck.Location = new System.Drawing.Point(287, 74);
+            this.ChangePitchCheck.Name = "ChangePitchCheck";
+            this.ChangePitchCheck.Size = new System.Drawing.Size(130, 24);
+            this.ChangePitchCheck.TabIndex = 22;
+            this.ChangePitchCheck.Text = "Change pitch";
+            this.ChangePitchCheck.UseVisualStyleBackColor = true;
+            this.ChangePitchCheck.CheckedChanged += new System.EventHandler(this.ChangePitchButton_CheckedChanged);
+            // 
+            // NoSpinnersCheck
+            // 
+            this.NoSpinnersCheck.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
+            this.NoSpinnersCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
+            this.NoSpinnersCheck.Location = new System.Drawing.Point(293, 99);
+            this.NoSpinnersCheck.Name = "NoSpinnersCheck";
+            this.NoSpinnersCheck.Size = new System.Drawing.Size(124, 24);
+            this.NoSpinnersCheck.TabIndex = 20;
+            this.NoSpinnersCheck.Text = "No Spinners";
+            this.NoSpinnersCheck.UseVisualStyleBackColor = true;
+            this.NoSpinnersCheck.CheckedChanged += new System.EventHandler(this.NoSpinnerCheckBox_CheckedChanged);
+            // 
+            // HRCheck
+            // 
+            this.HRCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.HRCheck.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
+            this.HRCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
+            this.HRCheck.Location = new System.Drawing.Point(285, 0);
+            this.HRCheck.Name = "HRCheck";
+            this.HRCheck.Size = new System.Drawing.Size(132, 24);
+            this.HRCheck.TabIndex = 20;
+            this.HRCheck.Text = "HR Circlesize";
+            this.HRCheck.UseVisualStyleBackColor = true;
+            this.HRCheck.CheckedChanged += new System.EventHandler(this.HRCheck_CheckedChanged);
+            // 
+            // ScaleODCheck
+            // 
+            this.ScaleODCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ScaleODCheck.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
+            this.ScaleODCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
+            this.ScaleODCheck.Location = new System.Drawing.Point(313, 49);
+            this.ScaleODCheck.Name = "ScaleODCheck";
+            this.ScaleODCheck.Size = new System.Drawing.Size(104, 25);
+            this.ScaleODCheck.TabIndex = 21;
+            this.ScaleODCheck.Text = "Scale OD";
+            this.ScaleODCheck.UseVisualStyleBackColor = true;
+            this.ScaleODCheck.CheckedChanged += new System.EventHandler(this.ScaleODCheck_CheckedChanged);
+            // 
+            // ScaleARCheck
+            // 
+            this.ScaleARCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ScaleARCheck.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
+            this.ScaleARCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
+            this.ScaleARCheck.Location = new System.Drawing.Point(315, 24);
+            this.ScaleARCheck.Name = "ScaleARCheck";
+            this.ScaleARCheck.Size = new System.Drawing.Size(102, 24);
+            this.ScaleARCheck.TabIndex = 20;
+            this.ScaleARCheck.Text = "Scale AR";
+            this.ScaleARCheck.UseVisualStyleBackColor = true;
+            this.ScaleARCheck.CheckedChanged += new System.EventHandler(this.ScaleARCheck_CheckedChanged);
+            // 
+            // OriginalBpmLabel
+            // 
+            this.OriginalBpmLabel.AutoSize = true;
+            this.OriginalBpmLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OriginalBpmLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
+            this.OriginalBpmLabel.Location = new System.Drawing.Point(18, 36);
+            this.OriginalBpmLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.OriginalBpmLabel.Name = "OriginalBpmLabel";
+            this.OriginalBpmLabel.Size = new System.Drawing.Size(62, 16);
+            this.OriginalBpmLabel.TabIndex = 9;
+            this.OriginalBpmLabel.Text = "Old BPM";
+            this.OriginalBpmLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // NewBpmLabel
+            // 
+            this.NewBpmLabel.AutoSize = true;
+            this.NewBpmLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewBpmLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
+            this.NewBpmLabel.Location = new System.Drawing.Point(15, 65);
+            this.NewBpmLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.NewBpmLabel.Name = "NewBpmLabel";
+            this.NewBpmLabel.Size = new System.Drawing.Size(67, 16);
+            this.NewBpmLabel.TabIndex = 9;
+            this.NewBpmLabel.Text = "New BPM";
+            this.NewBpmLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // BpmMultiplierLabel
+            // 
+            this.BpmMultiplierLabel.AutoSize = true;
+            this.BpmMultiplierLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
+            this.BpmMultiplierLabel.Location = new System.Drawing.Point(47, 7);
+            this.BpmMultiplierLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.BpmMultiplierLabel.Name = "BpmMultiplierLabel";
+            this.BpmMultiplierLabel.Size = new System.Drawing.Size(35, 16);
+            this.BpmMultiplierLabel.TabIndex = 1;
+            this.BpmMultiplierLabel.Text = "Rate";
+            this.BpmMultiplierLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ODLockCheck
+            // 
+            this.ODLockCheck.CheckedImage = ((System.Drawing.Image)(resources.GetObject("ODLockCheck.CheckedImage")));
+            this.ODLockCheck.Location = new System.Drawing.Point(379, 87);
+            this.ODLockCheck.Name = "ODLockCheck";
+            this.ODLockCheck.Size = new System.Drawing.Size(20, 21);
+            this.ODLockCheck.TabIndex = 15;
+            this.ODLockCheck.UncheckedImage = ((System.Drawing.Image)(resources.GetObject("ODLockCheck.UncheckedImage")));
+            this.ODLockCheck.UseVisualStyleBackColor = true;
+            this.ODLockCheck.CheckedChanged += new System.EventHandler(this.OdLockCheck_CheckedChanged);
+            // 
+            // ARLockCheck
+            // 
+            this.ARLockCheck.CheckedImage = ((System.Drawing.Image)(resources.GetObject("ARLockCheck.CheckedImage")));
+            this.ARLockCheck.Location = new System.Drawing.Point(379, 59);
+            this.ARLockCheck.Name = "ARLockCheck";
+            this.ARLockCheck.Size = new System.Drawing.Size(20, 21);
+            this.ARLockCheck.TabIndex = 14;
+            this.ARLockCheck.UncheckedImage = ((System.Drawing.Image)(resources.GetObject("ARLockCheck.UncheckedImage")));
+            this.ARLockCheck.UseVisualStyleBackColor = true;
+            this.ARLockCheck.CheckedChanged += new System.EventHandler(this.ArLockCheck_CheckedChanged);
+            // 
+            // CSLockCheck
+            // 
+            this.CSLockCheck.CheckedImage = ((System.Drawing.Image)(resources.GetObject("CSLockCheck.CheckedImage")));
+            this.CSLockCheck.Location = new System.Drawing.Point(379, 31);
+            this.CSLockCheck.Name = "CSLockCheck";
+            this.CSLockCheck.Size = new System.Drawing.Size(20, 21);
+            this.CSLockCheck.TabIndex = 13;
+            this.CSLockCheck.UncheckedImage = ((System.Drawing.Image)(resources.GetObject("CSLockCheck.UncheckedImage")));
+            this.CSLockCheck.UseVisualStyleBackColor = true;
+            this.CSLockCheck.CheckedChanged += new System.EventHandler(this.CsLockCheck_CheckedChanged);
+            // 
+            // odlabel
+            // 
+            this.odlabel.AutoSize = true;
+            this.odlabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.odlabel.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9.75F, System.Drawing.FontStyle.Bold);
+            this.odlabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
+            this.odlabel.Location = new System.Drawing.Point(9, 93);
+            this.odlabel.Margin = new System.Windows.Forms.Padding(9, 9, 3, 0);
+            this.odlabel.Name = "odlabel";
+            this.odlabel.Size = new System.Drawing.Size(26, 20);
+            this.odlabel.TabIndex = 9;
+            this.odlabel.Text = "OD";
+            this.odlabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ODSlider
+            // 
+            this.ODSlider.BodyColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
+            this.ODSlider.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ODSlider.FillDraggingNipple = false;
+            this.ODSlider.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.ODSlider.Location = new System.Drawing.Point(82, 87);
+            this.ODSlider.MaxValue = new decimal(new int[] {
+            11,
+            0,
+            0,
+            0});
+            this.ODSlider.MinValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.ODSlider.Name = "ODSlider";
+            this.ODSlider.NippleColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
+            this.ODSlider.NippleDiameter = 15;
+            this.ODSlider.NippleExpandedDiameter = 18;
+            this.ODSlider.NippleIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.ODSlider.NippleStrokeWidth = 0;
+            this.ODSlider.Size = new System.Drawing.Size(291, 23);
+            this.ODSlider.TabIndex = 11;
+            this.ODSlider.Text = "HPSlider";
+            this.ODSlider.Thickness = 4;
+            this.ODSlider.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.ODSlider.ValueChanged += new System.EventHandler(this.OdSlider_ValueChanged);
+            // 
+            // arlabel
+            // 
+            this.arlabel.AutoSize = true;
+            this.arlabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.arlabel.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9.75F, System.Drawing.FontStyle.Bold);
+            this.arlabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
+            this.arlabel.Location = new System.Drawing.Point(9, 65);
+            this.arlabel.Margin = new System.Windows.Forms.Padding(9, 9, 3, 0);
+            this.arlabel.Name = "arlabel";
+            this.arlabel.Size = new System.Drawing.Size(26, 19);
+            this.arlabel.TabIndex = 6;
+            this.arlabel.Text = "AR";
+            this.arlabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ARSlider
+            // 
+            this.ARSlider.BodyColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
+            this.ARSlider.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ARSlider.FillDraggingNipple = false;
+            this.ARSlider.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.ARSlider.Location = new System.Drawing.Point(82, 59);
+            this.ARSlider.MaxValue = new decimal(new int[] {
+            11,
+            0,
+            0,
+            0});
+            this.ARSlider.MinValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.ARSlider.Name = "ARSlider";
+            this.ARSlider.NippleColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
+            this.ARSlider.NippleDiameter = 15;
+            this.ARSlider.NippleExpandedDiameter = 18;
+            this.ARSlider.NippleIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.ARSlider.NippleStrokeWidth = 0;
+            this.ARSlider.Size = new System.Drawing.Size(291, 22);
+            this.ARSlider.TabIndex = 8;
+            this.ARSlider.Text = "HPSlider";
+            this.ARSlider.Thickness = 4;
+            this.ARSlider.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.ARSlider.ValueChanged += new System.EventHandler(this.ArSlider_ValueChanged);
+            // 
+            // cslabel
+            // 
+            this.cslabel.AutoSize = true;
+            this.cslabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cslabel.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9.75F, System.Drawing.FontStyle.Bold);
+            this.cslabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
+            this.cslabel.Location = new System.Drawing.Point(9, 37);
+            this.cslabel.Margin = new System.Windows.Forms.Padding(9, 9, 3, 0);
+            this.cslabel.Name = "cslabel";
+            this.cslabel.Size = new System.Drawing.Size(26, 19);
+            this.cslabel.TabIndex = 3;
+            this.cslabel.Text = "CS";
+            this.cslabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // CSSlider
+            // 
+            this.CSSlider.BodyColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
+            this.CSSlider.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CSSlider.FillDraggingNipple = false;
+            this.CSSlider.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.CSSlider.Location = new System.Drawing.Point(82, 31);
+            this.CSSlider.Margin = new System.Windows.Forms.Padding(3, 3, 28, 3);
+            this.CSSlider.MaxValue = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.CSSlider.MinValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.CSSlider.Name = "CSSlider";
+            this.CSSlider.NippleColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
+            this.CSSlider.NippleDiameter = 15;
+            this.CSSlider.NippleExpandedDiameter = 18;
+            this.CSSlider.NippleIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.CSSlider.NippleStrokeWidth = 0;
+            this.CSSlider.Size = new System.Drawing.Size(266, 22);
+            this.CSSlider.TabIndex = 5;
+            this.CSSlider.Text = "HPSlider";
+            this.CSSlider.Thickness = 4;
+            this.CSSlider.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.CSSlider.ValueChanged += new System.EventHandler(this.CsSlider_ValueChanged);
+            // 
+            // hplabel
+            // 
+            this.hplabel.AutoSize = true;
+            this.hplabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hplabel.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9.75F, System.Drawing.FontStyle.Bold);
+            this.hplabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
+            this.hplabel.Location = new System.Drawing.Point(9, 9);
+            this.hplabel.Margin = new System.Windows.Forms.Padding(9, 9, 3, 0);
+            this.hplabel.Name = "hplabel";
+            this.hplabel.Size = new System.Drawing.Size(26, 19);
+            this.hplabel.TabIndex = 0;
+            this.hplabel.Text = "HP";
+            this.hplabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // HPSlider
+            // 
+            this.HPSlider.BodyColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
+            this.HPSlider.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.HPSlider.FillDraggingNipple = false;
+            this.HPSlider.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.HPSlider.Location = new System.Drawing.Point(82, 3);
+            this.HPSlider.Margin = new System.Windows.Forms.Padding(3, 3, 28, 3);
+            this.HPSlider.MaxValue = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.HPSlider.MinValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.HPSlider.Name = "HPSlider";
+            this.HPSlider.NippleColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
+            this.HPSlider.NippleDiameter = 15;
+            this.HPSlider.NippleExpandedDiameter = 18;
+            this.HPSlider.NippleIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.HPSlider.NippleStrokeWidth = 0;
+            this.HPSlider.Size = new System.Drawing.Size(266, 22);
+            this.HPSlider.TabIndex = 2;
+            this.HPSlider.Text = "HPSlider";
+            this.HPSlider.Thickness = 4;
+            this.HPSlider.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.HPSlider.ValueChanged += new System.EventHandler(this.HpSlider_ValueChanged);
+            // 
+            // HPLockCheck
+            // 
+            this.HPLockCheck.CheckedImage = global::osu_trainer.Properties.Resources.lock_solid;
+            this.HPLockCheck.Location = new System.Drawing.Point(379, 3);
+            this.HPLockCheck.Name = "HPLockCheck";
+            this.HPLockCheck.Size = new System.Drawing.Size(20, 21);
+            this.HPLockCheck.TabIndex = 12;
+            this.HPLockCheck.UncheckedImage = global::osu_trainer.Properties.Resources.unlock_solid;
+            this.HPLockCheck.UseVisualStyleBackColor = true;
+            this.HPLockCheck.CheckedChanged += new System.EventHandler(this.HpLockCheck_CheckedChanged);
+            // 
+            // StarsDisplay
+            // 
+            this.StarsDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.StarsDisplay.Enabled = false;
+            this.StarsDisplay.Font = new System.Drawing.Font("Microsoft Tai Le", 16F, System.Drawing.FontStyle.Bold);
+            this.StarsDisplay.GameMode = FsBeatmapProcessor.GameMode.osu;
+            this.StarsDisplay.Location = new System.Drawing.Point(307, 3);
+            this.StarsDisplay.Name = "StarsDisplay";
+            this.StarsDisplay.Size = new System.Drawing.Size(93, 35);
+            this.StarsDisplay.Stars = 0F;
+            this.StarsDisplay.TabIndex = 22;
+            this.StarsDisplay.Text = "starsDisplay1";
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.BrightnessRange = 0.01F;
+            this.DeleteButton.Color = System.Drawing.Color.Gray;
+            this.DeleteButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteButton.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteButton.ForeColor = System.Drawing.Color.White;
+            this.DeleteButton.Location = new System.Drawing.Point(10, 46);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Progress = 0F;
+            this.DeleteButton.ProgressColor = System.Drawing.Color.Transparent;
+            this.DeleteButton.Size = new System.Drawing.Size(130, 28);
+            this.DeleteButton.Subtext = "";
+            this.DeleteButton.SubtextColor = System.Drawing.Color.Empty;
+            this.DeleteButton.TabIndex = 1;
+            this.DeleteButton.Text = "Delete Unused MP3s";
+            this.DeleteButton.TextYOffset = 0;
+            this.DeleteButton.TriangleCount = 30;
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // ResetButton
+            // 
+            this.ResetButton.BrightnessRange = 0.01F;
+            this.ResetButton.Color = System.Drawing.Color.SteelBlue;
+            this.ResetButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.ResetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ResetButton.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResetButton.ForeColor = System.Drawing.Color.White;
+            this.ResetButton.Location = new System.Drawing.Point(10, 12);
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.Progress = 0F;
+            this.ResetButton.ProgressColor = System.Drawing.Color.Transparent;
+            this.ResetButton.Size = new System.Drawing.Size(130, 28);
+            this.ResetButton.Subtext = "";
+            this.ResetButton.SubtextColor = System.Drawing.Color.Empty;
+            this.ResetButton.TabIndex = 1;
+            this.ResetButton.Text = "Reset";
+            this.ResetButton.TextYOffset = 0;
+            this.ResetButton.TriangleCount = 30;
+            this.ResetButton.UseVisualStyleBackColor = true;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
+            // 
+            // GenerateMapButton
+            // 
+            this.GenerateMapButton.BackColor = System.Drawing.Color.Transparent;
+            this.GenerateMapButton.BrightnessRange = 0.01F;
+            this.GenerateMapButton.Color = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(51)))), ((int)(((byte)(131)))));
+            this.GenerateMapButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GenerateMapButton.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GenerateMapButton.ForeColor = System.Drawing.Color.White;
+            this.GenerateMapButton.Location = new System.Drawing.Point(146, 12);
+            this.GenerateMapButton.Margin = new System.Windows.Forms.Padding(30, 3, 30, 3);
+            this.GenerateMapButton.Name = "GenerateMapButton";
+            this.GenerateMapButton.Progress = 0F;
+            this.GenerateMapButton.ProgressColor = System.Drawing.Color.SpringGreen;
+            this.GenerateMapButton.Size = new System.Drawing.Size(271, 62);
+            this.GenerateMapButton.Subtext = "Ctrl+Shift+X";
+            this.GenerateMapButton.SubtextColor = System.Drawing.Color.Plum;
+            this.GenerateMapButton.TabIndex = 0;
+            this.GenerateMapButton.Text = "Create Map";
+            this.GenerateMapButton.TextYOffset = -3;
+            this.GenerateMapButton.TriangleCount = 30;
+            this.GenerateMapButton.UseVisualStyleBackColor = false;
+            this.GenerateMapButton.Click += new System.EventHandler(this.GenerateMapButton_Click);
+            // 
+            // SongDisplay
+            // 
+            this.SongDisplay.Artist = null;
+            this.SongDisplay.Cover = null;
+            this.SongDisplay.Difficulty = null;
+            this.SongDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SongDisplay.ErrorMessage = null;
+            this.SongDisplay.Location = new System.Drawing.Point(10, 10);
+            this.SongDisplay.Name = "SongDisplay";
+            this.SongDisplay.Size = new System.Drawing.Size(407, 101);
+            this.SongDisplay.TabIndex = 7;
+            this.SongDisplay.Text = "songDisplay1";
+            this.SongDisplay.Title = null;
             // 
             // MainForm
             // 
@@ -1021,5 +1045,6 @@ namespace osu_trainer
         private System.Windows.Forms.Label SpeedLabel;
         private ToggleIconButton BpmLockCheck;
         private OsuCheckBox HRCheck;
+        private OsuButton SongsFolderButton;
     }
 }
