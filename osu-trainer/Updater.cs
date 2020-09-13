@@ -98,7 +98,7 @@ namespace osu_trainer
 
     public class Updater
     {
-        static readonly string CURRENT_RELEASE_TAG = "1.3."; // Jun: REMEMBER TO CHANGE THIS every time you make a new release.
+        static readonly string CURRENT_RELEASE_TAG = "1.3.1"; // Jun: REMEMBER TO CHANGE THIS every time you make a new release.
         public static async void CheckForUpdates()
         {
             if (Properties.Settings.Default.DoNotCheckForUpdates)
