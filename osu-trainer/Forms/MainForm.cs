@@ -846,5 +846,6 @@ namespace osu_trainer
                 Properties.Settings.Default.Save();
             }
         }
+
     }
 }
