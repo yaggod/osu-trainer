@@ -77,12 +77,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 13);
+            this.label1.Location = new System.Drawing.Point(10, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(383, 13);
+            this.label1.Size = new System.Drawing.Size(422, 13);
             this.label1.TabIndex = 6;
-            this.label1.Text = "If you store your songs in a special location, then you might want to change this" +
-    ".";
+            this.label1.Text = "You normally don\'t have to change this unless you store your songs in a special l" +
+    "ocation.";
             // 
             // SongsFolderForm
             // 

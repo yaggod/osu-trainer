@@ -13,6 +13,15 @@ namespace osu_trainer
         [STAThread]
         public static void Main()
         {
+            try
+            {
+                Updater.CheckForUpdates();
+            }
+            catch
+            {
+                // failed to update, who cares
+            }
+
             AddFont(FontCollection, Properties.Resources.Comfortaa_Bold);
 
             Application.CurrentCulture = new CultureInfo("en-US", false);

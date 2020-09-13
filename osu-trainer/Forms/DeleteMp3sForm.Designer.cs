@@ -58,8 +58,11 @@ namespace osu_trainer
             this.cancelButton.Progress = 0F;
             this.cancelButton.ProgressColor = System.Drawing.Color.Transparent;
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.Subtext = "";
+            this.cancelButton.SubtextColor = System.Drawing.Color.Empty;
             this.cancelButton.TabIndex = 0;
             this.cancelButton.Text = "Cancel";
+            this.cancelButton.TextYOffset = 0;
             this.cancelButton.TriangleCount = 30;
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
@@ -85,8 +88,11 @@ namespace osu_trainer
             this.confirmButton.Progress = 0F;
             this.confirmButton.ProgressColor = System.Drawing.Color.Transparent;
             this.confirmButton.Size = new System.Drawing.Size(75, 23);
+            this.confirmButton.Subtext = "";
+            this.confirmButton.SubtextColor = System.Drawing.Color.Empty;
             this.confirmButton.TabIndex = 0;
             this.confirmButton.Text = "Delete";
+            this.confirmButton.TextYOffset = 0;
             this.confirmButton.TriangleCount = 30;
             this.confirmButton.UseVisualStyleBackColor = true;
             // 
@@ -118,7 +124,7 @@ namespace osu_trainer
             this.fileListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileListView.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.fileListView.BackColor = System.Drawing.Color.White;
             this.fileListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.fileListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
