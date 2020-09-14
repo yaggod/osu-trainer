@@ -34,7 +34,7 @@ namespace osu_trainer
         {
             public ZeroARException()
             {
-#if DEBUG
+#if false
                 throw new Exception("AR is zero.");
 #endif
             }
@@ -506,9 +506,14 @@ namespace osu_trainer
         {
             ArIsLocked = !ArIsLocked;
             if (ArIsLocked)
+            {
                 ScaleAR = false;
+                lockedAR = NewBeatmap.ApproachRate;
+            }
             else
+            {
                 SetScaleAR(true);
+            }
             ControlsModified?.Invoke(this, EventArgs.Empty);
         }
 
@@ -568,7 +573,11 @@ namespace osu_trainer
         public void ToggleHpLock()
         {
             HpIsLocked = !HpIsLocked;
-            if (!HpIsLocked)
+            if (HpIsLocked)
+            {
+                lockedHP = NewBeatmap.HPDrainRate;
+            }
+            else
             {
                 NewBeatmap.HPDrainRate = OriginalBeatmap.HPDrainRate;
                 BeatmapModified?.Invoke(this, EventArgs.Empty);
@@ -580,7 +589,11 @@ namespace osu_trainer
         {
             CsIsLocked = !CsIsLocked;
             EmulateHardrock = false;
-            if (!CsIsLocked)
+            if (CsIsLocked)
+            {
+                lockedCS = NewBeatmap.CircleSize;
+            }
+            else
             {
                 NewBeatmap.CircleSize = OriginalBeatmap.CircleSize;
                 BeatmapModified?.Invoke(this, EventArgs.Empty);
@@ -604,9 +617,14 @@ namespace osu_trainer
             OdIsLocked = !OdIsLocked;
             EmulateHardrock = false;
             if (OdIsLocked)
+            {
                 ScaleOD = false;
+                lockedOD = NewBeatmap.OverallDifficulty;
+            }
             else
+            {
                 SetScaleOD(true);
+            }
             ControlsModified?.Invoke(this, EventArgs.Empty);
         }
 
