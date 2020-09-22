@@ -64,6 +64,7 @@ namespace osu_trainer
 
         public MainForm()
         {
+            Directory.SetCurrentDirectory(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location));
             InitializeComponent();
 
             nobg = Image.FromFile(nobgpng);
