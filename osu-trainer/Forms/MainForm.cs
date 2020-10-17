@@ -783,11 +783,6 @@ namespace osu_trainer
 
         #region Background Worker
 
-        private void BackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            //GenerateMapButton.Progress = e.ProgressPercentage / 100f;
-        }
-
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             editor.GenerateBeatmap();

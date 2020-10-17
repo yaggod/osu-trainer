@@ -177,7 +177,7 @@ namespace osu_trainer
                 string inFile = Path.Combine(Path.GetDirectoryName(OriginalBeatmap.Filename), OriginalBeatmap.AudioFilename);
                 string outFile = Path.Combine(Path.GetTempPath(), exportBeatmap.AudioFilename);
 
-                SongSpeedChanger.GenerateAudioFile(inFile, outFile, BpmMultiplier, mainform.BackgroundWorker, ChangePitch, compensateForDT);
+                SongSpeedChanger.GenerateAudioFile(inFile, outFile, BpmMultiplier, ChangePitch, compensateForDT);
                 newMp3 = outFile;
 
                 // take note of this mp3 in a text file, so we can clean it up later

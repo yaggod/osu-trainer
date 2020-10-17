@@ -2,12 +2,14 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using NAudio.Wave;
+using NAudio.Lame; 
 
 namespace osu_trainer
 {
     internal class SongSpeedChanger
     {
-        public static void GenerateAudioFile(string inFile, string outFile, decimal multiplier, BackgroundWorker worker, bool changePitch = false, bool preDT = false)
+        public static void GenerateAudioFile(string inFile, string outFile, decimal multiplier, bool changePitch = false, bool preDT = false)
         {
             decimal compensatedMultiplier = multiplier / 1.5M;
 
@@ -19,18 +21,13 @@ namespace osu_trainer
             // TODO: try catch
             File.Copy(inFile, temp1);
 
-            worker.ReportProgress(17);
-
             // mp3 => wav
-            Process lame1 = new Process();
-            lame1.StartInfo.FileName = Path.Combine("binaries", "lame.exe");
-            lame1.StartInfo.Arguments = $"-q 9 --priority 4 --decode \"{temp1}\" \"{temp2}\"";
-            lame1.StartInfo.UseShellExecute = false;
-            lame1.StartInfo.CreateNoWindow = true;
-            lame1.Start();
-            lame1.WaitForExit();
+            using (Mp3FileReader mp3 = new Mp3FileReader(temp1))
+            using (WaveStream wav = WaveFormatConversionStream.CreatePcmStream(mp3))
+            {
+                WaveFileWriter.CreateWaveFile(temp2, wav);
+            }
 
-            worker.ReportProgress(33);
 
             // stretch (or speed up) wav
             decimal selectedMultiplier = (preDT ? compensatedMultiplier : multiplier);
@@ -50,30 +47,22 @@ namespace osu_trainer
             soundstretch.Start();
             soundstretch.WaitForExit();
 
-            worker.ReportProgress(50);
-
             // wav => mp3
-            Process lame2 = new Process();
-            lame2.StartInfo.FileName = Path.Combine("binaries", "lame.exe");
-            lame2.StartInfo.Arguments = $"-q 9 --priority 4 \"{temp3}\" \"{temp4}\"";
-            lame2.StartInfo.UseShellExecute = false;
-            lame2.StartInfo.CreateNoWindow = true;
-            lame2.Start();
-            lame2.WaitForExit();
-
-            worker.ReportProgress(67);
+            using (var wav = new WaveFileReader(temp3))
+            using (var mp3 = new LameMP3FileWriter(temp4, wav.WaveFormat, LAMEPreset.STANDARD))
+            {
+                wav.CopyTo(mp3);
+            }
 
             if (File.Exists(outFile))
                 File.Delete(outFile);
             File.Copy(temp4, outFile);
-            worker.ReportProgress(83);
 
             // Clean up
             File.Delete(temp1);
             File.Delete(temp2);
             File.Delete(temp3);
             File.Delete(temp4);
-            worker.ReportProgress(100);
         }
     }
 }
