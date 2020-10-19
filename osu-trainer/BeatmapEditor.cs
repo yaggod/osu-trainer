@@ -73,6 +73,13 @@ namespace osu_trainer
         private bool serviceDiffCalcRequestLocked = false;  // mutex for serviceDiffCalcRequest()
         private List<ConcurrentRequest> diffCalcRequests = new List<ConcurrentRequest>();
 
+        // User Profiles
+        public UserProfile[] UserProfiles = {
+            new UserProfile("Profile 1"),
+            new UserProfile("Profile 2"),
+            new UserProfile("Profile 3"),
+            new UserProfile("Profile 4")};
+
         // public getters only
         // to set, call set methods
         public bool HpIsLocked { get; private set; } = false;
@@ -110,6 +117,7 @@ namespace osu_trainer
 
             BpmIsLocked = Properties.Settings.Default.BpmLockedState;
             lockedBpm = Properties.Settings.Default.LockedBpmSetting;
+            // TODO: save BpmMultiplier if rate is specified instead of bpm
 
             NoSpinners = Properties.Settings.Default.NoSpinners;
             ChangePitch = Properties.Settings.Default.ChangePitch;
@@ -399,7 +407,6 @@ namespace osu_trainer
 
                     // Apply Hardrock
                     if (ForceHardrockCirclesize) NewBeatmap.CircleSize = OriginalBeatmap.CircleSize * 1.3M;
-                    if (ForceHardrockCirclesize) NewBeatmap.OverallDifficulty = JunUtils.Clamp(GetScaledOD() * 1.4M, 0M, 10M);
 
                     SetState(EditorState.READY);
                     RequestDiffCalc();
@@ -862,5 +869,110 @@ namespace osu_trainer
             BeatmapModified?.Invoke(this, EventArgs.Empty);
         }
 
+        #region User Profile Management
+        public void SaveProfile(int whichProfile)
+        {
+            int i = whichProfile;
+            UserProfiles[i].HpIsLocked = HpIsLocked;
+            UserProfiles[i].CsIsLocked = CsIsLocked;
+            UserProfiles[i].ArIsLocked = ArIsLocked;
+            UserProfiles[i].OdIsLocked = OdIsLocked;
+            UserProfiles[i].lockedHP = lockedHP;
+            UserProfiles[i].lockedCS = lockedCS;
+            UserProfiles[i].lockedAR = lockedAR;
+            UserProfiles[i].lockedOD = lockedOD;
+            UserProfiles[i].ScaleAR = ScaleAR;
+            UserProfiles[i].ScaleOD = ScaleOD;
+
+            UserProfiles[i].ForceHardrockCirclesize = ForceHardrockCirclesize;
+            UserProfiles[i].ChangePitch = ChangePitch;
+            UserProfiles[i].NoSpinners = NoSpinners;
+
+            UserProfiles[i].BpmIsLocked = BpmIsLocked;
+            UserProfiles[i].lockedBpm = lockedBpm;
+            UserProfiles[i].BpmMultiplier = BpmMultiplier;
+        }
+        public void RenameProfile(int whichProfile, string name)
+        {
+            UserProfiles[whichProfile].Name = name;
+            ControlsModified?.Invoke(this, EventArgs.Empty);
+        }
+        public void LoadProfile(int whichProfile)
+        {
+            int i = whichProfile;
+
+            // locked settings:
+            if (UserProfiles[i].HpIsLocked)
+            {
+                HpIsLocked = true;
+                lockedHP = UserProfiles[i].lockedHP;
+                NewBeatmap.HPDrainRate = UserProfiles[i].lockedHP;
+            }
+            else
+            {
+                HpIsLocked = false;
+                NewBeatmap.HPDrainRate = OriginalBeatmap.HPDrainRate;
+            }
+            if (UserProfiles[i].CsIsLocked)
+            {
+                CsIsLocked = true;
+                lockedCS = UserProfiles[i].lockedCS;
+                NewBeatmap.CircleSize = UserProfiles[i].lockedCS;
+            }
+            else
+            {
+                CsIsLocked = false;
+                NewBeatmap.CircleSize = OriginalBeatmap.CircleSize;
+            }
+            if (UserProfiles[i].ArIsLocked)
+            {
+                ArIsLocked = true;
+                lockedAR = UserProfiles[i].lockedAR;
+                NewBeatmap.ApproachRate = UserProfiles[i].lockedAR;
+            }
+            else
+            {
+                ArIsLocked = false;
+                NewBeatmap.ApproachRate = OriginalBeatmap.ApproachRate;
+            }
+            if (UserProfiles[i].OdIsLocked)
+            {
+                OdIsLocked = true;
+                lockedOD = UserProfiles[i].lockedOD;
+                NewBeatmap.OverallDifficulty = UserProfiles[i].lockedOD;
+            }
+            else
+            {
+                OdIsLocked = false;
+                NewBeatmap.OverallDifficulty = OriginalBeatmap.OverallDifficulty;
+            }
+
+            ScaleAR = UserProfiles[i].ScaleAR;
+            ScaleOD = UserProfiles[i].ScaleOD;
+
+            ForceHardrockCirclesize = UserProfiles[i].ForceHardrockCirclesize;
+            if (ForceHardrockCirclesize) NewBeatmap.CircleSize = OriginalBeatmap.CircleSize * 1.3M;
+            ChangePitch = UserProfiles[i].ChangePitch;
+            NoSpinners = UserProfiles[i].NoSpinners;
+
+            if (UserProfiles[i].BpmIsLocked)
+            {
+                // Load Exact BPM
+                BpmIsLocked = true;
+                SetBpm(UserProfiles[i].lockedBpm);
+            }
+            else
+            {
+                // Load BPM Multipier
+                BpmIsLocked = false;
+                ApplyBpmMultiplier(UserProfiles[i].BpmMultiplier);
+            }
+
+            RequestDiffCalc();
+            BeatmapModified?.Invoke(this, EventArgs.Empty);
+            ControlsModified?.Invoke(this, EventArgs.Empty);
+        }
+
+        #endregion
     }
 }

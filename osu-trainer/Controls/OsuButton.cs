@@ -96,6 +96,7 @@ namespace osu_trainer.Controls
 
         public OsuButton()
         {
+            ForeColor = Color.White;
             _random = new Random((int)DateTime.Now.Ticks + _count++);
 
             SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.UserPaint, true);

@@ -1,5 +1,6 @@
 ﻿using FsBeatmapProcessor;
 using osu_trainer.Controls;
+using osu_trainer.Forms;
 using OsuMemoryDataProvider;
 using System;
 using System.Collections.Generic;
@@ -106,6 +107,7 @@ namespace osu_trainer
             editor.StateChanged += ToggleBpmInputControls;
             editor.StateChanged += ToggleBpmDisplay;
             editor.StateChanged += ToggleLockButtons;
+            editor.StateChanged += UpdateProfiles;
             editor.BeatmapSwitched += UpdateSongDisplay;
             editor.BeatmapModified += UpdateBpmDisplay;
             editor.BeatmapModified += UpdateHpCsArOdDisplay;
@@ -114,6 +116,7 @@ namespace osu_trainer
             editor.BeatmapModified += UpdateRateInputControls;
             editor.ControlsModified += UpdateLockButtons;
             editor.ControlsModified += UpdateChecks;
+            editor.ControlsModified += UpdateProfiles;
 
             // Install keyboard hooks
             // (note! this is only for the create map hotkey!!)
@@ -853,6 +856,49 @@ namespace osu_trainer
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             editor.SaveSettings();
+        }
+
+        private void profileButton1_Click(object sender, EventArgs e) => editor.LoadProfile(0);
+        private void profileButton2_Click(object sender, EventArgs e) => editor.LoadProfile(1);
+        private void profileButton3_Click(object sender, EventArgs e) => editor.LoadProfile(2);
+        private void profileButton4_Click(object sender, EventArgs e) => editor.LoadProfile(3);
+        private void saveButton1_Click(object sender, EventArgs e) => editor.SaveProfile(0);
+        private void saveButton2_Click(object sender, EventArgs e) => editor.SaveProfile(1);
+        private void saveButton3_Click(object sender, EventArgs e) => editor.SaveProfile(2);
+        private void saveButton4_Click(object sender, EventArgs e) => editor.SaveProfile(3);
+        private void renameButton1_Click(object sender, EventArgs e) => renameProfileClick(0);
+        private void renameButton2_Click(object sender, EventArgs e) => renameProfileClick(1);
+        private void renameButton3_Click(object sender, EventArgs e) => renameProfileClick(2);
+        private void renameButton4_Click(object sender, EventArgs e) => renameProfileClick(3);
+        private void renameProfileClick(int whichProfile)
+        {
+            var popup = new RenameProfileForm(Cursor.Position.X - 83, Cursor.Position.Y - 15);
+            if (popup.ShowDialog() == DialogResult.OK)
+                editor.RenameProfile(whichProfile, popup.InputString);
+        }
+        private void UpdateProfiles(object sender, EventArgs e)
+        {
+            bool profilesVisible = (editor.State == EditorState.NOT_READY) ? false : true;
+#if DEBUG
+            profilesVisible = true;
+#endif
+            profileButton1.Visible = profilesVisible;
+            profileButton2.Visible = profilesVisible;
+            profileButton3.Visible = profilesVisible;
+            profileButton4.Visible = profilesVisible;
+            saveButton1.Visible = profilesVisible;
+            saveButton2.Visible = profilesVisible;
+            saveButton3.Visible = profilesVisible;
+            saveButton4.Visible = profilesVisible;
+            renameButton1.Visible = profilesVisible;
+            renameButton2.Visible = profilesVisible;
+            renameButton3.Visible = profilesVisible;
+            renameButton4.Visible = profilesVisible;
+
+            profileButton1.Text = editor.UserProfiles[0].Name;
+            profileButton2.Text = editor.UserProfiles[1].Name;
+            profileButton3.Text = editor.UserProfiles[2].Name;
+            profileButton4.Text = editor.UserProfiles[3].Name;
         }
     }
 }
