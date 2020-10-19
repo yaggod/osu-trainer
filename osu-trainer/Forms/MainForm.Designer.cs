@@ -78,11 +78,11 @@ namespace osu_trainer
             this.panel1 = new System.Windows.Forms.Panel();
             this.AimLabel = new System.Windows.Forms.Label();
             this.SpeedLabel = new System.Windows.Forms.Label();
-            this.StarsDisplay = new osu_trainer.Controls.StarsDisplay();
             this.BackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.closeButton = new System.Windows.Forms.Button();
             this.minimizeButton = new System.Windows.Forms.Button();
             this.titlePanel = new System.Windows.Forms.Panel();
+            this.StarsDisplay = new osu_trainer.Controls.StarsDisplay();
             this.Panel3.SuspendLayout();
             this.Middle1Panel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -891,22 +891,8 @@ namespace osu_trainer
             this.SpeedLabel.Text = "1.0 speed";
             this.SpeedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // StarsDisplay
-            // 
-            this.StarsDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.StarsDisplay.Enabled = false;
-            this.StarsDisplay.Font = new System.Drawing.Font("Microsoft Tai Le", 16F, System.Drawing.FontStyle.Bold);
-            this.StarsDisplay.GameMode = FsBeatmapProcessor.GameMode.osu;
-            this.StarsDisplay.Location = new System.Drawing.Point(307, 3);
-            this.StarsDisplay.Name = "StarsDisplay";
-            this.StarsDisplay.Size = new System.Drawing.Size(93, 35);
-            this.StarsDisplay.Stars = 0F;
-            this.StarsDisplay.TabIndex = 22;
-            this.StarsDisplay.Text = "starsDisplay1";
-            // 
             // BackgroundWorker
             // 
-            this.BackgroundWorker.WorkerReportsProgress = false;
             this.BackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker_DoWork);
             this.BackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker_RunWorkerCompleted);
             // 
@@ -959,6 +945,19 @@ namespace osu_trainer
             this.titlePanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelMove_MouseMove);
             this.titlePanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PanelMove_MouseUp);
             // 
+            // StarsDisplay
+            // 
+            this.StarsDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.StarsDisplay.Enabled = false;
+            this.StarsDisplay.Font = new System.Drawing.Font("Microsoft Tai Le", 16F, System.Drawing.FontStyle.Bold);
+            this.StarsDisplay.GameMode = FsBeatmapProcessor.GameMode.osu;
+            this.StarsDisplay.Location = new System.Drawing.Point(307, 3);
+            this.StarsDisplay.Name = "StarsDisplay";
+            this.StarsDisplay.Size = new System.Drawing.Size(93, 35);
+            this.StarsDisplay.Stars = 0F;
+            this.StarsDisplay.TabIndex = 22;
+            this.StarsDisplay.Text = "starsDisplay1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -979,6 +978,7 @@ namespace osu_trainer
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "osu trainer v1.4";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Panel3.ResumeLayout(false);
             this.Panel3.PerformLayout();

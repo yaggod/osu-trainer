@@ -30,15 +30,6 @@ namespace osu_trainer
 
     internal class BeatmapEditor
     {
-        class ZeroARException
-        {
-            public ZeroARException()
-            {
-#if false
-                throw new Exception("AR is zero.");
-#endif
-            }
-        }
         private MainForm mainform;
         public BadBeatmapReason NotReadyReason;
 
@@ -94,8 +85,10 @@ namespace osu_trainer
         public bool ScaleOD { get; private set; } = true;
         internal EditorState State { get; private set; }
         public decimal BpmMultiplier { get; set; } = 1.0M;
+        
+        // Toggles
+        public bool ForceHardrockCirclesize { get; private set; }
         public bool NoSpinners { get; private set; }
-        public bool EmulateHardrock { get; private set; }
         public bool ChangePitch { get; private set; }
 
         public BeatmapEditor(MainForm f)
@@ -103,11 +96,46 @@ namespace osu_trainer
             mainform = f;
 
             // Load previously saved settings
+            HpIsLocked = Properties.Settings.Default.HPLockedState;
+            CsIsLocked = Properties.Settings.Default.CSLockedState;
+            ArIsLocked = Properties.Settings.Default.ARLockedState;
+            OdIsLocked = Properties.Settings.Default.ODLockedState;
+            ScaleAR = ArIsLocked ? false : true;
+            ScaleOD = OdIsLocked ? false : true;
+
+            lockedHP = Properties.Settings.Default.LockedHPSetting;
+            lockedCS = Properties.Settings.Default.LockedCSSetting;
+            lockedAR = Properties.Settings.Default.LockedARSetting;
+            lockedOD = Properties.Settings.Default.LockedODSetting;
+
+            BpmIsLocked = Properties.Settings.Default.BpmLockedState;
+            lockedBpm = Properties.Settings.Default.LockedBpmSetting;
+
             NoSpinners = Properties.Settings.Default.NoSpinners;
             ChangePitch = Properties.Settings.Default.ChangePitch;
 
             SetState(EditorState.NOT_READY);
             NotReadyReason = BadBeatmapReason.NO_BEATMAP_LOADED;
+        }
+
+        public void SaveSettings()
+        {
+            Properties.Settings.Default.LockedHPSetting = lockedHP;
+            Properties.Settings.Default.LockedCSSetting = lockedCS;
+            Properties.Settings.Default.LockedARSetting = lockedAR;
+            Properties.Settings.Default.LockedODSetting = lockedOD;
+
+            Properties.Settings.Default.HPLockedState = HpIsLocked;
+            Properties.Settings.Default.CSLockedState = CsIsLocked;
+            Properties.Settings.Default.ARLockedState = ArIsLocked;
+            Properties.Settings.Default.ODLockedState = OdIsLocked;
+
+            Properties.Settings.Default.BpmLockedState = BpmIsLocked;
+            Properties.Settings.Default.LockedBpmSetting = lockedBpm;
+
+            Properties.Settings.Default.ChangePitch = ChangePitch;
+            Properties.Settings.Default.NoSpinners = NoSpinners;
+            Properties.Settings.Default.Save();
         }
 
         public event EventHandler StateChanged;
@@ -132,10 +160,6 @@ namespace osu_trainer
             if (newBeatmap.ApproachRate == -1M)
             {
                 newBeatmap.ApproachRate = newBeatmap.OverallDifficulty; // i can't believe this is how old maps used to work...
-                if (newBeatmap.ApproachRate == 0)
-                {
-                    var _ = new ZeroARException();
-                }
             }
             return newBeatmap;
         }
@@ -156,10 +180,6 @@ namespace osu_trainer
             if (compensateForDT)
             {
                 exportBeatmap.ApproachRate      = DifficultyCalculator.CalculateMultipliedAR(NewBeatmap, 1 / 1.5M);
-                if (exportBeatmap.ApproachRate == 0)
-                {
-                    var _ = new ZeroARException();
-                }
                 exportBeatmap.OverallDifficulty = DifficultyCalculator.CalculateMultipliedOD(NewBeatmap, 1 / 1.5M);
                 decimal compensatedRate = (NewBeatmap.Bpm / OriginalBeatmap.Bpm) / 1.5M;
                 exportBeatmap.SetRate(compensatedRate);
@@ -360,33 +380,26 @@ namespace osu_trainer
                 else
                 {
                     // Apply multiplier
+                    if (BpmIsLocked)
+                        SetBpm(lockedBpm);
                     NewBeatmap.SetRate(BpmMultiplier);
 
                     // Apply bpm scaled settings
                     if (ScaleAR) NewBeatmap.ApproachRate = DifficultyCalculator.CalculateMultipliedAR(candidateOriginalBeatmap, BpmMultiplier);
-                    if (NewBeatmap.ApproachRate == 0)
-                    {
-                        var _ = new ZeroARException();
-                    }
                     if (ScaleOD) NewBeatmap.OverallDifficulty = DifficultyCalculator.CalculateMultipliedOD(candidateOriginalBeatmap, BpmMultiplier);
 
-                    // Apply locked settings
+                    // Apply locked settings to new map
                     if (HpIsLocked) NewBeatmap.HPDrainRate = lockedHP;
                     if (CsIsLocked) NewBeatmap.CircleSize = lockedCS;
                     if (ArIsLocked)
                     {
                         NewBeatmap.ApproachRate = lockedAR;
-                        if (NewBeatmap.ApproachRate == 0)
-                        {
-                            var _ = new ZeroARException();
-                        }
                     }
                     if (OdIsLocked) NewBeatmap.OverallDifficulty = lockedOD;
-                    if (BpmIsLocked) SetBpm(lockedBpm);
 
                     // Apply Hardrock
-                    if (EmulateHardrock) NewBeatmap.CircleSize = OriginalBeatmap.CircleSize * 1.3M;
-                    if (EmulateHardrock) NewBeatmap.OverallDifficulty = JunUtils.Clamp(GetScaledOD() * 1.4M, 0M, 10M);
+                    if (ForceHardrockCirclesize) NewBeatmap.CircleSize = OriginalBeatmap.CircleSize * 1.3M;
+                    if (ForceHardrockCirclesize) NewBeatmap.OverallDifficulty = JunUtils.Clamp(GetScaledOD() * 1.4M, 0M, 10M);
 
                     SetState(EditorState.READY);
                     RequestDiffCalc();
@@ -460,7 +473,8 @@ namespace osu_trainer
                 return;
 
             NewBeatmap.HPDrainRate = value;
-            lockedHP = value;
+            if (HpIsLocked)
+                lockedHP = value;
             BeatmapModified?.Invoke(this, EventArgs.Empty);
         }
 
@@ -469,10 +483,11 @@ namespace osu_trainer
             if (State != EditorState.READY)
                 return;
 
-            EmulateHardrock = false;
+            ForceHardrockCirclesize = false;
 
             NewBeatmap.CircleSize = value;
-            lockedCS = value;
+            if (CsIsLocked)
+                lockedCS = value;
             RequestDiffCalc();
             BeatmapModified?.Invoke(this, EventArgs.Empty);
             ControlsModified?.Invoke(this, EventArgs.Empty);
@@ -483,19 +498,9 @@ namespace osu_trainer
             if (State != EditorState.READY)
                 return;
 
-            if (value == 0)
-            {
-                var _ = new ZeroARException();
-            }
             NewBeatmap.ApproachRate = value;
             if (ArIsLocked)
-            {
                 lockedAR = value;
-                if (lockedAR == 0)
-                {
-                    var _ = new ZeroARException();
-                }
-            }
 
             ScaleAR = false;
             BeatmapModified?.Invoke(this, EventArgs.Empty);
@@ -527,10 +532,6 @@ namespace osu_trainer
             // not applicable for taiko or mania
             if (ScaleAR && NewBeatmap.Mode != GameMode.Taiko && NewBeatmap.Mode != GameMode.Mania)
             {
-                if (DifficultyCalculator.CalculateMultipliedAR(OriginalBeatmap, BpmMultiplier) == 0)
-                {
-                    var _ = new ZeroARException();
-                }
                 NewBeatmap.ApproachRate = DifficultyCalculator.CalculateMultipliedAR(OriginalBeatmap, BpmMultiplier);
                 BeatmapModified?.Invoke(this, EventArgs.Empty);
             }
@@ -559,7 +560,7 @@ namespace osu_trainer
             if (State != EditorState.READY)
                 return;
 
-            EmulateHardrock = false;
+            ForceHardrockCirclesize = false;
 
             NewBeatmap.OverallDifficulty = value;
             if (OdIsLocked)
@@ -588,7 +589,7 @@ namespace osu_trainer
         public void ToggleCsLock()
         {
             CsIsLocked = !CsIsLocked;
-            EmulateHardrock = false;
+            ForceHardrockCirclesize = false;
             if (CsIsLocked)
             {
                 lockedCS = NewBeatmap.CircleSize;
@@ -615,7 +616,7 @@ namespace osu_trainer
         public void ToggleOdLock()
         {
             OdIsLocked = !OdIsLocked;
-            EmulateHardrock = false;
+            ForceHardrockCirclesize = false;
             if (OdIsLocked)
             {
                 ScaleOD = false;
@@ -673,7 +674,7 @@ namespace osu_trainer
             if (ScaleOD && !OdIsLocked)
             {
                 NewBeatmap.OverallDifficulty = GetScaledOD();
-                if (EmulateHardrock)
+                if (ForceHardrockCirclesize)
                     NewBeatmap.OverallDifficulty = JunUtils.Clamp(GetScaledOD() * 1.4M, 0M, 10M);
             }
 
@@ -687,25 +688,21 @@ namespace osu_trainer
         public void ToggleChangePitchSetting()
         {
             ChangePitch = !ChangePitch;
-            Properties.Settings.Default.ChangePitch = ChangePitch;
-            Properties.Settings.Default.Save();
             ControlsModified?.Invoke(this, EventArgs.Empty);
         }
 
         public void ToggleNoSpinners()
         {
             NoSpinners = !NoSpinners;
-            Properties.Settings.Default.NoSpinners = NoSpinners;
-            Properties.Settings.Default.Save();
             ControlsModified?.Invoke(this, EventArgs.Empty);
             BeatmapModified?.Invoke(this, EventArgs.Empty);
         }
         internal void ToggleHrEmulation()
         {
-            EmulateHardrock = !EmulateHardrock;
+            ForceHardrockCirclesize = !ForceHardrockCirclesize;
             CsIsLocked = false;
             OdIsLocked = false;
-            if (EmulateHardrock)
+            if (ForceHardrockCirclesize)
             {
                 NewBeatmap.CircleSize = OriginalBeatmap.CircleSize * 1.3M;
                 NewBeatmap.OverallDifficulty = JunUtils.Clamp(GetScaledOD() * 1.4M, 0M, 10M);
@@ -849,17 +846,13 @@ namespace osu_trainer
                 return;
             NewBeatmap.HPDrainRate = OriginalBeatmap.HPDrainRate;
             NewBeatmap.CircleSize = OriginalBeatmap.CircleSize;
-            if (OriginalBeatmap.ApproachRate == 0)
-            {
-                var _ = new ZeroARException();
-            }
             NewBeatmap.ApproachRate = OriginalBeatmap.ApproachRate;
             NewBeatmap.OverallDifficulty = OriginalBeatmap.OverallDifficulty;
             HpIsLocked = false;
             CsIsLocked = false;
             ArIsLocked = false;
             OdIsLocked = false;
-            EmulateHardrock = false;
+            ForceHardrockCirclesize = false;
             ScaleAR = true;
             ScaleOD = true;
             BpmMultiplier = 1.0M;

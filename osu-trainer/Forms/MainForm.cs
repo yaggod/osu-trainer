@@ -354,7 +354,7 @@ namespace osu_trainer
             ScaleARCheck.CheckedChanged     -= ScaleARCheck_CheckedChanged;
             
             NoSpinnersCheck.Checked         = editor.NoSpinners;
-            HRCheck.Checked                 = editor.EmulateHardrock;
+            HRCheck.Checked                 = editor.ForceHardrockCirclesize;
             ChangePitchCheck.Checked        = editor.ChangePitch;
             ScaleODCheck.Checked            = editor.ScaleOD;
             ScaleARCheck.Checked            = editor.ScaleAR;
@@ -590,7 +590,6 @@ namespace osu_trainer
                 editor.SetBpmMultiplier(mult);
             else
                 BpmMultiplierTextBox.Text = editor.BpmMultiplier.ToString("0.00");
-
         }
 
         private void NewBpmTextBox_Submit()
@@ -851,5 +850,9 @@ namespace osu_trainer
             }
         }
 
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            editor.SaveSettings();
+        }
     }
 }
