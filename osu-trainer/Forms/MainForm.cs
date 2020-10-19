@@ -856,6 +856,7 @@ namespace osu_trainer
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             editor.SaveSettings();
+            editor.SaveProfilesToDisk();
         }
 
         private void profileButton1_Click(object sender, EventArgs e) => editor.LoadProfile(0);

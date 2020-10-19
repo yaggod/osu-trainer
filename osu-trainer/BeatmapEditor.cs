@@ -122,6 +122,8 @@ namespace osu_trainer
             NoSpinners = Properties.Settings.Default.NoSpinners;
             ChangePitch = Properties.Settings.Default.ChangePitch;
 
+            LoadProfilesFromDisk();
+
             SetState(EditorState.NOT_READY);
             NotReadyReason = BadBeatmapReason.NO_BEATMAP_LOADED;
         }
@@ -859,6 +861,7 @@ namespace osu_trainer
             CsIsLocked = false;
             ArIsLocked = false;
             OdIsLocked = false;
+            BpmIsLocked = false;
             ForceHardrockCirclesize = false;
             ScaleAR = true;
             ScaleOD = true;
@@ -870,6 +873,69 @@ namespace osu_trainer
         }
 
         #region User Profile Management
+        const string UserProfilesFile = "userprofiles.txt";
+        public void SaveProfilesToDisk()
+        {
+            using (var writer = new StreamWriter(UserProfilesFile, false))
+            {
+                foreach (var profile in UserProfiles)
+                {
+                    writer.WriteLine(profile.Name);
+                    writer.WriteLine(profile.HpIsLocked);
+                    writer.WriteLine(profile.CsIsLocked);
+                    writer.WriteLine(profile.ArIsLocked);
+                    writer.WriteLine(profile.OdIsLocked);
+                    writer.WriteLine(profile.lockedHP);
+                    writer.WriteLine(profile.lockedCS);
+                    writer.WriteLine(profile.lockedAR);
+                    writer.WriteLine(profile.lockedOD);
+                    writer.WriteLine(profile.ScaleAR);
+                    writer.WriteLine(profile.ScaleOD);
+                    writer.WriteLine(profile.ForceHardrockCirclesize);
+                    writer.WriteLine(profile.ChangePitch);
+                    writer.WriteLine(profile.NoSpinners);
+                    writer.WriteLine(profile.BpmIsLocked);
+                    writer.WriteLine(profile.lockedBpm);
+                    writer.WriteLine(profile.BpmMultiplier);
+                }
+            }
+        }
+        public void LoadProfilesFromDisk()
+        {
+            if (!File.Exists(UserProfilesFile))
+                return;
+            try
+            {
+                var lines = File.ReadAllLines(UserProfilesFile);
+                for (int i = 0; i < UserProfiles.Length; i++)
+                {
+                    int offset = i * 17;
+                    UserProfiles[i].Name = lines[offset + 0];
+                    UserProfiles[i].HpIsLocked = lines[offset + 1] == "True";
+                    UserProfiles[i].CsIsLocked = lines[offset + 2] == "True";
+                    UserProfiles[i].ArIsLocked = lines[offset + 3] == "True";
+                    UserProfiles[i].OdIsLocked = lines[offset + 4] == "True";
+                    UserProfiles[i].lockedHP = decimal.Parse(lines[offset + 5]);
+                    UserProfiles[i].lockedCS = decimal.Parse(lines[offset + 6]);
+                    UserProfiles[i].lockedAR = decimal.Parse(lines[offset + 7]);
+                    UserProfiles[i].lockedOD = decimal.Parse(lines[offset + 8]);
+                    UserProfiles[i].ScaleAR = lines[offset + 9] == "True";
+                    UserProfiles[i].ScaleOD = lines[offset + 10] == "True";
+                    UserProfiles[i].ForceHardrockCirclesize = lines[offset + 11] == "True";
+                    UserProfiles[i].ChangePitch = lines[offset + 12] == "True";
+                    UserProfiles[i].NoSpinners = lines[offset + 13] == "True";
+                    UserProfiles[i].BpmIsLocked = lines[offset + 14] == "True";
+                    UserProfiles[i].lockedBpm = int.Parse(lines[offset + 15]);
+                    UserProfiles[i].BpmMultiplier = decimal.Parse(lines[offset + 16]);
+                }
+            }
+            catch
+            {
+                // load empty profiles
+                for (int i = 0; i < UserProfiles.Length; i++)
+                    UserProfiles[i] = new UserProfile($"Profile {i + 1}");
+            }
+        }
         public void SaveProfile(int whichProfile)
         {
             int i = whichProfile;
