@@ -113,7 +113,12 @@ namespace osu_trainer
             // Install keyboard hooks
             // (note! this is only for the create map hotkey!!)
             kbhook.HookedKeys.Add(Keys.X);
+            kbhook.HookedKeys.Add(Keys.A);
+            kbhook.HookedKeys.Add(Keys.S);
+            kbhook.HookedKeys.Add(Keys.D);
+            kbhook.HookedKeys.Add(Keys.F);
             kbhook.KeyDown += new KeyEventHandler(CreateMapHotkeyHandler);
+            kbhook.KeyDown += new KeyEventHandler(ProfileHotkeyHandler);
 
             // need controls to show up as initially disabled
             editor.ForceEventStateChanged();
@@ -651,15 +656,15 @@ namespace osu_trainer
 
         private void CreateMapHotkeyHandler(object sender, EventArgs e)
         {
+            if (!GenerateMapButton.Enabled)
+                return;
+
             var k = (KeyEventArgs)e;
-            if (k.Control && k.Shift)
+            if (k.Control && k.Shift && k.KeyCode == Keys.X)
             {
-                if (GenerateMapButton.Enabled)
-                {
-                    sound.Stream = Properties.Resources.hotkey;
-                    sound.Play();
-                    GenerateMapButton_Click(sender, EventArgs.Empty);
-                }
+                sound.Stream = Properties.Resources.hotkey;
+                sound.Play();
+                GenerateMapButton_Click(sender, EventArgs.Empty);
             }
         }
 
@@ -885,11 +890,36 @@ namespace osu_trainer
             renameButton2.Visible = profilesVisible;
             renameButton3.Visible = profilesVisible;
             renameButton4.Visible = profilesVisible;
+            profileHotkeyHintText.Visible = profilesVisible;
 
             profileButton1.Text = editor.UserProfiles[0].Name;
             profileButton2.Text = editor.UserProfiles[1].Name;
             profileButton3.Text = editor.UserProfiles[2].Name;
             profileButton4.Text = editor.UserProfiles[3].Name;
+        }
+        private void ProfileHotkeyHandler(object sender, EventArgs e)
+        {
+            var k = (KeyEventArgs)e;
+            if (k.Alt && k.Shift)
+            {
+                var KeyToProfileMapping = new Dictionary<Keys, int>()
+                {
+                    { Keys.A, 0},
+                    { Keys.S, 1},
+                    { Keys.D, 2},
+                    { Keys.F, 3}
+                };
+                if (KeyToProfileMapping.ContainsKey(k.KeyCode)) {
+                    int whichProfile = KeyToProfileMapping[k.KeyCode];
+                    editor.LoadProfile(whichProfile);
+                    if (GenerateMapButton.Enabled)
+                    {
+                        sound.Stream = Properties.Resources.hotkey;
+                        sound.Play();
+                        GenerateMapButton_Click(sender, EventArgs.Empty);
+                    }
+                }
+            }
         }
         #endregion
 

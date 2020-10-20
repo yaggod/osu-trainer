@@ -39,6 +39,7 @@ namespace osu_trainer
             this.saveButton2 = new System.Windows.Forms.Button();
             this.saveButton1 = new System.Windows.Forms.Button();
             this.BpmMultiplierTextBox = new System.Windows.Forms.TextBox();
+            this.profileHotkeyHintText = new System.Windows.Forms.TextBox();
             this.NewBpmRangeTextBox = new System.Windows.Forms.TextBox();
             this.OriginalBpmRangeTextBox = new System.Windows.Forms.TextBox();
             this.OriginalBpmTextBox = new System.Windows.Forms.TextBox();
@@ -129,6 +130,7 @@ namespace osu_trainer
             this.Panel3.Controls.Add(this.ScaleARCheck);
             this.Panel3.Controls.Add(this.BpmMultiplierTextBox);
             this.Panel3.Controls.Add(this.NewBpmTextBox);
+            this.Panel3.Controls.Add(this.profileHotkeyHintText);
             this.Panel3.Controls.Add(this.NewBpmRangeTextBox);
             this.Panel3.Controls.Add(this.OriginalBpmRangeTextBox);
             this.Panel3.Controls.Add(this.OriginalBpmTextBox);
@@ -218,6 +220,20 @@ namespace osu_trainer
             this.BpmMultiplierTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.BpmMultiplierTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BpmMultiplierTextBox_KeyDown);
             this.BpmMultiplierTextBox.Leave += new System.EventHandler(this.BpmMultiplierTextBox_Submit);
+            // 
+            // profileHotkeyHintText
+            // 
+            this.profileHotkeyHintText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(35)))), ((int)(((byte)(53)))));
+            this.profileHotkeyHintText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.profileHotkeyHintText.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.profileHotkeyHintText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
+            this.profileHotkeyHintText.Location = new System.Drawing.Point(10, 107);
+            this.profileHotkeyHintText.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.profileHotkeyHintText.Name = "profileHotkeyHintText";
+            this.profileHotkeyHintText.ReadOnly = true;
+            this.profileHotkeyHintText.Size = new System.Drawing.Size(200, 16);
+            this.profileHotkeyHintText.TabIndex = 10;
+            this.profileHotkeyHintText.Text = "Alt+Shift+[ A or S or D or F ]";
             // 
             // NewBpmRangeTextBox
             // 
@@ -442,7 +458,7 @@ namespace osu_trainer
             this.BottomPanel.Controls.Add(this.ResetButton);
             this.BottomPanel.Controls.Add(this.GenerateMapButton);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 495);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 460);
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Padding = new System.Windows.Forms.Padding(10, 5, 10, 10);
             this.BottomPanel.Size = new System.Drawing.Size(427, 111);
@@ -1183,7 +1199,7 @@ namespace osu_trainer
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(35)))), ((int)(((byte)(53)))));
-            this.ClientSize = new System.Drawing.Size(427, 606);
+            this.ClientSize = new System.Drawing.Size(427, 571);
             this.Controls.Add(this.Panel3);
             this.Controls.Add(this.Middle1Panel);
             this.Controls.Add(this.panel1);
@@ -1277,5 +1293,6 @@ namespace osu_trainer
         private OsuButton profileButton4;
         private System.Windows.Forms.Button saveButton4;
         private System.Windows.Forms.Button renameButton4;
+        private System.Windows.Forms.TextBox profileHotkeyHintText;
     }
 }
