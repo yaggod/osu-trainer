@@ -63,6 +63,7 @@ namespace osu_trainer
             this.minimizeButton = new System.Windows.Forms.Button();
             this.titlePanel = new System.Windows.Forms.Panel();
             this.profileButton4 = new osu_trainer.Controls.OsuButton();
+            this.SongsFolderButton = new osu_trainer.Controls.OsuButton();
             this.profileButton3 = new osu_trainer.Controls.OsuButton();
             this.profileButton2 = new osu_trainer.Controls.OsuButton();
             this.profileButton1 = new osu_trainer.Controls.OsuButton();
@@ -91,7 +92,6 @@ namespace osu_trainer
             this.HPLockCheck = new osu_trainer.Controls.ToggleIconButton();
             this.StarsDisplay = new osu_trainer.Controls.StarsDisplay();
             this.DeleteButton = new osu_trainer.Controls.OsuButton();
-            this.SongsFolderButton = new osu_trainer.Controls.OsuButton();
             this.ResetButton = new osu_trainer.Controls.OsuButton();
             this.GenerateMapButton = new osu_trainer.Controls.OsuButton();
             this.SongDisplay = new osu_trainer.Controls.SongDisplay();
@@ -112,6 +112,7 @@ namespace osu_trainer
             // Panel3
             // 
             this.Panel3.Controls.Add(this.profileButton4);
+            this.Panel3.Controls.Add(this.SongsFolderButton);
             this.Panel3.Controls.Add(this.profileButton3);
             this.Panel3.Controls.Add(this.profileButton2);
             this.Panel3.Controls.Add(this.saveButton4);
@@ -438,7 +439,6 @@ namespace osu_trainer
             // BottomPanel
             // 
             this.BottomPanel.Controls.Add(this.DeleteButton);
-            this.BottomPanel.Controls.Add(this.SongsFolderButton);
             this.BottomPanel.Controls.Add(this.ResetButton);
             this.BottomPanel.Controls.Add(this.GenerateMapButton);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -578,6 +578,28 @@ namespace osu_trainer
             this.profileButton4.TriangleCount = 30;
             this.profileButton4.UseVisualStyleBackColor = true;
             this.profileButton4.Click += new System.EventHandler(this.profileButton4_Click);
+            // 
+            // SongsFolderButton
+            // 
+            this.SongsFolderButton.BrightnessRange = 0.01F;
+            this.SongsFolderButton.Color = System.Drawing.Color.DarkGoldenrod;
+            this.SongsFolderButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.SongsFolderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SongsFolderButton.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SongsFolderButton.ForeColor = System.Drawing.Color.White;
+            this.SongsFolderButton.Location = new System.Drawing.Point(10, 95);
+            this.SongsFolderButton.Name = "SongsFolderButton";
+            this.SongsFolderButton.Progress = 0F;
+            this.SongsFolderButton.ProgressColor = System.Drawing.Color.Transparent;
+            this.SongsFolderButton.Size = new System.Drawing.Size(130, 28);
+            this.SongsFolderButton.Subtext = "";
+            this.SongsFolderButton.SubtextColor = System.Drawing.Color.Empty;
+            this.SongsFolderButton.TabIndex = 1;
+            this.SongsFolderButton.Text = "Songs Folder";
+            this.SongsFolderButton.TextYOffset = 0;
+            this.SongsFolderButton.TriangleCount = 30;
+            this.SongsFolderButton.UseVisualStyleBackColor = true;
+            this.SongsFolderButton.Click += new System.EventHandler(this.SongsFolderButton_Click);
             // 
             // profileButton3
             // 
@@ -1095,29 +1117,6 @@ namespace osu_trainer
             this.DeleteButton.UseVisualStyleBackColor = true;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
-            // SongsFolderButton
-            // 
-            this.SongsFolderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.SongsFolderButton.BrightnessRange = 0.01F;
-            this.SongsFolderButton.Color = System.Drawing.Color.DarkGoldenrod;
-            this.SongsFolderButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.SongsFolderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SongsFolderButton.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SongsFolderButton.ForeColor = System.Drawing.Color.White;
-            this.SongsFolderButton.Location = new System.Drawing.Point(10, 4);
-            this.SongsFolderButton.Name = "SongsFolderButton";
-            this.SongsFolderButton.Progress = 0F;
-            this.SongsFolderButton.ProgressColor = System.Drawing.Color.Transparent;
-            this.SongsFolderButton.Size = new System.Drawing.Size(130, 28);
-            this.SongsFolderButton.Subtext = "";
-            this.SongsFolderButton.SubtextColor = System.Drawing.Color.Empty;
-            this.SongsFolderButton.TabIndex = 1;
-            this.SongsFolderButton.Text = "Songs Folder";
-            this.SongsFolderButton.TextYOffset = 0;
-            this.SongsFolderButton.TriangleCount = 30;
-            this.SongsFolderButton.UseVisualStyleBackColor = true;
-            this.SongsFolderButton.Click += new System.EventHandler(this.SongsFolderButton_Click);
-            // 
             // ResetButton
             // 
             this.ResetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -1200,7 +1199,6 @@ namespace osu_trainer
             this.Name = "MainForm";
             this.Text = "osu trainer v1.4";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.Panel3.ResumeLayout(false);
             this.Panel3.PerformLayout();
             this.Middle1Panel.ResumeLayout(false);

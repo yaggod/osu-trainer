@@ -52,17 +52,6 @@ namespace osu_trainer
         private bool? gameLoaded = null;
         private bool mapSelectScreen = false;
 
-        #region DEBUG
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            //AllocConsole();
-        }
-
-        //[DllImport("kernel32.dll", SetLastError = true)]
-        //[return: MarshalAs(UnmanagedType.Bool)]
-        //static extern bool AllocConsole();
-        #endregion
-
         public MainForm()
         {
             Directory.SetCurrentDirectory(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location));
@@ -108,6 +97,9 @@ namespace osu_trainer
             editor.StateChanged += ToggleBpmDisplay;
             editor.StateChanged += ToggleLockButtons;
             editor.StateChanged += UpdateProfiles;
+            Panel3.MaximumSize = new Size(999, 999);
+            BottomPanel.MaximumSize = new Size(999, 999);
+            editor.StateChanged += RearrangeLayout;
             editor.BeatmapSwitched += UpdateSongDisplay;
             editor.BeatmapModified += UpdateBpmDisplay;
             editor.BeatmapModified += UpdateHpCsArOdDisplay;
@@ -859,6 +851,7 @@ namespace osu_trainer
             editor.SaveProfilesToDisk();
         }
 
+        #region User Profile Buttons
         private void profileButton1_Click(object sender, EventArgs e) => editor.LoadProfile(0);
         private void profileButton2_Click(object sender, EventArgs e) => editor.LoadProfile(1);
         private void profileButton3_Click(object sender, EventArgs e) => editor.LoadProfile(2);
@@ -880,9 +873,6 @@ namespace osu_trainer
         private void UpdateProfiles(object sender, EventArgs e)
         {
             bool profilesVisible = (editor.State == EditorState.NOT_READY) ? false : true;
-#if DEBUG
-            profilesVisible = true;
-#endif
             profileButton1.Visible = profilesVisible;
             profileButton2.Visible = profilesVisible;
             profileButton3.Visible = profilesVisible;
@@ -900,6 +890,28 @@ namespace osu_trainer
             profileButton2.Text = editor.UserProfiles[1].Name;
             profileButton3.Text = editor.UserProfiles[2].Name;
             profileButton4.Text = editor.UserProfiles[3].Name;
+        }
+        #endregion
+
+        private void RearrangeLayout(object sender, EventArgs e)
+        {
+            bool profilesVisible = (editor.State == EditorState.NOT_READY) ? false : true;
+            if (profilesVisible)
+            {
+                // Middle panel should take up more space (profile buttons visible)
+                Panel3.Height = 192;
+                // Bottom panel should take up less space (songs folder button hidden)
+                BottomPanel.Height = 111 - 33;
+                Height = 606 - 33;
+            }
+            else
+            {
+                // Middle panel should take up less space (profile buttons hidden)
+                Panel3.Height = 192 - 66;
+                // Bottom panel should take up more space (songs folder button visible)
+                BottomPanel.Height = 111;
+                Height = 606 - 100;
+            }
         }
     }
 }
