@@ -87,8 +87,13 @@ namespace osu_trainer
             if (Directory.Exists(Properties.Settings.Default.SongsFolder))
                 userSongsFolder = Properties.Settings.Default.SongsFolder;
 
-            // TODO: load hotkeys
-            Hotkeys = new List<Keys>() { Keys.X, Keys.A, Keys.S, Keys.D, Keys.F };
+            // load hotkeys
+            Hotkeys = new List<Keys>();
+            Hotkeys.Add(Properties.Settings.Default.HotkeyCreateMap);
+            Hotkeys.Add(Properties.Settings.Default.HotkeyProfile1);
+            Hotkeys.Add(Properties.Settings.Default.HotkeyProfile2);
+            Hotkeys.Add(Properties.Settings.Default.HotkeyProfile3);
+            Hotkeys.Add(Properties.Settings.Default.HotkeyProfile4);
 
             // Init object instances
             osuReader = OsuMemoryReader.Instance.GetInstanceForWindowTitleHint("");
@@ -866,6 +871,13 @@ namespace osu_trainer
         {
             editor.SaveSettings();
             editor.SaveProfilesToDisk();
+            // save hotkeys
+            Properties.Settings.Default.HotkeyCreateMap = Hotkeys[0];
+            Properties.Settings.Default.HotkeyProfile1 = Hotkeys[1];
+            Properties.Settings.Default.HotkeyProfile2 = Hotkeys[2];
+            Properties.Settings.Default.HotkeyProfile3 = Hotkeys[3];
+            Properties.Settings.Default.HotkeyProfile4 = Hotkeys[4];
+            Properties.Settings.Default.Save();
         }
 
         #region User Profile Buttons

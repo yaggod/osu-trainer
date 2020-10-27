@@ -34,7 +34,6 @@ namespace osu_trainer
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.BeatmapUpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.Panel3 = new System.Windows.Forms.Panel();
-            this.osuButton1 = new osu_trainer.Controls.OsuButton();
             this.profileButton4 = new osu_trainer.Controls.OsuButton();
             this.SongsFolderButton = new osu_trainer.Controls.OsuButton();
             this.profileButton3 = new osu_trainer.Controls.OsuButton();
@@ -114,7 +113,6 @@ namespace osu_trainer
             // 
             // Panel3
             // 
-            this.Panel3.Controls.Add(this.osuButton1);
             this.Panel3.Controls.Add(this.profileButton4);
             this.Panel3.Controls.Add(this.SongsFolderButton);
             this.Panel3.Controls.Add(this.profileButton3);
@@ -151,25 +149,6 @@ namespace osu_trainer
             this.Panel3.Size = new System.Drawing.Size(427, 192);
             this.Panel3.TabIndex = 7;
             this.Panel3.Click += new System.EventHandler(this.Unfocus);
-            // 
-            // osuButton1
-            // 
-            this.osuButton1.BrightnessRange = 0.01F;
-            this.osuButton1.Color = System.Drawing.Color.CornflowerBlue;
-            this.osuButton1.ForeColor = System.Drawing.Color.White;
-            this.osuButton1.Location = new System.Drawing.Point(172, 88);
-            this.osuButton1.Name = "osuButton1";
-            this.osuButton1.Progress = 0F;
-            this.osuButton1.ProgressColor = System.Drawing.Color.Transparent;
-            this.osuButton1.Size = new System.Drawing.Size(95, 23);
-            this.osuButton1.Subtext = "";
-            this.osuButton1.SubtextColor = System.Drawing.Color.Empty;
-            this.osuButton1.TabIndex = 26;
-            this.osuButton1.Text = "osuButton1";
-            this.osuButton1.TextYOffset = 0;
-            this.osuButton1.TriangleCount = 30;
-            this.osuButton1.UseVisualStyleBackColor = true;
-            this.osuButton1.Click += new System.EventHandler(this.editHotkeysButton_Click);
             // 
             // profileButton4
             // 
@@ -1321,7 +1300,6 @@ namespace osu_trainer
         private System.Windows.Forms.Button saveButton4;
         private System.Windows.Forms.Button renameButton4;
         private System.Windows.Forms.Button editHotkeysButton;
-        private OsuButton osuButton1;
         public System.ComponentModel.BackgroundWorker BackgroundWorker;
         private System.Windows.Forms.Timer formAnimationTimer;
     }

@@ -47,5 +47,20 @@
     <Setting Name="LockedBpmSetting" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">200</Value>
     </Setting>
+    <Setting Name="HotkeyCreateMap" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">X</Value>
+    </Setting>
+    <Setting Name="HotkeyProfile1" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">A</Value>
+    </Setting>
+    <Setting Name="HotkeyProfile2" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">S</Value>
+    </Setting>
+    <Setting Name="HotkeyProfile3" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">D</Value>
+    </Setting>
+    <Setting Name="HotkeyProfile4" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">F</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

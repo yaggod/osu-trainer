@@ -202,5 +202,65 @@ namespace osu_trainer.Properties {
                 this["LockedBpmSetting"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("X")]
+        public global::System.Windows.Forms.Keys HotkeyCreateMap {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["HotkeyCreateMap"]));
+            }
+            set {
+                this["HotkeyCreateMap"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("A")]
+        public global::System.Windows.Forms.Keys HotkeyProfile1 {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["HotkeyProfile1"]));
+            }
+            set {
+                this["HotkeyProfile1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("S")]
+        public global::System.Windows.Forms.Keys HotkeyProfile2 {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["HotkeyProfile2"]));
+            }
+            set {
+                this["HotkeyProfile2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("D")]
+        public global::System.Windows.Forms.Keys HotkeyProfile3 {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["HotkeyProfile3"]));
+            }
+            set {
+                this["HotkeyProfile3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("F")]
+        public global::System.Windows.Forms.Keys HotkeyProfile4 {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["HotkeyProfile4"]));
+            }
+            set {
+                this["HotkeyProfile4"] = value;
+            }
+        }
     }
 }
