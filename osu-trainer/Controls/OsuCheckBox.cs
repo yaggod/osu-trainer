@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
@@ -8,6 +9,23 @@ namespace osu_trainer.Controls
 {
     public class OsuCheckBox : CheckBox
     {
+
+        private bool textOnRight;
+        [
+        Category("Appearance"),
+        Description("Sets the value when the nipple is slid all the way to the left"),
+        DefaultValue(false)
+        ]
+        public bool TextOnRight
+        {
+            get => textOnRight;
+            set
+            {
+                textOnRight = value;
+                Invalidate();
+            }
+        }
+
         public Color DisabledColor { get; set; } = Colors.Disabled;
 
         private bool _hover;
@@ -37,19 +55,32 @@ namespace osu_trainer.Controls
             var hoverPadding = 4f;
             var penWidth = 2;
             var indicatorWidth = 25;
-            var indicatorRectangle = new RectangleF(
-                Width - indicatorWidth - penWidth - (hoverPadding * 2),
-                penWidth + hoverPadding,
-                indicatorWidth - penWidth,
-                13 - penWidth);
+            var indicatorRectangle = new RectangleF();
+            if (textOnRight) // button on left
+                indicatorRectangle.X = penWidth + (hoverPadding * 2);
+            else // button on right
+                indicatorRectangle.X = Width - indicatorWidth - penWidth - (hoverPadding * 2);
+            indicatorRectangle.Y = penWidth + hoverPadding;
+            indicatorRectangle.Width = indicatorWidth - penWidth;
+            indicatorRectangle.Height = 13 - penWidth;
 
+            // text begin
             var format = new StringFormat()
             {
-                LineAlignment = StringAlignment.Center
+                LineAlignment = StringAlignment.Center,
+                Alignment = textOnRight ? StringAlignment.Far : StringAlignment.Near
             };
-            var textOffset = Font.GetHeight() / 10;
-            var textRectangle = new RectangleF(0, textOffset, indicatorRectangle.X - 2, Height + textOffset);
+            var textOffsetY = Font.GetHeight() / 10;
+            var textRectangle = new RectangleF();
+            if (textOnRight) // text on right
+                textRectangle.X = indicatorRectangle.Right;
+            else // text on left
+                textRectangle.X = 0;
+            textRectangle.Y = textOffsetY;
+            textRectangle.Width = textOnRight ? Width - indicatorRectangle.Width - 2 : indicatorRectangle.Right - 2;
+            textRectangle.Height = Height + textOffsetY;
             e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), textRectangle, format);
+            // text end
 
             var checkedBorderColor   = !Enabled ? DisabledColor : _hover ? Color.FromArgb(255, 221, 238)     : Color.FromArgb(255, 102, 170);
             var checkedFillColor     = !Enabled ? DisabledColor : _hover ? Color.FromArgb(255, 221, 238)     : Color.FromArgb(255, 102, 170);

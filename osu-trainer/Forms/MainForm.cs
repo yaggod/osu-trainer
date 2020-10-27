@@ -108,7 +108,7 @@ namespace osu_trainer
             editor.StateChanged += ToggleBpmDisplay;
             editor.StateChanged += ToggleLockButtons;
             editor.StateChanged += UpdateProfiles;
-            Panel3.MaximumSize = new Size(999, 999);
+            middlePanel.MaximumSize = new Size(999, 999);
             BottomPanel.MaximumSize = new Size(999, 999);
             editor.StateChanged += RearrangeLayout;
             editor.BeatmapSwitched += UpdateSongDisplay;
@@ -669,7 +669,7 @@ namespace osu_trainer
             BackgroundWorker.RunWorkerAsync();
         }
 
-        private void Unfocus(object sender, EventArgs e) => ActiveControl = Panel3;
+        private void Unfocus(object sender, EventArgs e) => ActiveControl = middlePanel;
 
         private void CreateMapHotkeyHandler(object sender, EventArgs e)
         {
@@ -990,18 +990,18 @@ namespace osu_trainer
             if (profilesVisible)
             {
                 // Middle panel should take up more space (profile buttons visible)
-                Panel3.Height = 192;
+                middlePanel.Height = 212;
                 // Bottom panel should take up less space (songs folder button hidden)
                 BottomPanel.Height = 111 - 33;
-                Height = 606 - 33;
+                Height = 626 - 33;
             }
             else
             {
                 // Middle panel should take up less space (profile buttons hidden)
-                Panel3.Height = 192 - 66;
+                middlePanel.Height = 212 - 66;
                 // Bottom panel should take up more space (songs folder button visible)
                 BottomPanel.Height = 111;
-                Height = 606 - 100;
+                Height = 626 - 100;
             }
         }
 
