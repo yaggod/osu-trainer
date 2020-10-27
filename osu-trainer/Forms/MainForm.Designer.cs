@@ -34,40 +34,17 @@ namespace osu_trainer
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.BeatmapUpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.Panel3 = new System.Windows.Forms.Panel();
-            this.saveButton4 = new System.Windows.Forms.Button();
-            this.saveButton3 = new System.Windows.Forms.Button();
-            this.saveButton2 = new System.Windows.Forms.Button();
-            this.saveButton1 = new System.Windows.Forms.Button();
-            this.BpmMultiplierTextBox = new System.Windows.Forms.TextBox();
-            this.profileHotkeyHintText = new System.Windows.Forms.TextBox();
-            this.NewBpmRangeTextBox = new System.Windows.Forms.TextBox();
-            this.OriginalBpmRangeTextBox = new System.Windows.Forms.TextBox();
-            this.OriginalBpmTextBox = new System.Windows.Forms.TextBox();
-            this.renameButton4 = new System.Windows.Forms.Button();
-            this.renameButton3 = new System.Windows.Forms.Button();
-            this.renameButton2 = new System.Windows.Forms.Button();
-            this.renameButton1 = new System.Windows.Forms.Button();
-            this.Middle1Panel = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.ODDisplay = new System.Windows.Forms.TextBox();
-            this.ARDisplay = new System.Windows.Forms.TextBox();
-            this.CSDisplay = new System.Windows.Forms.TextBox();
-            this.HPDisplay = new System.Windows.Forms.TextBox();
-            this.BottomPanel = new System.Windows.Forms.Panel();
-            this.TopPanel = new System.Windows.Forms.Panel();
-            this.OsuRunningTimer = new System.Windows.Forms.Timer(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.AimLabel = new System.Windows.Forms.Label();
-            this.SpeedLabel = new System.Windows.Forms.Label();
-            this.BackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.closeButton = new System.Windows.Forms.Button();
-            this.minimizeButton = new System.Windows.Forms.Button();
-            this.titlePanel = new System.Windows.Forms.Panel();
+            this.osuButton1 = new osu_trainer.Controls.OsuButton();
             this.profileButton4 = new osu_trainer.Controls.OsuButton();
             this.SongsFolderButton = new osu_trainer.Controls.OsuButton();
             this.profileButton3 = new osu_trainer.Controls.OsuButton();
             this.profileButton2 = new osu_trainer.Controls.OsuButton();
+            this.saveButton4 = new System.Windows.Forms.Button();
             this.profileButton1 = new osu_trainer.Controls.OsuButton();
+            this.saveButton3 = new System.Windows.Forms.Button();
+            this.saveButton2 = new System.Windows.Forms.Button();
+            this.editHotkeysButton = new System.Windows.Forms.Button();
+            this.saveButton1 = new System.Windows.Forms.Button();
             this.BpmLockCheck = new osu_trainer.Controls.ToggleIconButton();
             this.BpmSlider = new osu_trainer.OptionSlider();
             this.ChangePitchCheck = new osu_trainer.Controls.OsuCheckBox();
@@ -75,27 +52,52 @@ namespace osu_trainer
             this.HRCheck = new osu_trainer.Controls.OsuCheckBox();
             this.ScaleODCheck = new osu_trainer.Controls.OsuCheckBox();
             this.ScaleARCheck = new osu_trainer.Controls.OsuCheckBox();
+            this.BpmMultiplierTextBox = new System.Windows.Forms.TextBox();
             this.NewBpmTextBox = new osu_trainer.Controls.ScrollableTextBox();
+            this.NewBpmRangeTextBox = new System.Windows.Forms.TextBox();
+            this.OriginalBpmRangeTextBox = new System.Windows.Forms.TextBox();
+            this.OriginalBpmTextBox = new System.Windows.Forms.TextBox();
+            this.renameButton4 = new System.Windows.Forms.Button();
             this.OriginalBpmLabel = new osu_trainer.Controls.AntiAliasedLabel();
+            this.renameButton3 = new System.Windows.Forms.Button();
             this.NewBpmLabel = new osu_trainer.Controls.AntiAliasedLabel();
+            this.renameButton2 = new System.Windows.Forms.Button();
             this.BpmMultiplierLabel = new osu_trainer.Controls.AntiAliasedLabel();
+            this.renameButton1 = new System.Windows.Forms.Button();
+            this.Middle1Panel = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ODLockCheck = new osu_trainer.Controls.ToggleIconButton();
             this.ARLockCheck = new osu_trainer.Controls.ToggleIconButton();
             this.CSLockCheck = new osu_trainer.Controls.ToggleIconButton();
             this.odlabel = new osu_trainer.Controls.AntiAliasedLabel();
+            this.ODDisplay = new System.Windows.Forms.TextBox();
             this.ODSlider = new osu_trainer.OptionSlider();
             this.arlabel = new osu_trainer.Controls.AntiAliasedLabel();
+            this.ARDisplay = new System.Windows.Forms.TextBox();
             this.ARSlider = new osu_trainer.OptionSlider();
             this.cslabel = new osu_trainer.Controls.AntiAliasedLabel();
+            this.CSDisplay = new System.Windows.Forms.TextBox();
             this.CSSlider = new osu_trainer.OptionSlider();
             this.hplabel = new osu_trainer.Controls.AntiAliasedLabel();
+            this.HPDisplay = new System.Windows.Forms.TextBox();
             this.HPSlider = new osu_trainer.OptionSlider();
             this.HPLockCheck = new osu_trainer.Controls.ToggleIconButton();
-            this.StarsDisplay = new osu_trainer.Controls.StarsDisplay();
+            this.BottomPanel = new System.Windows.Forms.Panel();
             this.DeleteButton = new osu_trainer.Controls.OsuButton();
             this.ResetButton = new osu_trainer.Controls.OsuButton();
             this.GenerateMapButton = new osu_trainer.Controls.OsuButton();
+            this.TopPanel = new System.Windows.Forms.Panel();
             this.SongDisplay = new osu_trainer.Controls.SongDisplay();
+            this.OsuRunningTimer = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.AimLabel = new System.Windows.Forms.Label();
+            this.SpeedLabel = new System.Windows.Forms.Label();
+            this.StarsDisplay = new osu_trainer.Controls.StarsDisplay();
+            this.closeButton = new System.Windows.Forms.Button();
+            this.minimizeButton = new System.Windows.Forms.Button();
+            this.titlePanel = new System.Windows.Forms.Panel();
+            this.BackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.formAnimationTimer = new System.Windows.Forms.Timer(this.components);
             this.Panel3.SuspendLayout();
             this.Middle1Panel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -112,6 +114,7 @@ namespace osu_trainer
             // 
             // Panel3
             // 
+            this.Panel3.Controls.Add(this.osuButton1);
             this.Panel3.Controls.Add(this.profileButton4);
             this.Panel3.Controls.Add(this.SongsFolderButton);
             this.Panel3.Controls.Add(this.profileButton3);
@@ -120,6 +123,7 @@ namespace osu_trainer
             this.Panel3.Controls.Add(this.profileButton1);
             this.Panel3.Controls.Add(this.saveButton3);
             this.Panel3.Controls.Add(this.saveButton2);
+            this.Panel3.Controls.Add(this.editHotkeysButton);
             this.Panel3.Controls.Add(this.saveButton1);
             this.Panel3.Controls.Add(this.BpmLockCheck);
             this.Panel3.Controls.Add(this.BpmSlider);
@@ -130,7 +134,6 @@ namespace osu_trainer
             this.Panel3.Controls.Add(this.ScaleARCheck);
             this.Panel3.Controls.Add(this.BpmMultiplierTextBox);
             this.Panel3.Controls.Add(this.NewBpmTextBox);
-            this.Panel3.Controls.Add(this.profileHotkeyHintText);
             this.Panel3.Controls.Add(this.NewBpmRangeTextBox);
             this.Panel3.Controls.Add(this.OriginalBpmRangeTextBox);
             this.Panel3.Controls.Add(this.OriginalBpmTextBox);
@@ -149,431 +152,24 @@ namespace osu_trainer
             this.Panel3.TabIndex = 7;
             this.Panel3.Click += new System.EventHandler(this.Unfocus);
             // 
-            // saveButton4
+            // osuButton1
             // 
-            this.saveButton4.FlatAppearance.BorderSize = 0;
-            this.saveButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveButton4.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
-            this.saveButton4.Location = new System.Drawing.Point(315, 152);
-            this.saveButton4.Name = "saveButton4";
-            this.saveButton4.Size = new System.Drawing.Size(96, 20);
-            this.saveButton4.TabIndex = 25;
-            this.saveButton4.Text = "Save";
-            this.saveButton4.UseVisualStyleBackColor = true;
-            this.saveButton4.Click += new System.EventHandler(this.saveButton4_Click);
-            // 
-            // saveButton3
-            // 
-            this.saveButton3.FlatAppearance.BorderSize = 0;
-            this.saveButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveButton3.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
-            this.saveButton3.Location = new System.Drawing.Point(214, 152);
-            this.saveButton3.Name = "saveButton3";
-            this.saveButton3.Size = new System.Drawing.Size(96, 20);
-            this.saveButton3.TabIndex = 25;
-            this.saveButton3.Text = "Save";
-            this.saveButton3.UseVisualStyleBackColor = true;
-            this.saveButton3.Click += new System.EventHandler(this.saveButton3_Click);
-            // 
-            // saveButton2
-            // 
-            this.saveButton2.FlatAppearance.BorderSize = 0;
-            this.saveButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveButton2.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
-            this.saveButton2.Location = new System.Drawing.Point(112, 152);
-            this.saveButton2.Name = "saveButton2";
-            this.saveButton2.Size = new System.Drawing.Size(96, 20);
-            this.saveButton2.TabIndex = 25;
-            this.saveButton2.Text = "Save";
-            this.saveButton2.UseVisualStyleBackColor = true;
-            this.saveButton2.Click += new System.EventHandler(this.saveButton2_Click);
-            // 
-            // saveButton1
-            // 
-            this.saveButton1.FlatAppearance.BorderSize = 0;
-            this.saveButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveButton1.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
-            this.saveButton1.Location = new System.Drawing.Point(10, 152);
-            this.saveButton1.Name = "saveButton1";
-            this.saveButton1.Size = new System.Drawing.Size(96, 20);
-            this.saveButton1.TabIndex = 25;
-            this.saveButton1.Text = "Save";
-            this.saveButton1.UseVisualStyleBackColor = true;
-            this.saveButton1.Click += new System.EventHandler(this.saveButton1_Click);
-            // 
-            // BpmMultiplierTextBox
-            // 
-            this.BpmMultiplierTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(16)))), ((int)(((byte)(25)))));
-            this.BpmMultiplierTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.BpmMultiplierTextBox.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BpmMultiplierTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.BpmMultiplierTextBox.Location = new System.Drawing.Point(90, 5);
-            this.BpmMultiplierTextBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
-            this.BpmMultiplierTextBox.Name = "BpmMultiplierTextBox";
-            this.BpmMultiplierTextBox.Size = new System.Drawing.Size(42, 20);
-            this.BpmMultiplierTextBox.TabIndex = 10;
-            this.BpmMultiplierTextBox.Text = "1.00";
-            this.BpmMultiplierTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.BpmMultiplierTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BpmMultiplierTextBox_KeyDown);
-            this.BpmMultiplierTextBox.Leave += new System.EventHandler(this.BpmMultiplierTextBox_Submit);
-            // 
-            // profileHotkeyHintText
-            // 
-            this.profileHotkeyHintText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(35)))), ((int)(((byte)(53)))));
-            this.profileHotkeyHintText.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.profileHotkeyHintText.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.profileHotkeyHintText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
-            this.profileHotkeyHintText.Location = new System.Drawing.Point(10, 107);
-            this.profileHotkeyHintText.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
-            this.profileHotkeyHintText.Name = "profileHotkeyHintText";
-            this.profileHotkeyHintText.ReadOnly = true;
-            this.profileHotkeyHintText.Size = new System.Drawing.Size(200, 16);
-            this.profileHotkeyHintText.TabIndex = 10;
-            this.profileHotkeyHintText.Text = "Alt+Shift+[ A or S or D or F ]";
-            // 
-            // NewBpmRangeTextBox
-            // 
-            this.NewBpmRangeTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(35)))), ((int)(((byte)(53)))));
-            this.NewBpmRangeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.NewBpmRangeTextBox.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewBpmRangeTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
-            this.NewBpmRangeTextBox.Location = new System.Drawing.Point(163, 64);
-            this.NewBpmRangeTextBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
-            this.NewBpmRangeTextBox.Name = "NewBpmRangeTextBox";
-            this.NewBpmRangeTextBox.ReadOnly = true;
-            this.NewBpmRangeTextBox.Size = new System.Drawing.Size(85, 17);
-            this.NewBpmRangeTextBox.TabIndex = 10;
-            this.NewBpmRangeTextBox.Text = "(180 - 210)";
-            // 
-            // OriginalBpmRangeTextBox
-            // 
-            this.OriginalBpmRangeTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(35)))), ((int)(((byte)(53)))));
-            this.OriginalBpmRangeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.OriginalBpmRangeTextBox.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OriginalBpmRangeTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
-            this.OriginalBpmRangeTextBox.Location = new System.Drawing.Point(163, 35);
-            this.OriginalBpmRangeTextBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
-            this.OriginalBpmRangeTextBox.Name = "OriginalBpmRangeTextBox";
-            this.OriginalBpmRangeTextBox.ReadOnly = true;
-            this.OriginalBpmRangeTextBox.Size = new System.Drawing.Size(85, 17);
-            this.OriginalBpmRangeTextBox.TabIndex = 20;
-            this.OriginalBpmRangeTextBox.Text = "(180 - 210)";
-            // 
-            // OriginalBpmTextBox
-            // 
-            this.OriginalBpmTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(24)))), ((int)(((byte)(38)))));
-            this.OriginalBpmTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.OriginalBpmTextBox.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OriginalBpmTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.OriginalBpmTextBox.Location = new System.Drawing.Point(89, 35);
-            this.OriginalBpmTextBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
-            this.OriginalBpmTextBox.Name = "OriginalBpmTextBox";
-            this.OriginalBpmTextBox.ReadOnly = true;
-            this.OriginalBpmTextBox.Size = new System.Drawing.Size(42, 17);
-            this.OriginalBpmTextBox.TabIndex = 10;
-            this.OriginalBpmTextBox.Text = "200";
-            this.OriginalBpmTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.OriginalBpmTextBox.Enter += new System.EventHandler(this.Unfocus);
-            // 
-            // renameButton4
-            // 
-            this.renameButton4.FlatAppearance.BorderSize = 0;
-            this.renameButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.renameButton4.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.renameButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
-            this.renameButton4.Location = new System.Drawing.Point(315, 169);
-            this.renameButton4.Name = "renameButton4";
-            this.renameButton4.Size = new System.Drawing.Size(96, 20);
-            this.renameButton4.TabIndex = 25;
-            this.renameButton4.Text = "Rename";
-            this.renameButton4.UseVisualStyleBackColor = true;
-            this.renameButton4.Click += new System.EventHandler(this.renameButton4_Click);
-            // 
-            // renameButton3
-            // 
-            this.renameButton3.FlatAppearance.BorderSize = 0;
-            this.renameButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.renameButton3.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.renameButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
-            this.renameButton3.Location = new System.Drawing.Point(214, 169);
-            this.renameButton3.Name = "renameButton3";
-            this.renameButton3.Size = new System.Drawing.Size(96, 20);
-            this.renameButton3.TabIndex = 25;
-            this.renameButton3.Text = "Rename";
-            this.renameButton3.UseVisualStyleBackColor = true;
-            this.renameButton3.Click += new System.EventHandler(this.renameButton3_Click);
-            // 
-            // renameButton2
-            // 
-            this.renameButton2.FlatAppearance.BorderSize = 0;
-            this.renameButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.renameButton2.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.renameButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
-            this.renameButton2.Location = new System.Drawing.Point(112, 169);
-            this.renameButton2.Name = "renameButton2";
-            this.renameButton2.Size = new System.Drawing.Size(96, 20);
-            this.renameButton2.TabIndex = 25;
-            this.renameButton2.Text = "Rename";
-            this.renameButton2.UseVisualStyleBackColor = true;
-            this.renameButton2.Click += new System.EventHandler(this.renameButton2_Click);
-            // 
-            // renameButton1
-            // 
-            this.renameButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.renameButton1.FlatAppearance.BorderSize = 0;
-            this.renameButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.renameButton1.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.renameButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
-            this.renameButton1.Location = new System.Drawing.Point(10, 169);
-            this.renameButton1.Name = "renameButton1";
-            this.renameButton1.Size = new System.Drawing.Size(96, 20);
-            this.renameButton1.TabIndex = 25;
-            this.renameButton1.Text = "Rename";
-            this.renameButton1.UseVisualStyleBackColor = true;
-            this.renameButton1.Click += new System.EventHandler(this.renameButton1_Click);
-            // 
-            // Middle1Panel
-            // 
-            this.Middle1Panel.Controls.Add(this.tableLayoutPanel1);
-            this.Middle1Panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Middle1Panel.Location = new System.Drawing.Point(0, 185);
-            this.Middle1Panel.Margin = new System.Windows.Forms.Padding(10, 10, 10, 0);
-            this.Middle1Panel.Name = "Middle1Panel";
-            this.Middle1Panel.Padding = new System.Windows.Forms.Padding(10, 0, 15, 5);
-            this.Middle1Panel.Size = new System.Drawing.Size(427, 118);
-            this.Middle1Panel.TabIndex = 10;
-            this.Middle1Panel.Click += new System.EventHandler(this.Unfocus);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel1.Controls.Add(this.ODLockCheck, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.ARLockCheck, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.CSLockCheck, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.odlabel, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.ODDisplay, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.ODSlider, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.arlabel, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.ARDisplay, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.ARSlider, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.cslabel, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.CSDisplay, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.CSSlider, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.hplabel, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.HPDisplay, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.HPSlider, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.HPLockCheck, 3, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Font = new System.Drawing.Font("Microsoft Tai Le", 12F);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.00063F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.00063F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.99813F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(402, 113);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // ODDisplay
-            // 
-            this.ODDisplay.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ODDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(24)))), ((int)(((byte)(38)))));
-            this.ODDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ODDisplay.Enabled = false;
-            this.ODDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ODDisplay.Location = new System.Drawing.Point(41, 89);
-            this.ODDisplay.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
-            this.ODDisplay.Name = "ODDisplay";
-            this.ODDisplay.ReadOnly = true;
-            this.ODDisplay.Size = new System.Drawing.Size(35, 21);
-            this.ODDisplay.TabIndex = 10;
-            this.ODDisplay.Text = "0.0";
-            this.ODDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ODDisplay.Enter += new System.EventHandler(this.Unfocus);
-            // 
-            // ARDisplay
-            // 
-            this.ARDisplay.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ARDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(24)))), ((int)(((byte)(38)))));
-            this.ARDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ARDisplay.Enabled = false;
-            this.ARDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ARDisplay.Location = new System.Drawing.Point(41, 61);
-            this.ARDisplay.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
-            this.ARDisplay.Name = "ARDisplay";
-            this.ARDisplay.ReadOnly = true;
-            this.ARDisplay.Size = new System.Drawing.Size(35, 21);
-            this.ARDisplay.TabIndex = 7;
-            this.ARDisplay.Text = "0.0";
-            this.ARDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ARDisplay.Enter += new System.EventHandler(this.Unfocus);
-            // 
-            // CSDisplay
-            // 
-            this.CSDisplay.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.CSDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(24)))), ((int)(((byte)(38)))));
-            this.CSDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CSDisplay.Enabled = false;
-            this.CSDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.CSDisplay.Location = new System.Drawing.Point(41, 33);
-            this.CSDisplay.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
-            this.CSDisplay.Name = "CSDisplay";
-            this.CSDisplay.ReadOnly = true;
-            this.CSDisplay.Size = new System.Drawing.Size(35, 21);
-            this.CSDisplay.TabIndex = 4;
-            this.CSDisplay.Text = "0.0";
-            this.CSDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.CSDisplay.Enter += new System.EventHandler(this.Unfocus);
-            // 
-            // HPDisplay
-            // 
-            this.HPDisplay.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.HPDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(24)))), ((int)(((byte)(38)))));
-            this.HPDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.HPDisplay.Enabled = false;
-            this.HPDisplay.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HPDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.HPDisplay.Location = new System.Drawing.Point(41, 5);
-            this.HPDisplay.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
-            this.HPDisplay.Name = "HPDisplay";
-            this.HPDisplay.ReadOnly = true;
-            this.HPDisplay.Size = new System.Drawing.Size(35, 21);
-            this.HPDisplay.TabIndex = 1;
-            this.HPDisplay.Text = "0.0";
-            this.HPDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.HPDisplay.Enter += new System.EventHandler(this.Unfocus);
-            // 
-            // BottomPanel
-            // 
-            this.BottomPanel.Controls.Add(this.DeleteButton);
-            this.BottomPanel.Controls.Add(this.ResetButton);
-            this.BottomPanel.Controls.Add(this.GenerateMapButton);
-            this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 460);
-            this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Padding = new System.Windows.Forms.Padding(10, 5, 10, 10);
-            this.BottomPanel.Size = new System.Drawing.Size(427, 111);
-            this.BottomPanel.TabIndex = 11;
-            this.BottomPanel.Click += new System.EventHandler(this.Unfocus);
-            // 
-            // TopPanel
-            // 
-            this.TopPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
-            this.TopPanel.Controls.Add(this.SongDisplay);
-            this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TopPanel.Location = new System.Drawing.Point(0, 30);
-            this.TopPanel.Name = "TopPanel";
-            this.TopPanel.Padding = new System.Windows.Forms.Padding(10);
-            this.TopPanel.Size = new System.Drawing.Size(427, 121);
-            this.TopPanel.TabIndex = 12;
-            // 
-            // OsuRunningTimer
-            // 
-            this.OsuRunningTimer.Interval = 500;
-            this.OsuRunningTimer.Tick += new System.EventHandler(this.OsuRunningTimer_Tick);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.AimLabel);
-            this.panel1.Controls.Add(this.SpeedLabel);
-            this.panel1.Controls.Add(this.StarsDisplay);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 151);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
-            this.panel1.Size = new System.Drawing.Size(427, 34);
-            this.panel1.TabIndex = 13;
-            // 
-            // AimLabel
-            // 
-            this.AimLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AimLabel.AutoSize = true;
-            this.AimLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AimLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.AimLabel.Location = new System.Drawing.Point(266, 14);
-            this.AimLabel.MinimumSize = new System.Drawing.Size(40, 0);
-            this.AimLabel.Name = "AimLabel";
-            this.AimLabel.Size = new System.Drawing.Size(50, 16);
-            this.AimLabel.TabIndex = 23;
-            this.AimLabel.Text = "1.0 aim";
-            this.AimLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // SpeedLabel
-            // 
-            this.SpeedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SpeedLabel.AutoSize = true;
-            this.SpeedLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SpeedLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.SpeedLabel.Location = new System.Drawing.Point(194, 14);
-            this.SpeedLabel.MinimumSize = new System.Drawing.Size(64, 0);
-            this.SpeedLabel.Name = "SpeedLabel";
-            this.SpeedLabel.Size = new System.Drawing.Size(65, 16);
-            this.SpeedLabel.TabIndex = 23;
-            this.SpeedLabel.Text = "1.0 speed";
-            this.SpeedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // BackgroundWorker
-            // 
-            this.BackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker_DoWork);
-            this.BackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker_RunWorkerCompleted);
-            // 
-            // closeButton
-            // 
-            this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
-            this.closeButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.closeButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
-            this.closeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(10)))), ((int)(((byte)(20)))));
-            this.closeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(17)))), ((int)(((byte)(35)))));
-            this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closeButton.Font = new System.Drawing.Font("Segoe UI Semilight", 9F);
-            this.closeButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.closeButton.Location = new System.Drawing.Point(382, 0);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(45, 30);
-            this.closeButton.TabIndex = 3;
-            this.closeButton.Text = "✕";
-            this.closeButton.UseVisualStyleBackColor = false;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
-            // 
-            // minimizeButton
-            // 
-            this.minimizeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
-            this.minimizeButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.minimizeButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
-            this.minimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.minimizeButton.Font = new System.Drawing.Font("Segoe UI Semilight", 9F);
-            this.minimizeButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.minimizeButton.Location = new System.Drawing.Point(337, 0);
-            this.minimizeButton.Name = "minimizeButton";
-            this.minimizeButton.Size = new System.Drawing.Size(45, 30);
-            this.minimizeButton.TabIndex = 3;
-            this.minimizeButton.Text = "🗕";
-            this.minimizeButton.UseVisualStyleBackColor = false;
-            this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
-            // 
-            // titlePanel
-            // 
-            this.titlePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
-            this.titlePanel.Controls.Add(this.minimizeButton);
-            this.titlePanel.Controls.Add(this.closeButton);
-            this.titlePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.titlePanel.Location = new System.Drawing.Point(0, 0);
-            this.titlePanel.Name = "titlePanel";
-            this.titlePanel.Size = new System.Drawing.Size(427, 30);
-            this.titlePanel.TabIndex = 14;
-            this.titlePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.titlePanel_Paint);
-            this.titlePanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelMove_MouseDown);
-            this.titlePanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelMove_MouseMove);
-            this.titlePanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PanelMove_MouseUp);
+            this.osuButton1.BrightnessRange = 0.01F;
+            this.osuButton1.Color = System.Drawing.Color.CornflowerBlue;
+            this.osuButton1.ForeColor = System.Drawing.Color.White;
+            this.osuButton1.Location = new System.Drawing.Point(172, 88);
+            this.osuButton1.Name = "osuButton1";
+            this.osuButton1.Progress = 0F;
+            this.osuButton1.ProgressColor = System.Drawing.Color.Transparent;
+            this.osuButton1.Size = new System.Drawing.Size(95, 23);
+            this.osuButton1.Subtext = "";
+            this.osuButton1.SubtextColor = System.Drawing.Color.Empty;
+            this.osuButton1.TabIndex = 26;
+            this.osuButton1.Text = "osuButton1";
+            this.osuButton1.TextYOffset = 0;
+            this.osuButton1.TriangleCount = 30;
+            this.osuButton1.UseVisualStyleBackColor = true;
+            this.osuButton1.Click += new System.EventHandler(this.editHotkeysButton_Click);
             // 
             // profileButton4
             // 
@@ -657,6 +253,20 @@ namespace osu_trainer
             this.profileButton2.UseVisualStyleBackColor = true;
             this.profileButton2.Click += new System.EventHandler(this.profileButton2_Click);
             // 
+            // saveButton4
+            // 
+            this.saveButton4.FlatAppearance.BorderSize = 0;
+            this.saveButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveButton4.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
+            this.saveButton4.Location = new System.Drawing.Point(315, 152);
+            this.saveButton4.Name = "saveButton4";
+            this.saveButton4.Size = new System.Drawing.Size(96, 20);
+            this.saveButton4.TabIndex = 25;
+            this.saveButton4.Text = "Save";
+            this.saveButton4.UseVisualStyleBackColor = true;
+            this.saveButton4.Click += new System.EventHandler(this.saveButton4_Click);
+            // 
             // profileButton1
             // 
             this.profileButton1.BrightnessRange = 0.01F;
@@ -676,6 +286,63 @@ namespace osu_trainer
             this.profileButton1.TriangleCount = 30;
             this.profileButton1.UseVisualStyleBackColor = true;
             this.profileButton1.Click += new System.EventHandler(this.profileButton1_Click);
+            // 
+            // saveButton3
+            // 
+            this.saveButton3.FlatAppearance.BorderSize = 0;
+            this.saveButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveButton3.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
+            this.saveButton3.Location = new System.Drawing.Point(214, 152);
+            this.saveButton3.Name = "saveButton3";
+            this.saveButton3.Size = new System.Drawing.Size(96, 20);
+            this.saveButton3.TabIndex = 25;
+            this.saveButton3.Text = "Save";
+            this.saveButton3.UseVisualStyleBackColor = true;
+            this.saveButton3.Click += new System.EventHandler(this.saveButton3_Click);
+            // 
+            // saveButton2
+            // 
+            this.saveButton2.FlatAppearance.BorderSize = 0;
+            this.saveButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveButton2.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
+            this.saveButton2.Location = new System.Drawing.Point(112, 152);
+            this.saveButton2.Name = "saveButton2";
+            this.saveButton2.Size = new System.Drawing.Size(96, 20);
+            this.saveButton2.TabIndex = 25;
+            this.saveButton2.Text = "Save";
+            this.saveButton2.UseVisualStyleBackColor = true;
+            this.saveButton2.Click += new System.EventHandler(this.saveButton2_Click);
+            // 
+            // editHotkeysButton
+            // 
+            this.editHotkeysButton.FlatAppearance.BorderSize = 0;
+            this.editHotkeysButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editHotkeysButton.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editHotkeysButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
+            this.editHotkeysButton.Location = new System.Drawing.Point(10, 100);
+            this.editHotkeysButton.Name = "editHotkeysButton";
+            this.editHotkeysButton.Size = new System.Drawing.Size(88, 23);
+            this.editHotkeysButton.TabIndex = 25;
+            this.editHotkeysButton.Text = "Edit Hotkeys";
+            this.editHotkeysButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.editHotkeysButton.UseVisualStyleBackColor = true;
+            this.editHotkeysButton.Click += new System.EventHandler(this.editHotkeysButton_Click);
+            // 
+            // saveButton1
+            // 
+            this.saveButton1.FlatAppearance.BorderSize = 0;
+            this.saveButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveButton1.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
+            this.saveButton1.Location = new System.Drawing.Point(10, 152);
+            this.saveButton1.Name = "saveButton1";
+            this.saveButton1.Size = new System.Drawing.Size(96, 20);
+            this.saveButton1.TabIndex = 25;
+            this.saveButton1.Text = "Save";
+            this.saveButton1.UseVisualStyleBackColor = true;
+            this.saveButton1.Click += new System.EventHandler(this.saveButton1_Click);
             // 
             // BpmLockCheck
             // 
@@ -789,6 +456,22 @@ namespace osu_trainer
             this.ScaleARCheck.UseVisualStyleBackColor = true;
             this.ScaleARCheck.CheckedChanged += new System.EventHandler(this.ScaleARCheck_CheckedChanged);
             // 
+            // BpmMultiplierTextBox
+            // 
+            this.BpmMultiplierTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(16)))), ((int)(((byte)(25)))));
+            this.BpmMultiplierTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BpmMultiplierTextBox.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BpmMultiplierTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BpmMultiplierTextBox.Location = new System.Drawing.Point(90, 5);
+            this.BpmMultiplierTextBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.BpmMultiplierTextBox.Name = "BpmMultiplierTextBox";
+            this.BpmMultiplierTextBox.Size = new System.Drawing.Size(42, 20);
+            this.BpmMultiplierTextBox.TabIndex = 10;
+            this.BpmMultiplierTextBox.Text = "1.00";
+            this.BpmMultiplierTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BpmMultiplierTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BpmMultiplierTextBox_KeyDown);
+            this.BpmMultiplierTextBox.Leave += new System.EventHandler(this.BpmMultiplierTextBox_Submit);
+            // 
             // NewBpmTextBox
             // 
             this.NewBpmTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(16)))), ((int)(((byte)(25)))));
@@ -805,6 +488,64 @@ namespace osu_trainer
             this.NewBpmTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NewBpmTextBox_KeyPress);
             this.NewBpmTextBox.Leave += new System.EventHandler(this.NewBpmTextBox_Leave);
             // 
+            // NewBpmRangeTextBox
+            // 
+            this.NewBpmRangeTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(35)))), ((int)(((byte)(53)))));
+            this.NewBpmRangeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.NewBpmRangeTextBox.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewBpmRangeTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
+            this.NewBpmRangeTextBox.Location = new System.Drawing.Point(163, 64);
+            this.NewBpmRangeTextBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.NewBpmRangeTextBox.Name = "NewBpmRangeTextBox";
+            this.NewBpmRangeTextBox.ReadOnly = true;
+            this.NewBpmRangeTextBox.Size = new System.Drawing.Size(85, 17);
+            this.NewBpmRangeTextBox.TabIndex = 10;
+            this.NewBpmRangeTextBox.Text = "(180 - 210)";
+            // 
+            // OriginalBpmRangeTextBox
+            // 
+            this.OriginalBpmRangeTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(35)))), ((int)(((byte)(53)))));
+            this.OriginalBpmRangeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.OriginalBpmRangeTextBox.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OriginalBpmRangeTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
+            this.OriginalBpmRangeTextBox.Location = new System.Drawing.Point(163, 35);
+            this.OriginalBpmRangeTextBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.OriginalBpmRangeTextBox.Name = "OriginalBpmRangeTextBox";
+            this.OriginalBpmRangeTextBox.ReadOnly = true;
+            this.OriginalBpmRangeTextBox.Size = new System.Drawing.Size(85, 17);
+            this.OriginalBpmRangeTextBox.TabIndex = 20;
+            this.OriginalBpmRangeTextBox.Text = "(180 - 210)";
+            // 
+            // OriginalBpmTextBox
+            // 
+            this.OriginalBpmTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(24)))), ((int)(((byte)(38)))));
+            this.OriginalBpmTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.OriginalBpmTextBox.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OriginalBpmTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.OriginalBpmTextBox.Location = new System.Drawing.Point(89, 35);
+            this.OriginalBpmTextBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.OriginalBpmTextBox.Name = "OriginalBpmTextBox";
+            this.OriginalBpmTextBox.ReadOnly = true;
+            this.OriginalBpmTextBox.Size = new System.Drawing.Size(42, 17);
+            this.OriginalBpmTextBox.TabIndex = 10;
+            this.OriginalBpmTextBox.Text = "200";
+            this.OriginalBpmTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OriginalBpmTextBox.Enter += new System.EventHandler(this.Unfocus);
+            // 
+            // renameButton4
+            // 
+            this.renameButton4.FlatAppearance.BorderSize = 0;
+            this.renameButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.renameButton4.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.renameButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
+            this.renameButton4.Location = new System.Drawing.Point(315, 169);
+            this.renameButton4.Name = "renameButton4";
+            this.renameButton4.Size = new System.Drawing.Size(96, 20);
+            this.renameButton4.TabIndex = 25;
+            this.renameButton4.Text = "Rename";
+            this.renameButton4.UseVisualStyleBackColor = true;
+            this.renameButton4.Click += new System.EventHandler(this.renameButton4_Click);
+            // 
             // OriginalBpmLabel
             // 
             this.OriginalBpmLabel.AutoSize = true;
@@ -817,6 +558,20 @@ namespace osu_trainer
             this.OriginalBpmLabel.TabIndex = 9;
             this.OriginalBpmLabel.Text = "Old BPM";
             this.OriginalBpmLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // renameButton3
+            // 
+            this.renameButton3.FlatAppearance.BorderSize = 0;
+            this.renameButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.renameButton3.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.renameButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
+            this.renameButton3.Location = new System.Drawing.Point(214, 169);
+            this.renameButton3.Name = "renameButton3";
+            this.renameButton3.Size = new System.Drawing.Size(96, 20);
+            this.renameButton3.TabIndex = 25;
+            this.renameButton3.Text = "Rename";
+            this.renameButton3.UseVisualStyleBackColor = true;
+            this.renameButton3.Click += new System.EventHandler(this.renameButton3_Click);
             // 
             // NewBpmLabel
             // 
@@ -831,6 +586,20 @@ namespace osu_trainer
             this.NewBpmLabel.Text = "New BPM";
             this.NewBpmLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // renameButton2
+            // 
+            this.renameButton2.FlatAppearance.BorderSize = 0;
+            this.renameButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.renameButton2.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.renameButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
+            this.renameButton2.Location = new System.Drawing.Point(112, 169);
+            this.renameButton2.Name = "renameButton2";
+            this.renameButton2.Size = new System.Drawing.Size(96, 20);
+            this.renameButton2.TabIndex = 25;
+            this.renameButton2.Text = "Rename";
+            this.renameButton2.UseVisualStyleBackColor = true;
+            this.renameButton2.Click += new System.EventHandler(this.renameButton2_Click);
+            // 
             // BpmMultiplierLabel
             // 
             this.BpmMultiplierLabel.AutoSize = true;
@@ -842,6 +611,68 @@ namespace osu_trainer
             this.BpmMultiplierLabel.TabIndex = 1;
             this.BpmMultiplierLabel.Text = "Rate";
             this.BpmMultiplierLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // renameButton1
+            // 
+            this.renameButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.renameButton1.FlatAppearance.BorderSize = 0;
+            this.renameButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.renameButton1.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.renameButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
+            this.renameButton1.Location = new System.Drawing.Point(10, 169);
+            this.renameButton1.Name = "renameButton1";
+            this.renameButton1.Size = new System.Drawing.Size(96, 20);
+            this.renameButton1.TabIndex = 25;
+            this.renameButton1.Text = "Rename";
+            this.renameButton1.UseVisualStyleBackColor = true;
+            this.renameButton1.Click += new System.EventHandler(this.renameButton1_Click);
+            // 
+            // Middle1Panel
+            // 
+            this.Middle1Panel.Controls.Add(this.tableLayoutPanel1);
+            this.Middle1Panel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Middle1Panel.Location = new System.Drawing.Point(0, 185);
+            this.Middle1Panel.Margin = new System.Windows.Forms.Padding(10, 10, 10, 0);
+            this.Middle1Panel.Name = "Middle1Panel";
+            this.Middle1Panel.Padding = new System.Windows.Forms.Padding(10, 0, 15, 5);
+            this.Middle1Panel.Size = new System.Drawing.Size(427, 118);
+            this.Middle1Panel.TabIndex = 10;
+            this.Middle1Panel.Click += new System.EventHandler(this.Unfocus);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel1.Controls.Add(this.ODLockCheck, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.ARLockCheck, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.CSLockCheck, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.odlabel, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.ODDisplay, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.ODSlider, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.arlabel, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.ARDisplay, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.ARSlider, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.cslabel, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.CSDisplay, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.CSSlider, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.hplabel, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.HPDisplay, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.HPSlider, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.HPLockCheck, 3, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Font = new System.Drawing.Font("Microsoft Tai Le", 12F);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.00063F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.00063F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.99813F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(402, 113);
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // ODLockCheck
             // 
@@ -889,6 +720,23 @@ namespace osu_trainer
             this.odlabel.TabIndex = 9;
             this.odlabel.Text = "OD";
             this.odlabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ODDisplay
+            // 
+            this.ODDisplay.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ODDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(24)))), ((int)(((byte)(38)))));
+            this.ODDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ODDisplay.Enabled = false;
+            this.ODDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ODDisplay.Location = new System.Drawing.Point(41, 89);
+            this.ODDisplay.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.ODDisplay.Name = "ODDisplay";
+            this.ODDisplay.ReadOnly = true;
+            this.ODDisplay.Size = new System.Drawing.Size(35, 21);
+            this.ODDisplay.TabIndex = 10;
+            this.ODDisplay.Text = "0.0";
+            this.ODDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ODDisplay.Enter += new System.EventHandler(this.Unfocus);
             // 
             // ODSlider
             // 
@@ -942,6 +790,23 @@ namespace osu_trainer
             this.arlabel.Text = "AR";
             this.arlabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // ARDisplay
+            // 
+            this.ARDisplay.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ARDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(24)))), ((int)(((byte)(38)))));
+            this.ARDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ARDisplay.Enabled = false;
+            this.ARDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ARDisplay.Location = new System.Drawing.Point(41, 61);
+            this.ARDisplay.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.ARDisplay.Name = "ARDisplay";
+            this.ARDisplay.ReadOnly = true;
+            this.ARDisplay.Size = new System.Drawing.Size(35, 21);
+            this.ARDisplay.TabIndex = 7;
+            this.ARDisplay.Text = "0.0";
+            this.ARDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ARDisplay.Enter += new System.EventHandler(this.Unfocus);
+            // 
             // ARSlider
             // 
             this.ARSlider.BodyColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
@@ -993,6 +858,23 @@ namespace osu_trainer
             this.cslabel.TabIndex = 3;
             this.cslabel.Text = "CS";
             this.cslabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // CSDisplay
+            // 
+            this.CSDisplay.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.CSDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(24)))), ((int)(((byte)(38)))));
+            this.CSDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CSDisplay.Enabled = false;
+            this.CSDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.CSDisplay.Location = new System.Drawing.Point(41, 33);
+            this.CSDisplay.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.CSDisplay.Name = "CSDisplay";
+            this.CSDisplay.ReadOnly = true;
+            this.CSDisplay.Size = new System.Drawing.Size(35, 21);
+            this.CSDisplay.TabIndex = 4;
+            this.CSDisplay.Text = "0.0";
+            this.CSDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CSDisplay.Enter += new System.EventHandler(this.Unfocus);
             // 
             // CSSlider
             // 
@@ -1047,6 +929,24 @@ namespace osu_trainer
             this.hplabel.Text = "HP";
             this.hplabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // HPDisplay
+            // 
+            this.HPDisplay.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.HPDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(24)))), ((int)(((byte)(38)))));
+            this.HPDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.HPDisplay.Enabled = false;
+            this.HPDisplay.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HPDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.HPDisplay.Location = new System.Drawing.Point(41, 5);
+            this.HPDisplay.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.HPDisplay.Name = "HPDisplay";
+            this.HPDisplay.ReadOnly = true;
+            this.HPDisplay.Size = new System.Drawing.Size(35, 21);
+            this.HPDisplay.TabIndex = 1;
+            this.HPDisplay.Text = "0.0";
+            this.HPDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.HPDisplay.Enter += new System.EventHandler(this.Unfocus);
+            // 
             // HPSlider
             // 
             this.HPSlider.BodyColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
@@ -1097,18 +997,18 @@ namespace osu_trainer
             this.HPLockCheck.UseVisualStyleBackColor = true;
             this.HPLockCheck.CheckedChanged += new System.EventHandler(this.HpLockCheck_CheckedChanged);
             // 
-            // StarsDisplay
+            // BottomPanel
             // 
-            this.StarsDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.StarsDisplay.Enabled = false;
-            this.StarsDisplay.Font = new System.Drawing.Font("Microsoft Tai Le", 16F, System.Drawing.FontStyle.Bold);
-            this.StarsDisplay.GameMode = FsBeatmapProcessor.GameMode.osu;
-            this.StarsDisplay.Location = new System.Drawing.Point(307, 3);
-            this.StarsDisplay.Name = "StarsDisplay";
-            this.StarsDisplay.Size = new System.Drawing.Size(93, 35);
-            this.StarsDisplay.Stars = 0F;
-            this.StarsDisplay.TabIndex = 22;
-            this.StarsDisplay.Text = "starsDisplay1";
+            this.BottomPanel.Controls.Add(this.DeleteButton);
+            this.BottomPanel.Controls.Add(this.ResetButton);
+            this.BottomPanel.Controls.Add(this.GenerateMapButton);
+            this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.BottomPanel.Location = new System.Drawing.Point(0, 460);
+            this.BottomPanel.Name = "BottomPanel";
+            this.BottomPanel.Padding = new System.Windows.Forms.Padding(10, 5, 10, 10);
+            this.BottomPanel.Size = new System.Drawing.Size(427, 111);
+            this.BottomPanel.TabIndex = 11;
+            this.BottomPanel.Click += new System.EventHandler(this.Unfocus);
             // 
             // DeleteButton
             // 
@@ -1180,6 +1080,17 @@ namespace osu_trainer
             this.GenerateMapButton.UseVisualStyleBackColor = false;
             this.GenerateMapButton.Click += new System.EventHandler(this.GenerateMapButton_Click);
             // 
+            // TopPanel
+            // 
+            this.TopPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
+            this.TopPanel.Controls.Add(this.SongDisplay);
+            this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TopPanel.Location = new System.Drawing.Point(0, 30);
+            this.TopPanel.Name = "TopPanel";
+            this.TopPanel.Padding = new System.Windows.Forms.Padding(10);
+            this.TopPanel.Size = new System.Drawing.Size(427, 121);
+            this.TopPanel.TabIndex = 12;
+            // 
             // SongDisplay
             // 
             this.SongDisplay.Artist = null;
@@ -1193,6 +1104,123 @@ namespace osu_trainer
             this.SongDisplay.TabIndex = 7;
             this.SongDisplay.Text = "songDisplay1";
             this.SongDisplay.Title = null;
+            // 
+            // OsuRunningTimer
+            // 
+            this.OsuRunningTimer.Interval = 500;
+            this.OsuRunningTimer.Tick += new System.EventHandler(this.OsuRunningTimer_Tick);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.AimLabel);
+            this.panel1.Controls.Add(this.SpeedLabel);
+            this.panel1.Controls.Add(this.StarsDisplay);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 151);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
+            this.panel1.Size = new System.Drawing.Size(427, 34);
+            this.panel1.TabIndex = 13;
+            // 
+            // AimLabel
+            // 
+            this.AimLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AimLabel.AutoSize = true;
+            this.AimLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AimLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
+            this.AimLabel.Location = new System.Drawing.Point(266, 14);
+            this.AimLabel.MinimumSize = new System.Drawing.Size(40, 0);
+            this.AimLabel.Name = "AimLabel";
+            this.AimLabel.Size = new System.Drawing.Size(50, 16);
+            this.AimLabel.TabIndex = 23;
+            this.AimLabel.Text = "1.0 aim";
+            this.AimLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // SpeedLabel
+            // 
+            this.SpeedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SpeedLabel.AutoSize = true;
+            this.SpeedLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SpeedLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
+            this.SpeedLabel.Location = new System.Drawing.Point(194, 14);
+            this.SpeedLabel.MinimumSize = new System.Drawing.Size(64, 0);
+            this.SpeedLabel.Name = "SpeedLabel";
+            this.SpeedLabel.Size = new System.Drawing.Size(65, 16);
+            this.SpeedLabel.TabIndex = 23;
+            this.SpeedLabel.Text = "1.0 speed";
+            this.SpeedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // StarsDisplay
+            // 
+            this.StarsDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.StarsDisplay.Enabled = false;
+            this.StarsDisplay.Font = new System.Drawing.Font("Microsoft Tai Le", 16F, System.Drawing.FontStyle.Bold);
+            this.StarsDisplay.GameMode = FsBeatmapProcessor.GameMode.osu;
+            this.StarsDisplay.Location = new System.Drawing.Point(307, 3);
+            this.StarsDisplay.Name = "StarsDisplay";
+            this.StarsDisplay.Size = new System.Drawing.Size(93, 35);
+            this.StarsDisplay.Stars = 0F;
+            this.StarsDisplay.TabIndex = 22;
+            this.StarsDisplay.Text = "starsDisplay1";
+            // 
+            // closeButton
+            // 
+            this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
+            this.closeButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.closeButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
+            this.closeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(10)))), ((int)(((byte)(20)))));
+            this.closeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(17)))), ((int)(((byte)(35)))));
+            this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeButton.Font = new System.Drawing.Font("Segoe UI Semilight", 9F);
+            this.closeButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.closeButton.Location = new System.Drawing.Point(382, 0);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(45, 30);
+            this.closeButton.TabIndex = 3;
+            this.closeButton.Text = "✕";
+            this.closeButton.UseVisualStyleBackColor = false;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            // 
+            // minimizeButton
+            // 
+            this.minimizeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
+            this.minimizeButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.minimizeButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
+            this.minimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.minimizeButton.Font = new System.Drawing.Font("Segoe UI Semilight", 9F);
+            this.minimizeButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.minimizeButton.Location = new System.Drawing.Point(337, 0);
+            this.minimizeButton.Name = "minimizeButton";
+            this.minimizeButton.Size = new System.Drawing.Size(45, 30);
+            this.minimizeButton.TabIndex = 3;
+            this.minimizeButton.Text = "🗕";
+            this.minimizeButton.UseVisualStyleBackColor = false;
+            this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
+            // 
+            // titlePanel
+            // 
+            this.titlePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
+            this.titlePanel.Controls.Add(this.minimizeButton);
+            this.titlePanel.Controls.Add(this.closeButton);
+            this.titlePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.titlePanel.Location = new System.Drawing.Point(0, 0);
+            this.titlePanel.Name = "titlePanel";
+            this.titlePanel.Size = new System.Drawing.Size(427, 30);
+            this.titlePanel.TabIndex = 14;
+            this.titlePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.titlePanel_Paint);
+            this.titlePanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelMove_MouseDown);
+            this.titlePanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelMove_MouseMove);
+            this.titlePanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PanelMove_MouseUp);
+            // 
+            // BackgroundWorker
+            // 
+            this.BackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker_DoWork);
+            this.BackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker_RunWorkerCompleted);
+            // 
+            // formAnimationTimer
+            // 
+            this.formAnimationTimer.Interval = 16;
+            this.formAnimationTimer.Tick += new System.EventHandler(this.formAnimationTimer_Tick);
             // 
             // MainForm
             // 
@@ -1267,7 +1295,6 @@ namespace osu_trainer
         private ToggleIconButton ARLockCheck;
         private ToggleIconButton CSLockCheck;
         private ToggleIconButton HPLockCheck;
-        public System.ComponentModel.BackgroundWorker BackgroundWorker;
         private SongDisplay SongDisplay;
         private OsuCheckBox NoSpinnersCheck;
         private System.Windows.Forms.Button closeButton;
@@ -1293,6 +1320,9 @@ namespace osu_trainer
         private OsuButton profileButton4;
         private System.Windows.Forms.Button saveButton4;
         private System.Windows.Forms.Button renameButton4;
-        private System.Windows.Forms.TextBox profileHotkeyHintText;
+        private System.Windows.Forms.Button editHotkeysButton;
+        private OsuButton osuButton1;
+        public System.ComponentModel.BackgroundWorker BackgroundWorker;
+        private System.Windows.Forms.Timer formAnimationTimer;
     }
 }

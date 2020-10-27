@@ -42,9 +42,7 @@ namespace osu_trainer
         }
         private static decimal MsToApproachRate(decimal ms)
         {
-            // bullshit
-            // TODO: check edge cases
-            decimal smallestDiff = 100000.0M;
+            decimal smallestDiff = 100000.0M; // initial value
             for (int AR = 0; AR <= 110; AR++)
             {
                 var newDiff = Math.Abs(ApproachRateToMs(AR/10.0M) - ms);

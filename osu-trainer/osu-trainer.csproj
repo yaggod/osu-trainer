@@ -161,6 +161,12 @@
     <Compile Include="Controls\RatioBar.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Forms\HotkeyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HotkeyForm.Designer.cs">
+      <DependentUpon>HotkeyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\RenameProfileForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,6 +259,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Forms\DeleteMp3sForm.resx">
       <DependentUpon>DeleteMp3sForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HotkeyForm.resx">
+      <DependentUpon>HotkeyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

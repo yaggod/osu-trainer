@@ -710,16 +710,13 @@ namespace osu_trainer
         {
             ForceHardrockCirclesize = !ForceHardrockCirclesize;
             CsIsLocked = false;
-            OdIsLocked = false;
             if (ForceHardrockCirclesize)
             {
                 NewBeatmap.CircleSize = OriginalBeatmap.CircleSize * 1.3M;
-                NewBeatmap.OverallDifficulty = JunUtils.Clamp(GetScaledOD() * 1.4M, 0M, 10M);
             }
             else
             {
                 NewBeatmap.CircleSize = OriginalBeatmap.CircleSize;
-                NewBeatmap.OverallDifficulty = GetScaledOD();
             }
             RequestDiffCalc();
             ControlsModified?.Invoke(this, EventArgs.Empty);

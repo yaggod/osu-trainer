@@ -40,9 +40,12 @@ namespace osu_trainer
         private List<OptionSlider> diffSliders;
         private List<OsuCheckBox> checkControls;
 
-        // Single Object Instances
-        private readonly globalKeyboardHook kbhook = new globalKeyboardHook();
+        // Hotkeys
+        private globalKeyboardHook kbhook;
         private bool hooked = true;
+        private List<Keys> Hotkeys;
+
+        // Single object instances
         private readonly SoundPlayer sound = new SoundPlayer();
         private readonly BeatmapEditor editor;
 
@@ -84,6 +87,9 @@ namespace osu_trainer
             if (Directory.Exists(Properties.Settings.Default.SongsFolder))
                 userSongsFolder = Properties.Settings.Default.SongsFolder;
 
+            // TODO: load hotkeys
+            Hotkeys = new List<Keys>() { Keys.X, Keys.A, Keys.S, Keys.D, Keys.F };
+
             // Init object instances
             osuReader = OsuMemoryReader.Instance.GetInstanceForWindowTitleHint("");
             editor = new BeatmapEditor(this);
@@ -111,14 +117,8 @@ namespace osu_trainer
             editor.ControlsModified += UpdateProfiles;
 
             // Install keyboard hooks
-            // (note! this is only for the create map hotkey!!)
-            kbhook.HookedKeys.Add(Keys.X);
-            kbhook.HookedKeys.Add(Keys.A);
-            kbhook.HookedKeys.Add(Keys.S);
-            kbhook.HookedKeys.Add(Keys.D);
-            kbhook.HookedKeys.Add(Keys.F);
-            kbhook.KeyDown += new KeyEventHandler(CreateMapHotkeyHandler);
-            kbhook.KeyDown += new KeyEventHandler(ProfileHotkeyHandler);
+            // Notice: The only purpose of the keyboard hook is for shortcuts. Nothing else.
+            ApplyHotkeys();
 
             // need controls to show up as initially disabled
             editor.ForceEventStateChanged();
@@ -127,8 +127,21 @@ namespace osu_trainer
 
             BeatmapUpdateTimer.Start();
             OsuRunningTimer.Start();
+            formAnimationTimer.Start();
 
-            this.Focus();
+            Focus();
+        }
+
+        private void ApplyHotkeys()
+        {
+            // restart keyboard hook with new hotkeys
+            if (kbhook != null)
+                kbhook.unhook();
+            kbhook = new globalKeyboardHook();
+            kbhook.HookedKeys = Hotkeys;
+            kbhook.KeyDown += new KeyEventHandler(CreateMapHotkeyHandler);
+            kbhook.KeyDown += new KeyEventHandler(ProfileHotkeyHandler);
+            GenerateMapButton.Subtext = $"Ctrl+Shift+{Hotkeys[0]}";
         }
 
         private void ApplyFonts()
@@ -152,7 +165,6 @@ namespace osu_trainer
 
             OriginalBpmRangeTextBox.Font = new Font(comforta, 9, FontStyle.Regular);
             NewBpmRangeTextBox.Font = new Font(comforta, 9, FontStyle.Regular);
-
         }
 
         #region Callbacks for updating GUI controls
@@ -767,8 +779,8 @@ namespace osu_trainer
         {
             if (Drag)
             {
-                this.Top = Cursor.Position.Y - MouseY;
-                this.Left = Cursor.Position.X - MouseX;
+                Top = Cursor.Position.Y - MouseY;
+                Left = Cursor.Position.X - MouseX;
             }
         }
 
@@ -861,10 +873,18 @@ namespace osu_trainer
         private void profileButton2_Click(object sender, EventArgs e) => editor.LoadProfile(1);
         private void profileButton3_Click(object sender, EventArgs e) => editor.LoadProfile(2);
         private void profileButton4_Click(object sender, EventArgs e) => editor.LoadProfile(3);
-        private void saveButton1_Click(object sender, EventArgs e) => editor.SaveProfile(0);
-        private void saveButton2_Click(object sender, EventArgs e) => editor.SaveProfile(1);
-        private void saveButton3_Click(object sender, EventArgs e) => editor.SaveProfile(2);
-        private void saveButton4_Click(object sender, EventArgs e) => editor.SaveProfile(3);
+        private void saveButton1_Click(object sender, EventArgs e) => saveButtonClick(0);
+        private void saveButton2_Click(object sender, EventArgs e) => saveButtonClick(1);
+        private void saveButton3_Click(object sender, EventArgs e) => saveButtonClick(2);
+        private void saveButton4_Click(object sender, EventArgs e) => saveButtonClick(3);
+        private void saveButtonClick(int whichProfile)
+        {
+            var saveButtons = new List<Button>() { saveButton1, saveButton2, saveButton3, saveButton4 };
+            saveButtons[whichProfile].ForeColor = Color.White;
+            saveButtons[whichProfile].Text = "Saved!";
+            saveButtonHighlight[whichProfile] = 1.0M;
+            editor.SaveProfile(whichProfile);
+        }
         private void renameButton1_Click(object sender, EventArgs e) => renameProfileClick(0);
         private void renameButton2_Click(object sender, EventArgs e) => renameProfileClick(1);
         private void renameButton3_Click(object sender, EventArgs e) => renameProfileClick(2);
@@ -890,7 +910,7 @@ namespace osu_trainer
             renameButton2.Visible = profilesVisible;
             renameButton3.Visible = profilesVisible;
             renameButton4.Visible = profilesVisible;
-            profileHotkeyHintText.Visible = profilesVisible;
+            editHotkeysButton.Visible = profilesVisible;
 
             profileButton1.Text = editor.UserProfiles[0].Name;
             profileButton2.Text = editor.UserProfiles[1].Name;
@@ -904,10 +924,10 @@ namespace osu_trainer
             {
                 var KeyToProfileMapping = new Dictionary<Keys, int>()
                 {
-                    { Keys.A, 0},
-                    { Keys.S, 1},
-                    { Keys.D, 2},
-                    { Keys.F, 3}
+                    { Hotkeys[1], 0},
+                    { Hotkeys[2], 1},
+                    { Hotkeys[3], 2},
+                    { Hotkeys[4], 3}
                 };
                 if (KeyToProfileMapping.ContainsKey(k.KeyCode)) {
                     int whichProfile = KeyToProfileMapping[k.KeyCode];
@@ -918,6 +938,35 @@ namespace osu_trainer
                         sound.Play();
                         GenerateMapButton_Click(sender, EventArgs.Empty);
                     }
+                }
+            }
+        }
+
+        private List<decimal> saveButtonHighlight = new List<decimal>() { 0, 0, 0, 0 };
+        const decimal HIGHLIGHT_FADE = 0.03M;
+        private void formAnimationTimer_Tick(object sender, EventArgs e)
+        {
+            Color startBackColor = Color.FromArgb(71, 115, 66);
+            Color endBackColor = Color.FromArgb(45, 42, 63);
+            var saveButtons = new List<Button>() { saveButton1, saveButton2, saveButton3, saveButton4 };
+            for (int i = 0; i < saveButtons.Count; i++)
+            {
+                // linearly interpolate colour
+                // saveButtonHighlight 1.0 -> 0.0
+                if (saveButtonHighlight[i] > 0)
+                {
+                    saveButtons[i].FlatAppearance.MouseOverBackColor = JunUtils.LerpColor(startBackColor, endBackColor, 1 - saveButtonHighlight[i]);
+                    saveButtons[i].ForeColor = JunUtils.LerpColor(Color.White, Color.FromArgb(90, 90, 134), 1 - saveButtonHighlight[i]);
+                }
+
+                // decay
+                saveButtonHighlight[i] -= HIGHLIGHT_FADE;
+                if (saveButtonHighlight[i] <= 0)
+                {
+                    saveButtonHighlight[i] = 0M;
+                    saveButtons[i].ForeColor = Color.FromArgb(90, 90, 134);
+                    saveButtons[i].Text = "Save";
+                    saveButtons[i].FlatAppearance.MouseOverBackColor = Color.Empty;
                 }
             }
         }
@@ -943,5 +992,16 @@ namespace osu_trainer
                 Height = 606 - 100;
             }
         }
+
+        private void editHotkeysButton_Click(object sender, EventArgs e)
+        {
+            int centerX = DesktopLocation.X + (Width / 2);
+            int centerY = DesktopLocation.Y + (Height / 2);
+            var hotkeyForm = new HotkeyForm(centerX - 321/2, centerY - 217/2, Hotkeys);
+            Hotkeys = hotkeyForm.Hotkeys;
+            ApplyHotkeys();
+            hotkeyForm.Show();
+        }
+
     }
 }
