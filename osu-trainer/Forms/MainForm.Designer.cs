@@ -38,7 +38,6 @@ namespace osu_trainer
             this.saveButton4 = new System.Windows.Forms.Button();
             this.saveButton3 = new System.Windows.Forms.Button();
             this.saveButton2 = new System.Windows.Forms.Button();
-            this.editHotkeysButton = new System.Windows.Forms.Button();
             this.saveButton1 = new System.Windows.Forms.Button();
             this.BpmMultiplierTextBox = new System.Windows.Forms.TextBox();
             this.NewBpmRangeTextBox = new System.Windows.Forms.TextBox();
@@ -48,6 +47,7 @@ namespace osu_trainer
             this.renameButton3 = new System.Windows.Forms.Button();
             this.renameButton2 = new System.Windows.Forms.Button();
             this.renameButton1 = new System.Windows.Forms.Button();
+            this.editHotkeysButton = new System.Windows.Forms.Button();
             this.Middle1Panel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ODDisplay = new System.Windows.Forms.TextBox();
@@ -57,19 +57,16 @@ namespace osu_trainer
             this.BottomPanel = new System.Windows.Forms.Panel();
             this.TopPanel = new System.Windows.Forms.Panel();
             this.OsuRunningTimer = new System.Windows.Forms.Timer(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.AimLabel = new System.Windows.Forms.Label();
-            this.SpeedLabel = new System.Windows.Forms.Label();
             this.closeButton = new System.Windows.Forms.Button();
             this.minimizeButton = new System.Windows.Forms.Button();
             this.titlePanel = new System.Windows.Forms.Panel();
             this.BackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.formAnimationTimer = new System.Windows.Forms.Timer(this.components);
             this.extrasPanel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.ChangePitchCheck = new osu_trainer.Controls.OsuCheckBox();
             this.NoSpinnersCheck = new osu_trainer.Controls.OsuCheckBox();
             this.profileButton4 = new osu_trainer.Controls.OsuButton();
-            this.SongsFolderButton = new osu_trainer.Controls.OsuButton();
             this.profileButton3 = new osu_trainer.Controls.OsuButton();
             this.profileButton2 = new osu_trainer.Controls.OsuButton();
             this.profileButton1 = new osu_trainer.Controls.OsuButton();
@@ -94,17 +91,15 @@ namespace osu_trainer
             this.hplabel = new osu_trainer.Controls.AntiAliasedLabel();
             this.HPSlider = new osu_trainer.OptionSlider();
             this.HPLockCheck = new osu_trainer.Controls.ToggleIconButton();
-            this.StarsDisplay = new osu_trainer.Controls.StarsDisplay();
-            this.DeleteButton = new osu_trainer.Controls.OsuButton();
             this.ResetButton = new osu_trainer.Controls.OsuButton();
             this.GenerateMapButton = new osu_trainer.Controls.OsuButton();
+            this.SongsFolderButton = new osu_trainer.Controls.OsuButton();
             this.SongDisplay = new osu_trainer.Controls.SongDisplay();
             this.middlePanel.SuspendLayout();
             this.Middle1Panel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.BottomPanel.SuspendLayout();
             this.TopPanel.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.titlePanel.SuspendLayout();
             this.extrasPanel.SuspendLayout();
             this.SuspendLayout();
@@ -118,14 +113,12 @@ namespace osu_trainer
             // 
             this.middlePanel.Controls.Add(this.showExtrasButton);
             this.middlePanel.Controls.Add(this.profileButton4);
-            this.middlePanel.Controls.Add(this.SongsFolderButton);
             this.middlePanel.Controls.Add(this.profileButton3);
             this.middlePanel.Controls.Add(this.profileButton2);
             this.middlePanel.Controls.Add(this.saveButton4);
             this.middlePanel.Controls.Add(this.profileButton1);
             this.middlePanel.Controls.Add(this.saveButton3);
             this.middlePanel.Controls.Add(this.saveButton2);
-            this.middlePanel.Controls.Add(this.editHotkeysButton);
             this.middlePanel.Controls.Add(this.saveButton1);
             this.middlePanel.Controls.Add(this.BpmLockCheck);
             this.middlePanel.Controls.Add(this.BpmSlider);
@@ -145,10 +138,10 @@ namespace osu_trainer
             this.middlePanel.Controls.Add(this.BpmMultiplierLabel);
             this.middlePanel.Controls.Add(this.renameButton1);
             this.middlePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.middlePanel.Location = new System.Drawing.Point(0, 303);
+            this.middlePanel.Location = new System.Drawing.Point(0, 272);
             this.middlePanel.Name = "middlePanel";
             this.middlePanel.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.middlePanel.Size = new System.Drawing.Size(427, 213);
+            this.middlePanel.Size = new System.Drawing.Size(427, 179);
             this.middlePanel.TabIndex = 7;
             this.middlePanel.Click += new System.EventHandler(this.Unfocus);
             // 
@@ -160,13 +153,14 @@ namespace osu_trainer
             this.showExtrasButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.showExtrasButton.Font = new System.Drawing.Font("Microsoft Tai Le", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.showExtrasButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.showExtrasButton.Location = new System.Drawing.Point(0, 193);
+            this.showExtrasButton.Location = new System.Drawing.Point(0, 159);
             this.showExtrasButton.Margin = new System.Windows.Forms.Padding(0);
             this.showExtrasButton.Name = "showExtrasButton";
             this.showExtrasButton.Size = new System.Drawing.Size(427, 20);
             this.showExtrasButton.TabIndex = 26;
             this.showExtrasButton.Text = "▶ More!";
             this.showExtrasButton.UseVisualStyleBackColor = false;
+            this.showExtrasButton.Click += new System.EventHandler(this.showExtrasButton_Click);
             // 
             // saveButton4
             // 
@@ -174,7 +168,7 @@ namespace osu_trainer
             this.saveButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveButton4.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
-            this.saveButton4.Location = new System.Drawing.Point(315, 152);
+            this.saveButton4.Location = new System.Drawing.Point(315, 115);
             this.saveButton4.Name = "saveButton4";
             this.saveButton4.Size = new System.Drawing.Size(96, 20);
             this.saveButton4.TabIndex = 25;
@@ -188,7 +182,7 @@ namespace osu_trainer
             this.saveButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveButton3.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
-            this.saveButton3.Location = new System.Drawing.Point(214, 152);
+            this.saveButton3.Location = new System.Drawing.Point(214, 115);
             this.saveButton3.Name = "saveButton3";
             this.saveButton3.Size = new System.Drawing.Size(96, 20);
             this.saveButton3.TabIndex = 25;
@@ -202,7 +196,7 @@ namespace osu_trainer
             this.saveButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveButton2.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
-            this.saveButton2.Location = new System.Drawing.Point(112, 152);
+            this.saveButton2.Location = new System.Drawing.Point(112, 115);
             this.saveButton2.Name = "saveButton2";
             this.saveButton2.Size = new System.Drawing.Size(96, 20);
             this.saveButton2.TabIndex = 25;
@@ -210,28 +204,13 @@ namespace osu_trainer
             this.saveButton2.UseVisualStyleBackColor = true;
             this.saveButton2.Click += new System.EventHandler(this.saveButton2_Click);
             // 
-            // editHotkeysButton
-            // 
-            this.editHotkeysButton.FlatAppearance.BorderSize = 0;
-            this.editHotkeysButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editHotkeysButton.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editHotkeysButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
-            this.editHotkeysButton.Location = new System.Drawing.Point(10, 100);
-            this.editHotkeysButton.Name = "editHotkeysButton";
-            this.editHotkeysButton.Size = new System.Drawing.Size(88, 23);
-            this.editHotkeysButton.TabIndex = 25;
-            this.editHotkeysButton.Text = "Edit Hotkeys";
-            this.editHotkeysButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.editHotkeysButton.UseVisualStyleBackColor = true;
-            this.editHotkeysButton.Click += new System.EventHandler(this.editHotkeysButton_Click);
-            // 
             // saveButton1
             // 
             this.saveButton1.FlatAppearance.BorderSize = 0;
             this.saveButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveButton1.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
-            this.saveButton1.Location = new System.Drawing.Point(10, 152);
+            this.saveButton1.Location = new System.Drawing.Point(10, 115);
             this.saveButton1.Name = "saveButton1";
             this.saveButton1.Size = new System.Drawing.Size(96, 20);
             this.saveButton1.TabIndex = 25;
@@ -305,7 +284,7 @@ namespace osu_trainer
             this.renameButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.renameButton4.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.renameButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
-            this.renameButton4.Location = new System.Drawing.Point(315, 169);
+            this.renameButton4.Location = new System.Drawing.Point(315, 132);
             this.renameButton4.Name = "renameButton4";
             this.renameButton4.Size = new System.Drawing.Size(96, 20);
             this.renameButton4.TabIndex = 25;
@@ -319,7 +298,7 @@ namespace osu_trainer
             this.renameButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.renameButton3.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.renameButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
-            this.renameButton3.Location = new System.Drawing.Point(214, 169);
+            this.renameButton3.Location = new System.Drawing.Point(214, 132);
             this.renameButton3.Name = "renameButton3";
             this.renameButton3.Size = new System.Drawing.Size(96, 20);
             this.renameButton3.TabIndex = 25;
@@ -333,7 +312,7 @@ namespace osu_trainer
             this.renameButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.renameButton2.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.renameButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
-            this.renameButton2.Location = new System.Drawing.Point(112, 169);
+            this.renameButton2.Location = new System.Drawing.Point(112, 132);
             this.renameButton2.Name = "renameButton2";
             this.renameButton2.Size = new System.Drawing.Size(96, 20);
             this.renameButton2.TabIndex = 25;
@@ -348,7 +327,7 @@ namespace osu_trainer
             this.renameButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.renameButton1.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.renameButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
-            this.renameButton1.Location = new System.Drawing.Point(10, 169);
+            this.renameButton1.Location = new System.Drawing.Point(10, 132);
             this.renameButton1.Name = "renameButton1";
             this.renameButton1.Size = new System.Drawing.Size(96, 20);
             this.renameButton1.TabIndex = 25;
@@ -356,15 +335,30 @@ namespace osu_trainer
             this.renameButton1.UseVisualStyleBackColor = true;
             this.renameButton1.Click += new System.EventHandler(this.renameButton1_Click);
             // 
+            // editHotkeysButton
+            // 
+            this.editHotkeysButton.FlatAppearance.BorderSize = 0;
+            this.editHotkeysButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editHotkeysButton.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editHotkeysButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
+            this.editHotkeysButton.Location = new System.Drawing.Point(328, 11);
+            this.editHotkeysButton.Name = "editHotkeysButton";
+            this.editHotkeysButton.Size = new System.Drawing.Size(89, 23);
+            this.editHotkeysButton.TabIndex = 25;
+            this.editHotkeysButton.Text = "Edit Hotkeys";
+            this.editHotkeysButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.editHotkeysButton.UseVisualStyleBackColor = true;
+            this.editHotkeysButton.Click += new System.EventHandler(this.editHotkeysButton_Click);
+            // 
             // Middle1Panel
             // 
             this.Middle1Panel.Controls.Add(this.tableLayoutPanel1);
             this.Middle1Panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Middle1Panel.Location = new System.Drawing.Point(0, 185);
+            this.Middle1Panel.Location = new System.Drawing.Point(0, 151);
             this.Middle1Panel.Margin = new System.Windows.Forms.Padding(10, 10, 10, 0);
             this.Middle1Panel.Name = "Middle1Panel";
-            this.Middle1Panel.Padding = new System.Windows.Forms.Padding(10, 0, 15, 5);
-            this.Middle1Panel.Size = new System.Drawing.Size(427, 118);
+            this.Middle1Panel.Padding = new System.Windows.Forms.Padding(10, 3, 15, 5);
+            this.Middle1Panel.Size = new System.Drawing.Size(427, 121);
             this.Middle1Panel.TabIndex = 10;
             this.Middle1Panel.Click += new System.EventHandler(this.Unfocus);
             // 
@@ -393,7 +387,7 @@ namespace osu_trainer
             this.tableLayoutPanel1.Controls.Add(this.HPLockCheck, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Microsoft Tai Le", 12F);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
@@ -474,11 +468,11 @@ namespace osu_trainer
             // 
             // BottomPanel
             // 
-            this.BottomPanel.Controls.Add(this.DeleteButton);
             this.BottomPanel.Controls.Add(this.ResetButton);
             this.BottomPanel.Controls.Add(this.GenerateMapButton);
+            this.BottomPanel.Controls.Add(this.SongsFolderButton);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 588);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 529);
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Padding = new System.Windows.Forms.Padding(10, 5, 10, 10);
             this.BottomPanel.Size = new System.Drawing.Size(427, 111);
@@ -500,46 +494,6 @@ namespace osu_trainer
             // 
             this.OsuRunningTimer.Interval = 500;
             this.OsuRunningTimer.Tick += new System.EventHandler(this.OsuRunningTimer_Tick);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.AimLabel);
-            this.panel1.Controls.Add(this.SpeedLabel);
-            this.panel1.Controls.Add(this.StarsDisplay);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 151);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
-            this.panel1.Size = new System.Drawing.Size(427, 34);
-            this.panel1.TabIndex = 13;
-            // 
-            // AimLabel
-            // 
-            this.AimLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AimLabel.AutoSize = true;
-            this.AimLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AimLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.AimLabel.Location = new System.Drawing.Point(266, 14);
-            this.AimLabel.MinimumSize = new System.Drawing.Size(40, 0);
-            this.AimLabel.Name = "AimLabel";
-            this.AimLabel.Size = new System.Drawing.Size(50, 16);
-            this.AimLabel.TabIndex = 23;
-            this.AimLabel.Text = "1.0 aim";
-            this.AimLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // SpeedLabel
-            // 
-            this.SpeedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SpeedLabel.AutoSize = true;
-            this.SpeedLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SpeedLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.SpeedLabel.Location = new System.Drawing.Point(194, 14);
-            this.SpeedLabel.MinimumSize = new System.Drawing.Size(64, 0);
-            this.SpeedLabel.Name = "SpeedLabel";
-            this.SpeedLabel.Size = new System.Drawing.Size(65, 16);
-            this.SpeedLabel.TabIndex = 23;
-            this.SpeedLabel.Text = "1.0 speed";
-            this.SpeedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // closeButton
             // 
@@ -602,21 +556,39 @@ namespace osu_trainer
             // 
             // extrasPanel
             // 
+            this.extrasPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(29)))), ((int)(((byte)(44)))));
             this.extrasPanel.Controls.Add(this.ChangePitchCheck);
             this.extrasPanel.Controls.Add(this.NoSpinnersCheck);
+            this.extrasPanel.Controls.Add(this.button1);
+            this.extrasPanel.Controls.Add(this.editHotkeysButton);
             this.extrasPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.extrasPanel.Location = new System.Drawing.Point(0, 516);
+            this.extrasPanel.Location = new System.Drawing.Point(0, 451);
             this.extrasPanel.Name = "extrasPanel";
-            this.extrasPanel.Size = new System.Drawing.Size(427, 60);
+            this.extrasPanel.Size = new System.Drawing.Size(427, 74);
             this.extrasPanel.TabIndex = 15;
             this.extrasPanel.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
+            this.button1.Location = new System.Drawing.Point(280, 38);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(137, 23);
+            this.button1.TabIndex = 25;
+            this.button1.Text = "Delete Unused MP3s";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // ChangePitchCheck
             // 
             this.ChangePitchCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ChangePitchCheck.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
             this.ChangePitchCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.ChangePitchCheck.Location = new System.Drawing.Point(2, 3);
+            this.ChangePitchCheck.Location = new System.Drawing.Point(2, 9);
             this.ChangePitchCheck.Name = "ChangePitchCheck";
             this.ChangePitchCheck.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ChangePitchCheck.Size = new System.Drawing.Size(130, 24);
@@ -630,11 +602,12 @@ namespace osu_trainer
             // 
             this.NoSpinnersCheck.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
             this.NoSpinnersCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.NoSpinnersCheck.Location = new System.Drawing.Point(3, 33);
+            this.NoSpinnersCheck.Location = new System.Drawing.Point(2, 39);
             this.NoSpinnersCheck.Name = "NoSpinnersCheck";
             this.NoSpinnersCheck.Size = new System.Drawing.Size(124, 24);
             this.NoSpinnersCheck.TabIndex = 20;
             this.NoSpinnersCheck.Text = "No Spinners";
+            this.NoSpinnersCheck.TextOnRight = true;
             this.NoSpinnersCheck.UseVisualStyleBackColor = true;
             this.NoSpinnersCheck.CheckedChanged += new System.EventHandler(this.NoSpinnerCheckBox_CheckedChanged);
             // 
@@ -644,7 +617,7 @@ namespace osu_trainer
             this.profileButton4.Color = System.Drawing.Color.MediumPurple;
             this.profileButton4.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.profileButton4.ForeColor = System.Drawing.Color.White;
-            this.profileButton4.Location = new System.Drawing.Point(316, 129);
+            this.profileButton4.Location = new System.Drawing.Point(316, 92);
             this.profileButton4.Name = "profileButton4";
             this.profileButton4.Progress = 0F;
             this.profileButton4.ProgressColor = System.Drawing.Color.Transparent;
@@ -658,35 +631,13 @@ namespace osu_trainer
             this.profileButton4.UseVisualStyleBackColor = true;
             this.profileButton4.Click += new System.EventHandler(this.profileButton4_Click);
             // 
-            // SongsFolderButton
-            // 
-            this.SongsFolderButton.BrightnessRange = 0.01F;
-            this.SongsFolderButton.Color = System.Drawing.Color.DarkGoldenrod;
-            this.SongsFolderButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.SongsFolderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SongsFolderButton.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SongsFolderButton.ForeColor = System.Drawing.Color.White;
-            this.SongsFolderButton.Location = new System.Drawing.Point(10, 95);
-            this.SongsFolderButton.Name = "SongsFolderButton";
-            this.SongsFolderButton.Progress = 0F;
-            this.SongsFolderButton.ProgressColor = System.Drawing.Color.Transparent;
-            this.SongsFolderButton.Size = new System.Drawing.Size(130, 28);
-            this.SongsFolderButton.Subtext = "";
-            this.SongsFolderButton.SubtextColor = System.Drawing.Color.Empty;
-            this.SongsFolderButton.TabIndex = 1;
-            this.SongsFolderButton.Text = "Songs Folder";
-            this.SongsFolderButton.TextYOffset = 0;
-            this.SongsFolderButton.TriangleCount = 30;
-            this.SongsFolderButton.UseVisualStyleBackColor = true;
-            this.SongsFolderButton.Click += new System.EventHandler(this.SongsFolderButton_Click);
-            // 
             // profileButton3
             // 
             this.profileButton3.BrightnessRange = 0.01F;
             this.profileButton3.Color = System.Drawing.Color.MediumPurple;
             this.profileButton3.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.profileButton3.ForeColor = System.Drawing.Color.White;
-            this.profileButton3.Location = new System.Drawing.Point(214, 129);
+            this.profileButton3.Location = new System.Drawing.Point(214, 92);
             this.profileButton3.Name = "profileButton3";
             this.profileButton3.Progress = 0F;
             this.profileButton3.ProgressColor = System.Drawing.Color.Transparent;
@@ -706,7 +657,7 @@ namespace osu_trainer
             this.profileButton2.Color = System.Drawing.Color.MediumPurple;
             this.profileButton2.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.profileButton2.ForeColor = System.Drawing.Color.White;
-            this.profileButton2.Location = new System.Drawing.Point(112, 129);
+            this.profileButton2.Location = new System.Drawing.Point(112, 92);
             this.profileButton2.Name = "profileButton2";
             this.profileButton2.Progress = 0F;
             this.profileButton2.ProgressColor = System.Drawing.Color.Transparent;
@@ -726,7 +677,7 @@ namespace osu_trainer
             this.profileButton1.Color = System.Drawing.Color.MediumPurple;
             this.profileButton1.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.profileButton1.ForeColor = System.Drawing.Color.White;
-            this.profileButton1.Location = new System.Drawing.Point(10, 129);
+            this.profileButton1.Location = new System.Drawing.Point(10, 92);
             this.profileButton1.Name = "profileButton1";
             this.profileButton1.Progress = 0F;
             this.profileButton1.ProgressColor = System.Drawing.Color.Transparent;
@@ -793,7 +744,7 @@ namespace osu_trainer
             this.HRCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.HRCheck.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
             this.HRCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.HRCheck.Location = new System.Drawing.Point(285, 0);
+            this.HRCheck.Location = new System.Drawing.Point(285, 4);
             this.HRCheck.Name = "HRCheck";
             this.HRCheck.Size = new System.Drawing.Size(132, 24);
             this.HRCheck.TabIndex = 20;
@@ -806,7 +757,7 @@ namespace osu_trainer
             this.ScaleODCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ScaleODCheck.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
             this.ScaleODCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.ScaleODCheck.Location = new System.Drawing.Point(313, 49);
+            this.ScaleODCheck.Location = new System.Drawing.Point(313, 61);
             this.ScaleODCheck.Name = "ScaleODCheck";
             this.ScaleODCheck.Size = new System.Drawing.Size(104, 25);
             this.ScaleODCheck.TabIndex = 21;
@@ -819,7 +770,7 @@ namespace osu_trainer
             this.ScaleARCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ScaleARCheck.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
             this.ScaleARCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.ScaleARCheck.Location = new System.Drawing.Point(315, 24);
+            this.ScaleARCheck.Location = new System.Drawing.Point(315, 33);
             this.ScaleARCheck.Name = "ScaleARCheck";
             this.ScaleARCheck.Size = new System.Drawing.Size(102, 24);
             this.ScaleARCheck.TabIndex = 20;
@@ -1135,42 +1086,6 @@ namespace osu_trainer
             this.HPLockCheck.UseVisualStyleBackColor = true;
             this.HPLockCheck.CheckedChanged += new System.EventHandler(this.HpLockCheck_CheckedChanged);
             // 
-            // StarsDisplay
-            // 
-            this.StarsDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.StarsDisplay.Enabled = false;
-            this.StarsDisplay.Font = new System.Drawing.Font("Microsoft Tai Le", 16F, System.Drawing.FontStyle.Bold);
-            this.StarsDisplay.GameMode = FsBeatmapProcessor.GameMode.osu;
-            this.StarsDisplay.Location = new System.Drawing.Point(307, 3);
-            this.StarsDisplay.Name = "StarsDisplay";
-            this.StarsDisplay.Size = new System.Drawing.Size(93, 35);
-            this.StarsDisplay.Stars = 0F;
-            this.StarsDisplay.TabIndex = 22;
-            this.StarsDisplay.Text = "starsDisplay1";
-            // 
-            // DeleteButton
-            // 
-            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DeleteButton.BrightnessRange = 0.01F;
-            this.DeleteButton.Color = System.Drawing.Color.Gray;
-            this.DeleteButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteButton.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteButton.ForeColor = System.Drawing.Color.White;
-            this.DeleteButton.Location = new System.Drawing.Point(10, 71);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Progress = 0F;
-            this.DeleteButton.ProgressColor = System.Drawing.Color.Transparent;
-            this.DeleteButton.Size = new System.Drawing.Size(130, 28);
-            this.DeleteButton.Subtext = "";
-            this.DeleteButton.SubtextColor = System.Drawing.Color.Empty;
-            this.DeleteButton.TabIndex = 1;
-            this.DeleteButton.Text = "Delete Unused MP3s";
-            this.DeleteButton.TextYOffset = 0;
-            this.DeleteButton.TriangleCount = 30;
-            this.DeleteButton.UseVisualStyleBackColor = true;
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
-            // 
             // ResetButton
             // 
             this.ResetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -1178,13 +1093,13 @@ namespace osu_trainer
             this.ResetButton.Color = System.Drawing.Color.SteelBlue;
             this.ResetButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.ResetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ResetButton.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResetButton.Font = new System.Drawing.Font("Microsoft Tai Le", 12F);
             this.ResetButton.ForeColor = System.Drawing.Color.White;
             this.ResetButton.Location = new System.Drawing.Point(10, 37);
             this.ResetButton.Name = "ResetButton";
             this.ResetButton.Progress = 0F;
             this.ResetButton.ProgressColor = System.Drawing.Color.Transparent;
-            this.ResetButton.Size = new System.Drawing.Size(130, 28);
+            this.ResetButton.Size = new System.Drawing.Size(130, 61);
             this.ResetButton.Subtext = "";
             this.ResetButton.SubtextColor = System.Drawing.Color.Empty;
             this.ResetButton.TabIndex = 1;
@@ -1218,6 +1133,28 @@ namespace osu_trainer
             this.GenerateMapButton.UseVisualStyleBackColor = false;
             this.GenerateMapButton.Click += new System.EventHandler(this.GenerateMapButton_Click);
             // 
+            // SongsFolderButton
+            // 
+            this.SongsFolderButton.BrightnessRange = 0.01F;
+            this.SongsFolderButton.Color = System.Drawing.Color.DarkGoldenrod;
+            this.SongsFolderButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.SongsFolderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SongsFolderButton.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SongsFolderButton.ForeColor = System.Drawing.Color.White;
+            this.SongsFolderButton.Location = new System.Drawing.Point(10, 3);
+            this.SongsFolderButton.Name = "SongsFolderButton";
+            this.SongsFolderButton.Progress = 0F;
+            this.SongsFolderButton.ProgressColor = System.Drawing.Color.Transparent;
+            this.SongsFolderButton.Size = new System.Drawing.Size(407, 28);
+            this.SongsFolderButton.Subtext = "";
+            this.SongsFolderButton.SubtextColor = System.Drawing.Color.Empty;
+            this.SongsFolderButton.TabIndex = 1;
+            this.SongsFolderButton.Text = "Songs Folder";
+            this.SongsFolderButton.TextYOffset = 0;
+            this.SongsFolderButton.TriangleCount = 30;
+            this.SongsFolderButton.UseVisualStyleBackColor = true;
+            this.SongsFolderButton.Click += new System.EventHandler(this.SongsFolderButton_Click);
+            // 
             // SongDisplay
             // 
             this.SongDisplay.Artist = null;
@@ -1225,9 +1162,11 @@ namespace osu_trainer
             this.SongDisplay.Difficulty = null;
             this.SongDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SongDisplay.ErrorMessage = null;
+            this.SongDisplay.GameMode = FsBeatmapProcessor.GameMode.osu;
             this.SongDisplay.Location = new System.Drawing.Point(10, 10);
             this.SongDisplay.Name = "SongDisplay";
             this.SongDisplay.Size = new System.Drawing.Size(407, 101);
+            this.SongDisplay.Stars = 0F;
             this.SongDisplay.TabIndex = 7;
             this.SongDisplay.Text = "songDisplay1";
             this.SongDisplay.Title = null;
@@ -1237,11 +1176,10 @@ namespace osu_trainer
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(35)))), ((int)(((byte)(53)))));
-            this.ClientSize = new System.Drawing.Size(427, 699);
+            this.ClientSize = new System.Drawing.Size(427, 640);
             this.Controls.Add(this.extrasPanel);
             this.Controls.Add(this.middlePanel);
             this.Controls.Add(this.Middle1Panel);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.BottomPanel);
             this.Controls.Add(this.TopPanel);
             this.Controls.Add(this.titlePanel);
@@ -1261,8 +1199,6 @@ namespace osu_trainer
             this.tableLayoutPanel1.PerformLayout();
             this.BottomPanel.ResumeLayout(false);
             this.TopPanel.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.titlePanel.ResumeLayout(false);
             this.extrasPanel.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -1297,9 +1233,6 @@ namespace osu_trainer
         private System.Windows.Forms.TextBox OriginalBpmTextBox;
         private OsuButton ResetButton;
         private System.Windows.Forms.Timer OsuRunningTimer;
-        private OsuButton DeleteButton;
-        private System.Windows.Forms.Panel panel1;
-        private StarsDisplay StarsDisplay;
         private OsuCheckBox ScaleARCheck;
         private OsuCheckBox ChangePitchCheck;
         private OsuCheckBox ScaleODCheck;
@@ -1313,8 +1246,6 @@ namespace osu_trainer
         private System.Windows.Forms.Button minimizeButton;
         private System.Windows.Forms.Panel titlePanel;
         private OptionSlider BpmSlider;
-        private System.Windows.Forms.Label AimLabel;
-        private System.Windows.Forms.Label SpeedLabel;
         private ToggleIconButton BpmLockCheck;
         private OsuCheckBox HRCheck;
         private OsuButton SongsFolderButton;
@@ -1337,5 +1268,6 @@ namespace osu_trainer
         private System.Windows.Forms.Timer formAnimationTimer;
         private System.Windows.Forms.Button showExtrasButton;
         private System.Windows.Forms.Panel extrasPanel;
+        private System.Windows.Forms.Button button1;
     }
 }

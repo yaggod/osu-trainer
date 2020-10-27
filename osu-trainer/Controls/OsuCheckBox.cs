@@ -73,7 +73,7 @@ namespace osu_trainer.Controls
             var textOffsetY = Font.GetHeight() / 10;
             var textRectangle = new RectangleF();
             if (textOnRight) // text on right
-                textRectangle.X = indicatorRectangle.Right;
+                textRectangle.X = indicatorRectangle.Width;
             else // text on left
                 textRectangle.X = 0;
             textRectangle.Y = textOffsetY;

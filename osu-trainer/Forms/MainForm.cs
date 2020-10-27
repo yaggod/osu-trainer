@@ -103,7 +103,6 @@ namespace osu_trainer
             editor.StateChanged += ToggleDumbLabels;
             editor.StateChanged += TogglePrettyButtons;
             editor.StateChanged += ToggleHpCsArOdDisplay;
-            editor.StateChanged += ToggleDifficultyDisplay;
             editor.StateChanged += ToggleBpmInputControls;
             editor.StateChanged += ToggleBpmDisplay;
             editor.StateChanged += ToggleLockButtons;
@@ -160,10 +159,6 @@ namespace osu_trainer
             foreach (var check in checkControls)
                 check.Font = new Font(comforta, 9, FontStyle.Regular);
 
-            StarsDisplay.Font = new Font(comforta, 16, FontStyle.Bold);
-            AimLabel.Font = new Font(comforta, 9, FontStyle.Regular);
-            SpeedLabel.Font = new Font(comforta, 9, FontStyle.Regular);
-
             BpmMultiplierTextBox.Font = new Font(comforta, 11, FontStyle.Bold);
             OriginalBpmTextBox.Font = new Font(comforta, 10, FontStyle.Regular);
             NewBpmTextBox.Font = new Font(comforta, 10, FontStyle.Regular);
@@ -197,11 +192,10 @@ namespace osu_trainer
                             break;
 
                         case BadBeatmapReason.EMPTY_MAP:
-                            UpdateSongBg(editor.NewBeatmap);
-
                             SongDisplay.Artist = editor.OriginalBeatmap.Artist;
                             SongDisplay.Title = editor.OriginalBeatmap.Title;
                             SongDisplay.Difficulty = "empty map";
+                            SongDisplay.Cover = GetSongBackground(editor.NewBeatmap);
                             break;
 
                         default:
@@ -211,18 +205,12 @@ namespace osu_trainer
 
                 case EditorState.READY:
                 case EditorState.GENERATING_BEATMAP:
-                    UpdateSongBg(editor.NewBeatmap);
-
                     SongDisplay.Artist = editor.OriginalBeatmap.Artist;
                     SongDisplay.Title = editor.OriginalBeatmap.Title;
                     SongDisplay.Difficulty = editor.OriginalBeatmap.Version;
+                    SongDisplay.Cover = GetSongBackground(editor.NewBeatmap);
                     break;
             }
-        }
-
-        private void UpdateSongBg(Beatmap map)
-        {
-            SongDisplay.Cover = GetSongBackground(map);
         }
 
         private Image GetSongBackground(Beatmap beatmap)
@@ -510,22 +498,6 @@ namespace osu_trainer
             }
         }
 
-        private void ToggleDifficultyDisplay(object sender, EventArgs e)
-        {
-            if (editor.State == EditorState.NOT_READY)
-            {
-                StarsDisplay.Enabled = false;
-                AimLabel.ForeColor = Colors.Disabled;
-                SpeedLabel.ForeColor = Colors.Disabled;
-            }
-            else if (editor.State == EditorState.READY)
-            {
-                StarsDisplay.Enabled = true;
-                AimLabel.ForeColor = Colors.PaleBlue;
-                SpeedLabel.ForeColor = Colors.PaleBlue;
-            }
-        }
-
         private void ToggleBpmInputControls(object sender, EventArgs e)
         {
             bool enabled = (editor.State != EditorState.NOT_READY);
@@ -536,14 +508,13 @@ namespace osu_trainer
 
         private void UpdateDifficultyDisplay(object sender, EventArgs e)
         {
-            StarsDisplay.Stars = (float)editor.StarRating;
+            SongDisplay.Stars = (float)editor.StarRating;
 
             var mode = editor.GetMode();
             if (mode.HasValue)
-                StarsDisplay.GameMode = mode.Value;
-
-            AimLabel.Text = $"{editor.AimRating:0.0} aim";
-            SpeedLabel.Text = $"{editor.SpeedRating:0.0} speed";
+            {
+                SongDisplay.GameMode = mode.Value;
+            }
         }
 
         private void TogglePrettyButtons(object sender, EventArgs e)
@@ -922,7 +893,6 @@ namespace osu_trainer
             renameButton2.Visible = profilesVisible;
             renameButton3.Visible = profilesVisible;
             renameButton4.Visible = profilesVisible;
-            editHotkeysButton.Visible = profilesVisible;
 
             profileButton1.Text = editor.UserProfiles[0].Name;
             profileButton2.Text = editor.UserProfiles[1].Name;
@@ -987,21 +957,20 @@ namespace osu_trainer
         private void RearrangeLayout(object sender, EventArgs e)
         {
             bool profilesVisible = (editor.State == EditorState.NOT_READY) ? false : true;
+            bool extrasVisible = profilesVisible;
             if (profilesVisible)
             {
-                // Middle panel should take up more space (profile buttons visible)
-                middlePanel.Height = 212;
-                // Bottom panel should take up less space (songs folder button hidden)
+                // ready layout
+                middlePanel.Height = 178;
                 BottomPanel.Height = 111 - 33;
-                Height = 626 - 33;
+                Height = 564 - 33;
             }
             else
             {
-                // Middle panel should take up less space (profile buttons hidden)
-                middlePanel.Height = 212 - 66;
-                // Bottom panel should take up more space (songs folder button visible)
+                // not ready layout
+                middlePanel.Height = 110;
                 BottomPanel.Height = 111;
-                Height = 626 - 100;
+                Height = 593 - 100;
             }
         }
 
@@ -1010,10 +979,26 @@ namespace osu_trainer
             int centerX = DesktopLocation.X + (Width / 2);
             int centerY = DesktopLocation.Y + (Height / 2);
             var hotkeyForm = new HotkeyForm(centerX - 321/2, centerY - 217/2, Hotkeys);
+            hotkeyForm.ShowDialog();
             Hotkeys = hotkeyForm.Hotkeys;
             ApplyHotkeys();
-            hotkeyForm.Show();
         }
 
+        private void showExtrasButton_Click(object sender, EventArgs e)
+        {
+            if (!extrasPanel.Visible)
+            {
+                extrasPanel.Visible = true;
+                showExtrasButton.Text = "▼ Less";
+                Height += extrasPanel.Height;
+            }
+            else
+            {
+                extrasPanel.Visible = false;
+                showExtrasButton.Text = "▶ More!";
+                Height -= extrasPanel.Height;
+            }
+
+        }
     }
 }
