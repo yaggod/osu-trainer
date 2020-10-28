@@ -59,6 +59,7 @@ namespace osu_trainer
         {
             Directory.SetCurrentDirectory(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location));
             InitializeComponent();
+            Height = 493;
 
             nobg = Image.FromFile(nobgpng);
 
@@ -958,22 +959,35 @@ namespace osu_trainer
         {
             bool profilesVisible = (editor.State == EditorState.NOT_READY) ? false : true;
             bool extrasVisible = profilesVisible;
-            if (profilesVisible)
-            {
-                // ready layout
-                middlePanel.Height = 178;
-                BottomPanel.Height = 111 - 33;
-                Height = 564 - 33;
-            }
-            else
+            if (!profilesVisible)
             {
                 // not ready layout
                 middlePanel.Height = 110;
                 BottomPanel.Height = 111;
-                Height = 593 - 100;
+                Height = 493 + (extrasPanel.Visible ? extrasPanel.Height : 0);
+            }
+            else
+            {
+                // ready layout
+                middlePanel.Height = 178;
+                BottomPanel.Height = 111 - 33;
+                Height = 531 + (extrasPanel.Visible ? extrasPanel.Height : 0);
             }
         }
-
+        private void showExtrasButton_Click(object sender, EventArgs e)
+        {
+            if (!extrasPanel.Visible)
+            {
+                extrasPanel.Visible = true;
+                showExtrasButton.Text = "▼ Less";
+            }
+            else
+            {
+                extrasPanel.Visible = false;
+                showExtrasButton.Text = "▶ More!";
+            }
+            RearrangeLayout(this, EventArgs.Empty);
+        }
         private void editHotkeysButton_Click(object sender, EventArgs e)
         {
             int centerX = DesktopLocation.X + (Width / 2);
@@ -984,21 +998,5 @@ namespace osu_trainer
             ApplyHotkeys();
         }
 
-        private void showExtrasButton_Click(object sender, EventArgs e)
-        {
-            if (!extrasPanel.Visible)
-            {
-                extrasPanel.Visible = true;
-                showExtrasButton.Text = "▼ Less";
-                Height += extrasPanel.Height;
-            }
-            else
-            {
-                extrasPanel.Visible = false;
-                showExtrasButton.Text = "▶ More!";
-                Height -= extrasPanel.Height;
-            }
-
-        }
     }
 }
