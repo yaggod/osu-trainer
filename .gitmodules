@@ -4,3 +4,6 @@
 [submodule "osu-trainer/submodules/ProcessMemoryDataFinder"]
 	path = osu-trainer/submodules/ProcessMemoryDataFinder
 	url = https://github.com/Piotrekol/ProcessMemoryDataFinder.git
+[submodule "osu-trainer/submodules/OppaiSharp"]
+	path = osu-trainer/submodules/OppaiSharp
+	url = https://github.com/HoLLy-HaCKeR/OppaiSharp
