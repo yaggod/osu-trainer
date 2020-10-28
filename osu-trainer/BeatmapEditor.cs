@@ -451,10 +451,11 @@ namespace osu_trainer
                 {
                     (stars, aim, speed) = await Task.Run(() => DifficultyCalculator.CalculateStarRating(NewBeatmap));
                 }
-                catch (NullReferenceException e)
+                catch (Exception e)
                 {
                     Console.WriteLine(e);
                     Console.WriteLine("lol asdfasdf;lkjasdf");
+                    (stars, aim, speed) = (0, 0, 0);
                 }
                 // if a new request came in, invalidate the diffcalc result and service the new request
             }
