@@ -262,5 +262,29 @@ namespace osu_trainer.Properties {
                 this["HotkeyProfile4"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool HighQualityMp3s {
+            get {
+                return ((bool)(this["HighQualityMp3s"]));
+            }
+            set {
+                this["HighQualityMp3s"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public decimal BpmRate {
+            get {
+                return ((decimal)(this["BpmRate"]));
+            }
+            set {
+                this["BpmRate"] = value;
+            }
+        }
     }
 }

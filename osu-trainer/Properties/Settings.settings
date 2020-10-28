@@ -62,5 +62,11 @@
     <Setting Name="HotkeyProfile4" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">F</Value>
     </Setting>
+    <Setting Name="HighQualityMp3s" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="BpmRate" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

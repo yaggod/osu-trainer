@@ -122,7 +122,7 @@ namespace osu_trainer
             editor.ControlsModified += UpdateProfiles;
 
             // Install keyboard hooks
-            // Notice: The only purpose of the keyboard hook is for shortcuts. Nothing else.
+            // Notice: The only purpose of the keyboard hook is for shortcuts. Nothing else!
             ApplyHotkeys();
 
             // need controls to show up as initially disabled
@@ -172,7 +172,7 @@ namespace osu_trainer
 
         private void UpdateRateInputControls(object sender, EventArgs e)
         {
-            BpmMultiplierTextBox.Text = editor.BpmMultiplier.ToString("0.00");
+            BpmMultiplierTextBox.Text = editor.BpmRate.ToString("0.00");
         }
 
         private void UpdateSongDisplay(object sender, EventArgs e)
@@ -279,7 +279,7 @@ namespace osu_trainer
                 case EditorState.GENERATING_BEATMAP:
                     (decimal oldbpm, decimal oldmin, decimal oldmax) = editor.GetOriginalBpmData();
                     decimal newbpm, newmin, newmax;
-                    if (Math.Abs(editor.BpmMultiplier - 1.0M) > 0.001M)
+                    if (Math.Abs(editor.BpmRate - 1.0M) > 0.001M)
                         (newbpm, newmin, newmax) = editor.GetNewBpmData();
                     else
                         (newbpm, newmin, newmax) = (oldbpm, oldmin, oldmax);
@@ -301,7 +301,7 @@ namespace osu_trainer
                     NewBpmRangeTextBox.Visible = (oldmin != oldmax);
 
                     // bpm slider
-                    BpmSlider.Value = editor.BpmMultiplier;
+                    BpmSlider.Value = editor.BpmRate;
 
                     break;
             }
@@ -353,23 +353,26 @@ namespace osu_trainer
             ScaleARCheck.ForeColor = enabled ? Colors.PaleBlue : Colors.Disabled;
 
             // change checked state without raising any events
-            NoSpinnersCheck.CheckedChanged  -= NoSpinnerCheckBox_CheckedChanged;
-            HRCheck.CheckedChanged          -= HRCheck_CheckedChanged;
-            ChangePitchCheck.CheckedChanged -= ChangePitchButton_CheckedChanged;
-            ScaleODCheck.CheckedChanged     -= ScaleODCheck_CheckedChanged;
-            ScaleARCheck.CheckedChanged     -= ScaleARCheck_CheckedChanged;
-            
-            NoSpinnersCheck.Checked         = editor.NoSpinners;
-            HRCheck.Checked                 = editor.ForceHardrockCirclesize;
-            ChangePitchCheck.Checked        = editor.ChangePitch;
-            ScaleODCheck.Checked            = editor.ScaleOD;
-            ScaleARCheck.Checked            = editor.ScaleAR;
+            NoSpinnersCheck.CheckedChanged         -= NoSpinnerCheckBox_CheckedChanged;
+            HRCheck.CheckedChanged                 -= HRCheck_CheckedChanged;
+            ChangePitchCheck.CheckedChanged        -= ChangePitchButton_CheckedChanged;
+            ScaleODCheck.CheckedChanged            -= ScaleODCheck_CheckedChanged;
+            ScaleARCheck.CheckedChanged            -= ScaleARCheck_CheckedChanged;
+            highQualityCheckBox.CheckedChanged     -= highQualityCheckBox_CheckedChanged;
 
-            NoSpinnersCheck.CheckedChanged  += NoSpinnerCheckBox_CheckedChanged;
-            HRCheck.CheckedChanged          += HRCheck_CheckedChanged;
-            ChangePitchCheck.CheckedChanged += ChangePitchButton_CheckedChanged;
-            ScaleODCheck.CheckedChanged     += ScaleODCheck_CheckedChanged;
-            ScaleARCheck.CheckedChanged     += ScaleARCheck_CheckedChanged;
+            NoSpinnersCheck.Checked            = editor.NoSpinners;
+            HRCheck.Checked                    = editor.ForceHardrockCirclesize;
+            ChangePitchCheck.Checked           = editor.ChangePitch;
+            ScaleODCheck.Checked               = editor.ScaleOD;
+            ScaleARCheck.Checked               = editor.ScaleAR;
+            highQualityCheckBox.Checked        = editor.HighQualityMp3s;
+
+            NoSpinnersCheck.CheckedChanged         += NoSpinnerCheckBox_CheckedChanged;
+            HRCheck.CheckedChanged                 += HRCheck_CheckedChanged;
+            ChangePitchCheck.CheckedChanged        += ChangePitchButton_CheckedChanged;
+            ScaleODCheck.CheckedChanged            += ScaleODCheck_CheckedChanged;
+            ScaleARCheck.CheckedChanged            += ScaleARCheck_CheckedChanged;
+            highQualityCheckBox.CheckedChanged     += highQualityCheckBox_CheckedChanged;
         }
 
         private void ToggleHpCsArOdDisplay(object sender, EventArgs e)
@@ -578,7 +581,7 @@ namespace osu_trainer
             if (Decimal.TryParse(BpmMultiplierTextBox.Text, out mult))
                 editor.SetBpmMultiplier(mult);
             else
-                BpmMultiplierTextBox.Text = editor.BpmMultiplier.ToString("0.00");
+                BpmMultiplierTextBox.Text = editor.BpmRate.ToString("0.00");
         }
 
         private void NewBpmTextBox_Submit()
@@ -998,5 +1001,9 @@ namespace osu_trainer
             ApplyHotkeys();
         }
 
+        private void highQualityCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            editor.ToggleHighQualityMp3s();
+        }
     }
 }

@@ -91,12 +91,13 @@ namespace osu_trainer
         public bool ScaleAR { get; private set; } = true;
         public bool ScaleOD { get; private set; } = true;
         internal EditorState State { get; private set; }
-        public decimal BpmMultiplier { get; set; } = 1.0M;
+        public decimal BpmRate { get; set; } = 1.0M;
         
         // Toggles
         public bool ForceHardrockCirclesize { get; private set; }
         public bool NoSpinners { get; private set; }
         public bool ChangePitch { get; private set; }
+        public bool HighQualityMp3s { get; private set; }
 
         public BeatmapEditor(MainForm f)
         {
@@ -116,11 +117,14 @@ namespace osu_trainer
             lockedOD = Properties.Settings.Default.LockedODSetting;
 
             BpmIsLocked = Properties.Settings.Default.BpmLockedState;
-            lockedBpm = Properties.Settings.Default.LockedBpmSetting;
-            // TODO: save BpmMultiplier if rate is specified instead of bpm
+            if (BpmIsLocked)
+                lockedBpm = Properties.Settings.Default.LockedBpmSetting;
+            else
+                BpmRate = Properties.Settings.Default.BpmRate;
 
-            NoSpinners = Properties.Settings.Default.NoSpinners;
             ChangePitch = Properties.Settings.Default.ChangePitch;
+            NoSpinners = Properties.Settings.Default.NoSpinners;
+            HighQualityMp3s = Properties.Settings.Default.HighQualityMp3s;
 
             LoadProfilesFromDisk();
 
@@ -141,10 +145,14 @@ namespace osu_trainer
             Properties.Settings.Default.ODLockedState = OdIsLocked;
 
             Properties.Settings.Default.BpmLockedState = BpmIsLocked;
-            Properties.Settings.Default.LockedBpmSetting = lockedBpm;
+            if (BpmIsLocked)
+                Properties.Settings.Default.LockedBpmSetting = lockedBpm;
+            else
+                Properties.Settings.Default.BpmRate = BpmRate;
 
             Properties.Settings.Default.ChangePitch = ChangePitch;
             Properties.Settings.Default.NoSpinners = NoSpinners;
+            Properties.Settings.Default.HighQualityMp3s = HighQualityMp3s;
             Properties.Settings.Default.Save();
         }
 
@@ -184,7 +192,7 @@ namespace osu_trainer
 
             // Set metadata
             Beatmap exportBeatmap = new Beatmap(NewBeatmap);
-            ModifyBeatmapMetadata(exportBeatmap, BpmMultiplier, ChangePitch, compensateForDT);
+            ModifyBeatmapMetadata(exportBeatmap, BpmRate, ChangePitch, compensateForDT);
 
             // Slow down map by 1.5x
             if (compensateForDT)
@@ -207,7 +215,7 @@ namespace osu_trainer
                 string inFile = Path.Combine(Path.GetDirectoryName(OriginalBeatmap.Filename), OriginalBeatmap.AudioFilename);
                 string outFile = Path.Combine(Path.GetTempPath(), exportBeatmap.AudioFilename);
 
-                SongSpeedChanger.GenerateAudioFile(inFile, outFile, BpmMultiplier, ChangePitch, compensateForDT);
+                SongSpeedChanger.GenerateAudioFile(inFile, outFile, BpmRate, ChangePitch, compensateForDT);
                 newMp3 = outFile;
 
                 // take note of this mp3 in a text file, so we can clean it up later
@@ -392,11 +400,11 @@ namespace osu_trainer
                     // Apply multiplier
                     if (BpmIsLocked)
                         SetBpm(lockedBpm);
-                    NewBeatmap.SetRate(BpmMultiplier);
+                    NewBeatmap.SetRate(BpmRate);
 
                     // Apply bpm scaled settings
-                    if (ScaleAR) NewBeatmap.ApproachRate = DifficultyCalculator.CalculateMultipliedAR(candidateOriginalBeatmap, BpmMultiplier);
-                    if (ScaleOD) NewBeatmap.OverallDifficulty = DifficultyCalculator.CalculateMultipliedOD(candidateOriginalBeatmap, BpmMultiplier);
+                    if (ScaleAR) NewBeatmap.ApproachRate = DifficultyCalculator.CalculateMultipliedAR(candidateOriginalBeatmap, BpmRate);
+                    if (ScaleOD) NewBeatmap.OverallDifficulty = DifficultyCalculator.CalculateMultipliedOD(candidateOriginalBeatmap, BpmRate);
 
                     // Apply locked settings to new map
                     if (HpIsLocked) NewBeatmap.HPDrainRate = lockedHP;
@@ -541,7 +549,7 @@ namespace osu_trainer
             // not applicable for taiko or mania
             if (ScaleAR && NewBeatmap.Mode != GameMode.Taiko && NewBeatmap.Mode != GameMode.Mania)
             {
-                NewBeatmap.ApproachRate = DifficultyCalculator.CalculateMultipliedAR(OriginalBeatmap, BpmMultiplier);
+                NewBeatmap.ApproachRate = DifficultyCalculator.CalculateMultipliedAR(OriginalBeatmap, BpmRate);
                 BeatmapModified?.Invoke(this, EventArgs.Empty);
             }
             ArIsLocked = false;
@@ -557,7 +565,7 @@ namespace osu_trainer
 
             if (ScaleOD)
             {
-                NewBeatmap.OverallDifficulty = DifficultyCalculator.CalculateMultipliedOD(OriginalBeatmap, BpmMultiplier);
+                NewBeatmap.OverallDifficulty = DifficultyCalculator.CalculateMultipliedOD(OriginalBeatmap, BpmRate);
                 BeatmapModified?.Invoke(this, EventArgs.Empty);
             }
             OdIsLocked = false;
@@ -664,12 +672,12 @@ namespace osu_trainer
 
         private void ApplyBpmMultiplier(decimal multiplier)
         {
-            if (BpmMultiplier == multiplier)
+            if (BpmRate == multiplier)
                 return;
             if (multiplier < 0.1M)
                 BeatmapModified?.Invoke(this, EventArgs.Empty); // reject this value and revert view
 
-            BpmMultiplier = multiplier;
+            BpmRate = multiplier;
 
             // make no changes
             if (State == EditorState.NOT_READY)
@@ -677,7 +685,7 @@ namespace osu_trainer
 
             // scale AR (not applicable for taiko or mania)
             if (ScaleAR && !ArIsLocked && NewBeatmap.Mode != GameMode.Taiko && NewBeatmap.Mode != GameMode.Mania)
-                NewBeatmap.ApproachRate = DifficultyCalculator.CalculateMultipliedAR(OriginalBeatmap, BpmMultiplier);
+                NewBeatmap.ApproachRate = DifficultyCalculator.CalculateMultipliedAR(OriginalBeatmap, BpmRate);
 
             // scale OD
             if (ScaleOD && !OdIsLocked)
@@ -688,7 +696,7 @@ namespace osu_trainer
             }
 
             // modify beatmap timing
-            NewBeatmap.SetRate(BpmMultiplier);
+            NewBeatmap.SetRate(BpmRate);
 
             RequestDiffCalc();
             BeatmapModified?.Invoke(this, EventArgs.Empty);
@@ -728,9 +736,9 @@ namespace osu_trainer
             return OriginalBeatmap?.Mode;
         }
 
-        public decimal GetScaledAR() => DifficultyCalculator.CalculateMultipliedAR(OriginalBeatmap, BpmMultiplier);
+        public decimal GetScaledAR() => DifficultyCalculator.CalculateMultipliedAR(OriginalBeatmap, BpmRate);
 
-        public decimal GetScaledOD() => DifficultyCalculator.CalculateMultipliedOD(OriginalBeatmap, BpmMultiplier);
+        public decimal GetScaledOD() => DifficultyCalculator.CalculateMultipliedOD(OriginalBeatmap, BpmRate);
 
         public bool NewMapIsDifferent()
         {
@@ -739,7 +747,7 @@ namespace osu_trainer
                 NewBeatmap.CircleSize != OriginalBeatmap.CircleSize ||
                 NewBeatmap.ApproachRate != OriginalBeatmap.ApproachRate ||
                 NewBeatmap.OverallDifficulty != OriginalBeatmap.OverallDifficulty ||
-                Math.Abs(BpmMultiplier - 1.0M) > 0.001M ||
+                Math.Abs(BpmRate - 1.0M) > 0.001M ||
                 NoSpinners
             );
         }
@@ -862,7 +870,7 @@ namespace osu_trainer
             ForceHardrockCirclesize = false;
             ScaleAR = true;
             ScaleOD = true;
-            BpmMultiplier = 1.0M;
+            BpmRate = 1.0M;
             NewBeatmap.SetRate(1.0M);
             RequestDiffCalc();
             ControlsModified?.Invoke(this, EventArgs.Empty);
@@ -953,7 +961,7 @@ namespace osu_trainer
 
             UserProfiles[i].BpmIsLocked = BpmIsLocked;
             UserProfiles[i].lockedBpm = lockedBpm;
-            UserProfiles[i].BpmMultiplier = BpmMultiplier;
+            UserProfiles[i].BpmMultiplier = BpmRate;
         }
         public void RenameProfile(int whichProfile, string name)
         {
@@ -1033,6 +1041,12 @@ namespace osu_trainer
 
             RequestDiffCalc();
             BeatmapModified?.Invoke(this, EventArgs.Empty);
+            ControlsModified?.Invoke(this, EventArgs.Empty);
+        }
+
+        internal void ToggleHighQualityMp3s()
+        {
+            HighQualityMp3s = !HighQualityMp3s;
             ControlsModified?.Invoke(this, EventArgs.Empty);
         }
 
