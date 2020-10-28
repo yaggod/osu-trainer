@@ -13,9 +13,9 @@ namespace osu_trainer
         {
             decimal DTCompensatedMultiplier = effectiveMultiplier / 1.5M;
 
-            string temp1 = JunUtils.GetTempFilename("mp3"); // audio copy
-            string temp2 = JunUtils.GetTempFilename("wav"); // decoded wav
-            string temp3 = JunUtils.GetTempFilename("wav"); // stretched file
+            string temp1 = Path.Combine(Guid.NewGuid().ToString() + ".mp3"); // audio copy
+            string temp2 = Path.Combine(Guid.NewGuid().ToString() + ".wav"); // decoded wav
+            string temp3 = Path.Combine(Guid.NewGuid().ToString() + ".wav"); // stretched file
 
             File.Copy(inFile, temp1);
 

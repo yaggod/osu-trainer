@@ -31,11 +31,6 @@ namespace osu_trainer
             return str.Replace("\"", "").Replace("*", "").Replace("\\", "").Replace("/", "").Replace("?", "").Replace("<", "").Replace(">", "").Replace("|", "").Replace(":", "");
         }
 
-        public static string GetTempFilename(string ext)
-        {
-            return Path.GetTempPath() + Guid.NewGuid() + '.' + ext;
-        }
-
         public static string GetBeatmapDirectoryName(Beatmap map)
         {
             return Path.GetDirectoryName(map.Filename);
