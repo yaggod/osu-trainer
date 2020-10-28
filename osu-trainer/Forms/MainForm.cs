@@ -79,7 +79,7 @@ namespace osu_trainer
             };
             checkControls = new List<OsuCheckBox>
             {
-                NoSpinnersCheck, HRCheck, ScaleARCheck, ScaleODCheck, ChangePitchCheck
+                NoSpinnersCheck, HRCheck, ScaleARCheck, ScaleODCheck, ChangePitchCheck, highQualityMp3Check
             };
 
             ApplyFonts();
@@ -358,21 +358,21 @@ namespace osu_trainer
             ChangePitchCheck.CheckedChanged        -= ChangePitchButton_CheckedChanged;
             ScaleODCheck.CheckedChanged            -= ScaleODCheck_CheckedChanged;
             ScaleARCheck.CheckedChanged            -= ScaleARCheck_CheckedChanged;
-            highQualityCheckBox.CheckedChanged     -= highQualityCheckBox_CheckedChanged;
+            highQualityMp3Check.CheckedChanged     -= highQualityCheckBox_CheckedChanged;
 
             NoSpinnersCheck.Checked            = editor.NoSpinners;
             HRCheck.Checked                    = editor.ForceHardrockCirclesize;
             ChangePitchCheck.Checked           = editor.ChangePitch;
             ScaleODCheck.Checked               = editor.ScaleOD;
             ScaleARCheck.Checked               = editor.ScaleAR;
-            highQualityCheckBox.Checked        = editor.HighQualityMp3s;
+            highQualityMp3Check.Checked        = editor.HighQualityMp3s;
 
             NoSpinnersCheck.CheckedChanged         += NoSpinnerCheckBox_CheckedChanged;
             HRCheck.CheckedChanged                 += HRCheck_CheckedChanged;
             ChangePitchCheck.CheckedChanged        += ChangePitchButton_CheckedChanged;
             ScaleODCheck.CheckedChanged            += ScaleODCheck_CheckedChanged;
             ScaleARCheck.CheckedChanged            += ScaleARCheck_CheckedChanged;
-            highQualityCheckBox.CheckedChanged     += highQualityCheckBox_CheckedChanged;
+            highQualityMp3Check.CheckedChanged     += highQualityCheckBox_CheckedChanged;
         }
 
         private void ToggleHpCsArOdDisplay(object sender, EventArgs e)

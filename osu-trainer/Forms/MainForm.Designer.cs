@@ -65,6 +65,7 @@ namespace osu_trainer
             this.extrasPanel = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.ChangePitchCheck = new osu_trainer.Controls.OsuCheckBox();
+            this.highQualityMp3Check = new osu_trainer.Controls.OsuCheckBox();
             this.NoSpinnersCheck = new osu_trainer.Controls.OsuCheckBox();
             this.profileButton4 = new osu_trainer.Controls.OsuButton();
             this.profileButton3 = new osu_trainer.Controls.OsuButton();
@@ -95,7 +96,6 @@ namespace osu_trainer
             this.GenerateMapButton = new osu_trainer.Controls.OsuButton();
             this.SongsFolderButton = new osu_trainer.Controls.OsuButton();
             this.SongDisplay = new osu_trainer.Controls.SongDisplay();
-            this.highQualityCheckBox = new osu_trainer.Controls.OsuCheckBox();
             this.middlePanel.SuspendLayout();
             this.Middle1Panel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -559,7 +559,7 @@ namespace osu_trainer
             // 
             this.extrasPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(29)))), ((int)(((byte)(44)))));
             this.extrasPanel.Controls.Add(this.ChangePitchCheck);
-            this.extrasPanel.Controls.Add(this.highQualityCheckBox);
+            this.extrasPanel.Controls.Add(this.highQualityMp3Check);
             this.extrasPanel.Controls.Add(this.NoSpinnersCheck);
             this.extrasPanel.Controls.Add(this.button1);
             this.extrasPanel.Controls.Add(this.editHotkeysButton);
@@ -589,6 +589,7 @@ namespace osu_trainer
             // 
             this.ChangePitchCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ChangePitchCheck.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
+            this.ChangePitchCheck.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold);
             this.ChangePitchCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
             this.ChangePitchCheck.Location = new System.Drawing.Point(2, 9);
             this.ChangePitchCheck.Name = "ChangePitchCheck";
@@ -600,9 +601,24 @@ namespace osu_trainer
             this.ChangePitchCheck.UseVisualStyleBackColor = true;
             this.ChangePitchCheck.CheckedChanged += new System.EventHandler(this.ChangePitchButton_CheckedChanged);
             // 
+            // highQualityMp3Check
+            // 
+            this.highQualityMp3Check.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
+            this.highQualityMp3Check.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold);
+            this.highQualityMp3Check.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
+            this.highQualityMp3Check.Location = new System.Drawing.Point(2, 69);
+            this.highQualityMp3Check.Name = "highQualityMp3Check";
+            this.highQualityMp3Check.Size = new System.Drawing.Size(155, 24);
+            this.highQualityMp3Check.TabIndex = 20;
+            this.highQualityMp3Check.Text = "High quality mp3";
+            this.highQualityMp3Check.TextOnRight = true;
+            this.highQualityMp3Check.UseVisualStyleBackColor = true;
+            this.highQualityMp3Check.CheckedChanged += new System.EventHandler(this.highQualityCheckBox_CheckedChanged);
+            // 
             // NoSpinnersCheck
             // 
             this.NoSpinnersCheck.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
+            this.NoSpinnersCheck.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold);
             this.NoSpinnersCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
             this.NoSpinnersCheck.Location = new System.Drawing.Point(2, 39);
             this.NoSpinnersCheck.Name = "NoSpinnersCheck";
@@ -1173,19 +1189,6 @@ namespace osu_trainer
             this.SongDisplay.Text = "songDisplay1";
             this.SongDisplay.Title = null;
             // 
-            // highQualityCheckBox
-            // 
-            this.highQualityCheckBox.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
-            this.highQualityCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
-            this.highQualityCheckBox.Location = new System.Drawing.Point(2, 69);
-            this.highQualityCheckBox.Name = "highQualityCheckBox";
-            this.highQualityCheckBox.Size = new System.Drawing.Size(164, 24);
-            this.highQualityCheckBox.TabIndex = 20;
-            this.highQualityCheckBox.Text = "High quality mp3s";
-            this.highQualityCheckBox.TextOnRight = true;
-            this.highQualityCheckBox.UseVisualStyleBackColor = true;
-            this.highQualityCheckBox.CheckedChanged += new System.EventHandler(this.highQualityCheckBox_CheckedChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1284,6 +1287,6 @@ namespace osu_trainer
         private System.Windows.Forms.Button showExtrasButton;
         private System.Windows.Forms.Panel extrasPanel;
         private System.Windows.Forms.Button button1;
-        private OsuCheckBox highQualityCheckBox;
+        private OsuCheckBox highQualityMp3Check;
     }
 }
