@@ -213,7 +213,6 @@
       <DependentUpon>SongsFolderForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SongSpeedChanger.cs" />
-    <Compile Include="Updater.cs" />
     <Compile Include="UserProfile.cs" />
   </ItemGroup>
   <ItemGroup>

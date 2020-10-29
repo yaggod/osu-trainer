@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing.Text;
 using System.Globalization;
 using System.Runtime.InteropServices;
@@ -15,11 +16,14 @@ namespace osu_trainer
         {
             try
             {
-                Updater.CheckForUpdates();
+                var updaterProc = Process.Start("updater.exe");
+                updaterProc.WaitForExit();
             }
-            catch
+            catch (Exception e)
             {
                 // failed to update, who cares
+                Console.WriteLine("Failed to update lol");
+                Console.WriteLine(e);
             }
 
             AddFont(FontCollection, Properties.Resources.Comfortaa_Bold);
