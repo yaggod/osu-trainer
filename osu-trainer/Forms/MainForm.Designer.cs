@@ -153,7 +153,7 @@ namespace osu_trainer
             this.showExtrasButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
             this.showExtrasButton.FlatAppearance.BorderSize = 0;
             this.showExtrasButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.showExtrasButton.Font = new System.Drawing.Font("Microsoft Tai Le", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showExtrasButton.Font = new System.Drawing.Font("Segoe UI", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.showExtrasButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
             this.showExtrasButton.Location = new System.Drawing.Point(0, 159);
             this.showExtrasButton.Margin = new System.Windows.Forms.Padding(0);
@@ -168,7 +168,7 @@ namespace osu_trainer
             // 
             this.saveButton4.FlatAppearance.BorderSize = 0;
             this.saveButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveButton4.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveButton4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
             this.saveButton4.Location = new System.Drawing.Point(315, 115);
             this.saveButton4.Name = "saveButton4";
@@ -182,7 +182,7 @@ namespace osu_trainer
             // 
             this.saveButton3.FlatAppearance.BorderSize = 0;
             this.saveButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveButton3.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveButton3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
             this.saveButton3.Location = new System.Drawing.Point(214, 115);
             this.saveButton3.Name = "saveButton3";
@@ -196,7 +196,7 @@ namespace osu_trainer
             // 
             this.saveButton2.FlatAppearance.BorderSize = 0;
             this.saveButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveButton2.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveButton2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
             this.saveButton2.Location = new System.Drawing.Point(112, 115);
             this.saveButton2.Name = "saveButton2";
@@ -210,7 +210,7 @@ namespace osu_trainer
             // 
             this.saveButton1.FlatAppearance.BorderSize = 0;
             this.saveButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveButton1.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveButton1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
             this.saveButton1.Location = new System.Drawing.Point(10, 115);
             this.saveButton1.Name = "saveButton1";
@@ -224,7 +224,7 @@ namespace osu_trainer
             // 
             this.BpmMultiplierTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(16)))), ((int)(((byte)(25)))));
             this.BpmMultiplierTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.BpmMultiplierTextBox.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BpmMultiplierTextBox.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BpmMultiplierTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.BpmMultiplierTextBox.Location = new System.Drawing.Point(90, 5);
             this.BpmMultiplierTextBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
@@ -240,13 +240,13 @@ namespace osu_trainer
             // 
             this.NewBpmRangeTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(35)))), ((int)(((byte)(53)))));
             this.NewBpmRangeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.NewBpmRangeTextBox.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewBpmRangeTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NewBpmRangeTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
             this.NewBpmRangeTextBox.Location = new System.Drawing.Point(163, 64);
             this.NewBpmRangeTextBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.NewBpmRangeTextBox.Name = "NewBpmRangeTextBox";
             this.NewBpmRangeTextBox.ReadOnly = true;
-            this.NewBpmRangeTextBox.Size = new System.Drawing.Size(85, 17);
+            this.NewBpmRangeTextBox.Size = new System.Drawing.Size(85, 18);
             this.NewBpmRangeTextBox.TabIndex = 10;
             this.NewBpmRangeTextBox.Text = "(180 - 210)";
             // 
@@ -254,13 +254,13 @@ namespace osu_trainer
             // 
             this.OriginalBpmRangeTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(35)))), ((int)(((byte)(53)))));
             this.OriginalBpmRangeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.OriginalBpmRangeTextBox.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OriginalBpmRangeTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OriginalBpmRangeTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
             this.OriginalBpmRangeTextBox.Location = new System.Drawing.Point(163, 35);
             this.OriginalBpmRangeTextBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.OriginalBpmRangeTextBox.Name = "OriginalBpmRangeTextBox";
             this.OriginalBpmRangeTextBox.ReadOnly = true;
-            this.OriginalBpmRangeTextBox.Size = new System.Drawing.Size(85, 17);
+            this.OriginalBpmRangeTextBox.Size = new System.Drawing.Size(85, 18);
             this.OriginalBpmRangeTextBox.TabIndex = 20;
             this.OriginalBpmRangeTextBox.Text = "(180 - 210)";
             // 
@@ -268,13 +268,13 @@ namespace osu_trainer
             // 
             this.OriginalBpmTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(24)))), ((int)(((byte)(38)))));
             this.OriginalBpmTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.OriginalBpmTextBox.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OriginalBpmTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OriginalBpmTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.OriginalBpmTextBox.Location = new System.Drawing.Point(89, 35);
             this.OriginalBpmTextBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.OriginalBpmTextBox.Name = "OriginalBpmTextBox";
             this.OriginalBpmTextBox.ReadOnly = true;
-            this.OriginalBpmTextBox.Size = new System.Drawing.Size(42, 17);
+            this.OriginalBpmTextBox.Size = new System.Drawing.Size(42, 18);
             this.OriginalBpmTextBox.TabIndex = 10;
             this.OriginalBpmTextBox.Text = "200";
             this.OriginalBpmTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -284,7 +284,7 @@ namespace osu_trainer
             // 
             this.renameButton4.FlatAppearance.BorderSize = 0;
             this.renameButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.renameButton4.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.renameButton4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.renameButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
             this.renameButton4.Location = new System.Drawing.Point(315, 132);
             this.renameButton4.Name = "renameButton4";
@@ -298,7 +298,7 @@ namespace osu_trainer
             // 
             this.renameButton3.FlatAppearance.BorderSize = 0;
             this.renameButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.renameButton3.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.renameButton3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.renameButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
             this.renameButton3.Location = new System.Drawing.Point(214, 132);
             this.renameButton3.Name = "renameButton3";
@@ -312,7 +312,7 @@ namespace osu_trainer
             // 
             this.renameButton2.FlatAppearance.BorderSize = 0;
             this.renameButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.renameButton2.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.renameButton2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.renameButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
             this.renameButton2.Location = new System.Drawing.Point(112, 132);
             this.renameButton2.Name = "renameButton2";
@@ -327,7 +327,7 @@ namespace osu_trainer
             this.renameButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.renameButton1.FlatAppearance.BorderSize = 0;
             this.renameButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.renameButton1.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.renameButton1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.renameButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
             this.renameButton1.Location = new System.Drawing.Point(10, 132);
             this.renameButton1.Name = "renameButton1";
@@ -341,7 +341,7 @@ namespace osu_trainer
             // 
             this.editHotkeysButton.FlatAppearance.BorderSize = 0;
             this.editHotkeysButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editHotkeysButton.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editHotkeysButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editHotkeysButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
             this.editHotkeysButton.Location = new System.Drawing.Point(328, 11);
             this.editHotkeysButton.Name = "editHotkeysButton";
@@ -388,7 +388,7 @@ namespace osu_trainer
             this.tableLayoutPanel1.Controls.Add(this.HPSlider, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.HPLockCheck, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Font = new System.Drawing.Font("Microsoft Tai Le", 12F);
+            this.tableLayoutPanel1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
@@ -410,7 +410,7 @@ namespace osu_trainer
             this.ODDisplay.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.ODDisplay.Name = "ODDisplay";
             this.ODDisplay.ReadOnly = true;
-            this.ODDisplay.Size = new System.Drawing.Size(35, 21);
+            this.ODDisplay.Size = new System.Drawing.Size(35, 22);
             this.ODDisplay.TabIndex = 10;
             this.ODDisplay.Text = "0.0";
             this.ODDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -427,7 +427,7 @@ namespace osu_trainer
             this.ARDisplay.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.ARDisplay.Name = "ARDisplay";
             this.ARDisplay.ReadOnly = true;
-            this.ARDisplay.Size = new System.Drawing.Size(35, 21);
+            this.ARDisplay.Size = new System.Drawing.Size(35, 22);
             this.ARDisplay.TabIndex = 7;
             this.ARDisplay.Text = "0.0";
             this.ARDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -444,7 +444,7 @@ namespace osu_trainer
             this.CSDisplay.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.CSDisplay.Name = "CSDisplay";
             this.CSDisplay.ReadOnly = true;
-            this.CSDisplay.Size = new System.Drawing.Size(35, 21);
+            this.CSDisplay.Size = new System.Drawing.Size(35, 22);
             this.CSDisplay.TabIndex = 4;
             this.CSDisplay.Text = "0.0";
             this.CSDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -456,13 +456,13 @@ namespace osu_trainer
             this.HPDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(24)))), ((int)(((byte)(38)))));
             this.HPDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.HPDisplay.Enabled = false;
-            this.HPDisplay.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HPDisplay.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HPDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.HPDisplay.Location = new System.Drawing.Point(41, 5);
             this.HPDisplay.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.HPDisplay.Name = "HPDisplay";
             this.HPDisplay.ReadOnly = true;
-            this.HPDisplay.Size = new System.Drawing.Size(35, 21);
+            this.HPDisplay.Size = new System.Drawing.Size(35, 22);
             this.HPDisplay.TabIndex = 1;
             this.HPDisplay.Text = "0.0";
             this.HPDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -576,7 +576,7 @@ namespace osu_trainer
             // 
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
             this.button1.Location = new System.Drawing.Point(280, 38);
             this.button1.Name = "button1";
@@ -591,7 +591,7 @@ namespace osu_trainer
             // 
             this.ChangePitchCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ChangePitchCheck.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
-            this.ChangePitchCheck.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ChangePitchCheck.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.ChangePitchCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
             this.ChangePitchCheck.Location = new System.Drawing.Point(2, 9);
             this.ChangePitchCheck.Name = "ChangePitchCheck";
@@ -606,7 +606,7 @@ namespace osu_trainer
             // highQualityMp3Check
             // 
             this.highQualityMp3Check.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
-            this.highQualityMp3Check.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold);
+            this.highQualityMp3Check.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.highQualityMp3Check.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
             this.highQualityMp3Check.Location = new System.Drawing.Point(2, 69);
             this.highQualityMp3Check.Name = "highQualityMp3Check";
@@ -620,7 +620,7 @@ namespace osu_trainer
             // NoSpinnersCheck
             // 
             this.NoSpinnersCheck.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
-            this.NoSpinnersCheck.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold);
+            this.NoSpinnersCheck.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.NoSpinnersCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
             this.NoSpinnersCheck.Location = new System.Drawing.Point(2, 39);
             this.NoSpinnersCheck.Name = "NoSpinnersCheck";
@@ -648,7 +648,7 @@ namespace osu_trainer
             // 
             this.profileButton4.BrightnessRange = 0.01F;
             this.profileButton4.Color = System.Drawing.Color.MediumPurple;
-            this.profileButton4.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.profileButton4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.profileButton4.ForeColor = System.Drawing.Color.White;
             this.profileButton4.Location = new System.Drawing.Point(316, 92);
             this.profileButton4.Name = "profileButton4";
@@ -668,7 +668,7 @@ namespace osu_trainer
             // 
             this.profileButton3.BrightnessRange = 0.01F;
             this.profileButton3.Color = System.Drawing.Color.MediumPurple;
-            this.profileButton3.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.profileButton3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.profileButton3.ForeColor = System.Drawing.Color.White;
             this.profileButton3.Location = new System.Drawing.Point(214, 92);
             this.profileButton3.Name = "profileButton3";
@@ -688,7 +688,7 @@ namespace osu_trainer
             // 
             this.profileButton2.BrightnessRange = 0.01F;
             this.profileButton2.Color = System.Drawing.Color.MediumPurple;
-            this.profileButton2.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.profileButton2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.profileButton2.ForeColor = System.Drawing.Color.White;
             this.profileButton2.Location = new System.Drawing.Point(112, 92);
             this.profileButton2.Name = "profileButton2";
@@ -708,7 +708,7 @@ namespace osu_trainer
             // 
             this.profileButton1.BrightnessRange = 0.01F;
             this.profileButton1.Color = System.Drawing.Color.MediumPurple;
-            this.profileButton1.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.profileButton1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.profileButton1.ForeColor = System.Drawing.Color.White;
             this.profileButton1.Location = new System.Drawing.Point(10, 92);
             this.profileButton1.Name = "profileButton1";
@@ -819,7 +819,7 @@ namespace osu_trainer
             this.NewBpmTextBox.Location = new System.Drawing.Point(89, 64);
             this.NewBpmTextBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.NewBpmTextBox.Name = "NewBpmTextBox";
-            this.NewBpmTextBox.Size = new System.Drawing.Size(42, 17);
+            this.NewBpmTextBox.Size = new System.Drawing.Size(42, 18);
             this.NewBpmTextBox.TabIndex = 10;
             this.NewBpmTextBox.Text = "200";
             this.NewBpmTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -830,12 +830,12 @@ namespace osu_trainer
             // OriginalBpmLabel
             // 
             this.OriginalBpmLabel.AutoSize = true;
-            this.OriginalBpmLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OriginalBpmLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OriginalBpmLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
             this.OriginalBpmLabel.Location = new System.Drawing.Point(18, 36);
             this.OriginalBpmLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.OriginalBpmLabel.Name = "OriginalBpmLabel";
-            this.OriginalBpmLabel.Size = new System.Drawing.Size(62, 16);
+            this.OriginalBpmLabel.Size = new System.Drawing.Size(62, 17);
             this.OriginalBpmLabel.TabIndex = 9;
             this.OriginalBpmLabel.Text = "Old BPM";
             this.OriginalBpmLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -843,12 +843,12 @@ namespace osu_trainer
             // NewBpmLabel
             // 
             this.NewBpmLabel.AutoSize = true;
-            this.NewBpmLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewBpmLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NewBpmLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
             this.NewBpmLabel.Location = new System.Drawing.Point(15, 65);
             this.NewBpmLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.NewBpmLabel.Name = "NewBpmLabel";
-            this.NewBpmLabel.Size = new System.Drawing.Size(67, 16);
+            this.NewBpmLabel.Size = new System.Drawing.Size(67, 17);
             this.NewBpmLabel.TabIndex = 9;
             this.NewBpmLabel.Text = "New BPM";
             this.NewBpmLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -860,7 +860,7 @@ namespace osu_trainer
             this.BpmMultiplierLabel.Location = new System.Drawing.Point(47, 7);
             this.BpmMultiplierLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.BpmMultiplierLabel.Name = "BpmMultiplierLabel";
-            this.BpmMultiplierLabel.Size = new System.Drawing.Size(35, 16);
+            this.BpmMultiplierLabel.Size = new System.Drawing.Size(35, 17);
             this.BpmMultiplierLabel.TabIndex = 1;
             this.BpmMultiplierLabel.Text = "Rate";
             this.BpmMultiplierLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1126,7 +1126,7 @@ namespace osu_trainer
             this.ResetButton.Color = System.Drawing.Color.SteelBlue;
             this.ResetButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.ResetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ResetButton.Font = new System.Drawing.Font("Microsoft Tai Le", 12F);
+            this.ResetButton.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.ResetButton.ForeColor = System.Drawing.Color.White;
             this.ResetButton.Location = new System.Drawing.Point(10, 37);
             this.ResetButton.Name = "ResetButton";
@@ -1149,7 +1149,7 @@ namespace osu_trainer
             this.GenerateMapButton.BrightnessRange = 0.01F;
             this.GenerateMapButton.Color = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(51)))), ((int)(((byte)(131)))));
             this.GenerateMapButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GenerateMapButton.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GenerateMapButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenerateMapButton.ForeColor = System.Drawing.Color.White;
             this.GenerateMapButton.Location = new System.Drawing.Point(146, 37);
             this.GenerateMapButton.Margin = new System.Windows.Forms.Padding(30, 3, 30, 3);
@@ -1172,7 +1172,7 @@ namespace osu_trainer
             this.SongsFolderButton.Color = System.Drawing.Color.DarkGoldenrod;
             this.SongsFolderButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.SongsFolderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SongsFolderButton.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SongsFolderButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SongsFolderButton.ForeColor = System.Drawing.Color.White;
             this.SongsFolderButton.Location = new System.Drawing.Point(10, 3);
             this.SongsFolderButton.Name = "SongsFolderButton";
@@ -1206,7 +1206,7 @@ namespace osu_trainer
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(35)))), ((int)(((byte)(53)))));
             this.ClientSize = new System.Drawing.Size(427, 663);
@@ -1216,14 +1216,14 @@ namespace osu_trainer
             this.Controls.Add(this.BottomPanel);
             this.Controls.Add(this.TopPanel);
             this.Controls.Add(this.titlePanel);
-            this.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "osu trainer v1.6";
+            this.Text = "osu trainer v1.8";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.middlePanel.ResumeLayout(false);
             this.middlePanel.PerformLayout();

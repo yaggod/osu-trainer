@@ -218,7 +218,7 @@ namespace osu_trainer
                 SongSpeedChanger.GenerateAudioFile(inFile, outFile, BpmRate, ChangePitch, compensateForDT, HighQualityMp3s);
                 newMp3 = outFile;
 
-                // take note of this mp3 in a text file, so we can clean it up later
+                // take note of this mp3 in a text file so we can clean it up later
                 string mp3ManifestFile = GetMp3ListFilePath();
                 List<string> manifest = File.ReadAllLines(mp3ManifestFile).ToList();
                 string beatmapFolder = Path.GetDirectoryName(exportBeatmap.Filename).Replace(Properties.Settings.Default.SongsFolder + "\\", "");
@@ -885,28 +885,39 @@ namespace osu_trainer
         const string UserProfilesFile = "userprofiles.txt";
         public void SaveProfilesToDisk()
         {
-            using (var writer = new StreamWriter(UserProfilesFile, false))
+            try
             {
-                foreach (var profile in UserProfiles)
+                using (var writer = new StreamWriter(UserProfilesFile, false))
                 {
-                    writer.WriteLine(profile.Name);
-                    writer.WriteLine(profile.HpIsLocked);
-                    writer.WriteLine(profile.CsIsLocked);
-                    writer.WriteLine(profile.ArIsLocked);
-                    writer.WriteLine(profile.OdIsLocked);
-                    writer.WriteLine(profile.lockedHP);
-                    writer.WriteLine(profile.lockedCS);
-                    writer.WriteLine(profile.lockedAR);
-                    writer.WriteLine(profile.lockedOD);
-                    writer.WriteLine(profile.ScaleAR);
-                    writer.WriteLine(profile.ScaleOD);
-                    writer.WriteLine(profile.ForceHardrockCirclesize);
-                    writer.WriteLine(profile.ChangePitch);
-                    writer.WriteLine(profile.NoSpinners);
-                    writer.WriteLine(profile.BpmIsLocked);
-                    writer.WriteLine(profile.lockedBpm);
-                    writer.WriteLine(profile.BpmMultiplier);
+                    foreach (var profile in UserProfiles)
+                    {
+                        writer.WriteLine(profile.Name);
+                        writer.WriteLine(profile.HpIsLocked);
+                        writer.WriteLine(profile.CsIsLocked);
+                        writer.WriteLine(profile.ArIsLocked);
+                        writer.WriteLine(profile.OdIsLocked);
+                        writer.WriteLine(profile.lockedHP);
+                        writer.WriteLine(profile.lockedCS);
+                        writer.WriteLine(profile.lockedAR);
+                        writer.WriteLine(profile.lockedOD);
+                        writer.WriteLine(profile.ScaleAR);
+                        writer.WriteLine(profile.ScaleOD);
+                        writer.WriteLine(profile.ForceHardrockCirclesize);
+                        writer.WriteLine(profile.ChangePitch);
+                        writer.WriteLine(profile.NoSpinners);
+                        writer.WriteLine(profile.BpmIsLocked);
+                        writer.WriteLine(profile.lockedBpm);
+                        writer.WriteLine(profile.BpmMultiplier);
+                    }
                 }
+            }
+            catch (UnauthorizedAccessException)
+            {
+                MessageBox.Show("Permission to write to version.txt was denied. Check your antivirus, or try running osu trainer with administrator priveledges.");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Unable to save profiles." + Environment.NewLine + Environment.NewLine + e.Message);
             }
         }
         public void LoadProfilesFromDisk()

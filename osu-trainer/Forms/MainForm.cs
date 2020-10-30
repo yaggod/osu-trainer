@@ -1007,24 +1007,31 @@ namespace osu_trainer
 
         private void updatesCheck_CheckedChanged(object sender, EventArgs e)
         {
-            if (!ToggleCheckForUpdates())
-                MessageBox.Show("version.txt missing or corrupt.");
+            ToggleCheckForUpdates();
             UpdateCheckBoxes(this, EventArgs.Empty);
         }
         /// <summary>
         /// return false on failure
         /// </summary>
-        private bool ToggleCheckForUpdates()
+        private void ToggleCheckForUpdates()
         {
             string getKey(string s) { return s.Split(':')[0].Trim().ToLower(); }
             string getValue(string s) { return s.Split(':')[1].Trim().ToLower(); }
 
             List<string> lines;
-            try { lines = File.ReadAllLines("version.txt").ToList(); } catch { return false; }
+            try {
+                lines = File.ReadAllLines("version.txt").ToList();
+            } catch {
+                MessageBox.Show("version.txt missing or corrupt.");
+                return;
+            }
 
             var checkForUpdatesLineIndex = lines.FindIndex(l => getKey(l) == "check for updates");
             if (checkForUpdatesLineIndex == -1)
-                return false;
+            {
+                MessageBox.Show("version.txt missing or corrupt.");
+                return;
+            }
 
             string checkForUpdatesLine = lines[checkForUpdatesLineIndex];
             string checkForUpdatesValue = getValue(lines[checkForUpdatesLineIndex]);
@@ -1035,8 +1042,20 @@ namespace osu_trainer
             if (replaceIndex != -1)
                 lines[replaceIndex] = replacementLine;
 
-            try { File.WriteAllLines("version.txt", lines); } catch { return false; }
-            return true;
+            try {
+                File.WriteAllLines("version.txt", lines);
+            }
+            catch (UnauthorizedAccessException e)
+            {
+                MessageBox.Show("Permission to write to version.txt was denied. Check your antivirus, or try running osu trainer with administrator priveledges.");
+                return;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Unable to write to version.txt");
+                return;
+            }
+            return;
         }
     }
 }
