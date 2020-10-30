@@ -2,6 +2,7 @@
 using FsBeatmapProcessor;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
@@ -266,7 +267,16 @@ namespace osu_trainer
             Process proc = new Process();
             proc.StartInfo.FileName = outputOsz;
             proc.StartInfo.UseShellExecute = true;
-            proc.Start();
+            try
+            {
+                proc.Start();
+            }
+            catch (Win32Exception e)
+            {
+                if (e.Message.Contains("associated"))
+                    MessageBox.Show(".osz files have not been configured to open with osu!.exe on this system." + Environment.NewLine + Environment.NewLine + 
+                        "To fix this, download any map from the website, right click the .osz file, click properties, beside Opens with... click Change..., and select to osu!", "Error");
+            }
         }
 
         private string MatchGroup(string text, string re, int group)
