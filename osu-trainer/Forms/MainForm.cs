@@ -24,11 +24,6 @@ namespace osu_trainer
 {
     public partial class MainForm : Form
     {
-        // File Resources
-        private string nobgpng = Path.Combine("resources", "nobg.png");
-
-        private static Image nobg;
-
         // Beatmap
         private string userSongsFolder = null;
 
@@ -60,8 +55,6 @@ namespace osu_trainer
             Directory.SetCurrentDirectory(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location));
             InitializeComponent();
             Height = 493;
-
-            nobg = Image.FromFile(nobgpng);
 
             // init control lists
             dumbLabels = new List<Label>
@@ -159,6 +152,7 @@ namespace osu_trainer
                 label.Font = new Font(comforta, 10, FontStyle.Regular);
             foreach (var check in checkControls)
                 check.Font = new Font(comforta, 9, FontStyle.Regular);
+            updatesCheck.Font = new Font(comforta, 9, FontStyle.Regular);
 
             BpmMultiplierTextBox.Font = new Font(comforta, 11, FontStyle.Bold);
             OriginalBpmTextBox.Font = new Font(comforta, 10, FontStyle.Regular);
@@ -217,11 +211,11 @@ namespace osu_trainer
         private Image GetSongBackground(Beatmap beatmap)
         {
             if (string.IsNullOrWhiteSpace(beatmap.Background))
-                return nobg;
+                return Properties.Resources.nobg;
 
             string imageAbsolutePath = Path.Combine(Path.GetDirectoryName(beatmap.Filename), beatmap.Background);
             if (!File.Exists(imageAbsolutePath))
-                return nobg;
+                return Properties.Resources.nobg;
 
             return Image.FromFile(imageAbsolutePath);
         }

@@ -68,7 +68,7 @@
     <ManifestKeyFile>osu-trainer_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -233,24 +233,18 @@
     <None Include="resources\lock-solid.png" />
     <None Include="resources\catch.png" />
     <None Include="resources\mania.png" />
+    <None Include="bin\Release\resources\nobg.png" />
     <Content Include="resources\edit-icon.png" />
     <Content Include="resources\glow.png" />
     <None Include="resources\hotkey.wav" />
-    <Content Include="resources\nobg.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="resources\nobg.png" />
     <None Include="resources\star-solid.png" />
     <None Include="resources\standard.png" />
-    <Content Include="resources\static.gif">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="resources\unlock-solid.png" />
     <None Include="resources\taiko.png" />
     <None Include="resources\trash-alt-solid.png" />
     <None Include="resources\undo-alt-solid.png" />
-    <Content Include="resources\oof.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="resources\oof.ico" />
     <Content Include="binaries\soundstretch.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -275,6 +269,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SongsFolderForm.resx">
       <DependentUpon>SongsFolderForm.cs</DependentUpon>
@@ -317,6 +312,51 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\NAudio.Lame.1.1.6\build\NAudio.Lame.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NAudio.Lame.1.1.6\build\NAudio.Lame.targets'))" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>mkdir lib
+move Microsoft.WindowsAPICodePack.Shell.dll lib
+move Microsoft.WindowsAPICodePack.Shell.xml lib
+move Microsoft.WindowsAPICodePack.ShellExtensions.dll lib
+move Microsoft.WindowsAPICodePack.ShellExtensions.xml lib
+move Microsoft.WindowsAPICodePack.dll lib
+move Microsoft.WindowsAPICodePack.xml lib
+move NAudio.Lame.dll lib
+move NAudio.dll lib
+move NAudio.xml lib
+move System.Buffers.dll lib
+move System.Data.Common.dll lib
+move System.Diagnostics.StackTrace.dll lib
+move System.Diagnostics.Tracing.dll lib
+move System.Globalization.Extensions.dll lib
+move System.IO.Compression.dll lib
+move System.Memory.dll lib
+move System.Net.Http.dll lib
+move System.Net.Sockets.dll lib
+move System.Numerics.Vectors.dll lib
+move System.Resources.Extensions.dll lib
+move System.Runtime.CompilerServices.Unsafe.dll lib
+move System.Runtime.Serialization.Primitives.dll lib
+move System.Security.Cryptography.Algorithms.dll lib
+move System.Security.SecureString.dll lib
+move System.Threading.Overlapped.dll lib
+move System.ValueTuple.dll lib
+move System.ValueTuple.xml lib
+move System.Xml.XPath.XDocument.dll lib
+move "key preview.dll" lib
+move libmp3lame.32.dll lib
+move libmp3lame.64.dll lib
+move Microsoft.WindowsAPICodePack.Shell.pdb lib
+move Microsoft.WindowsAPICodePack.ShellExtensions.pdb lib
+move Microsoft.WindowsAPICodePack.pdb lib
+move NAudio.Lame.pdb lib
+move "key preview.pdb" lib
+move FsBeatmapProcessor.dll lib
+move FSharp.Core.dll lib
+move Newtonsoft.Json.dll lib
+move Newtonsoft.Json.xml lib
+move OsuMemoryDataProvider.dll lib
+move ProcessMemoryDataFinder.dll lib</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
