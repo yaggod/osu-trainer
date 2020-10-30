@@ -213,7 +213,7 @@ namespace osu_trainer
             if (!File.Exists(audioFilePath))
             {
                 string inFile = Path.Combine(Path.GetDirectoryName(OriginalBeatmap.Filename), OriginalBeatmap.AudioFilename);
-                string outFile = Path.Combine(exportBeatmap.AudioFilename);
+                string outFile = exportBeatmap.AudioFilename;
 
                 SongSpeedChanger.GenerateAudioFile(inFile, outFile, BpmRate, ChangePitch, compensateForDT, HighQualityMp3s);
                 newMp3 = outFile;
@@ -226,12 +226,15 @@ namespace osu_trainer
                 manifest.Add(mp3RelativePath + " | " + exportBeatmap.Filename);
                 File.WriteAllLines(mp3ManifestFile, manifest);
             }
-            // save file to temp location (do not directly put into any song folder)
-            exportBeatmap.Filename = Path.Combine(Path.GetFileName(exportBeatmap.Filename));
+            // save .osu to temp location (do not directly put into any song folder)
+            exportBeatmap.Filename = Path.GetFileName(exportBeatmap.Filename);
             exportBeatmap.Save();
 
             // create and execute osz
             AddNewBeatmapToSongFolder(Path.GetDirectoryName(OriginalBeatmap.Filename), exportBeatmap.Filename, newMp3);
+
+            // clean up .osu
+            File.Delete(exportBeatmap.Filename);
 
             // post
             SetState(EditorState.READY);

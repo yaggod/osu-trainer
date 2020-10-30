@@ -67,6 +67,7 @@ namespace osu_trainer
             this.ChangePitchCheck = new osu_trainer.Controls.OsuCheckBox();
             this.highQualityMp3Check = new osu_trainer.Controls.OsuCheckBox();
             this.NoSpinnersCheck = new osu_trainer.Controls.OsuCheckBox();
+            this.updatesCheck = new osu_trainer.Controls.OsuCheckBox();
             this.profileButton4 = new osu_trainer.Controls.OsuButton();
             this.profileButton3 = new osu_trainer.Controls.OsuButton();
             this.profileButton2 = new osu_trainer.Controls.OsuButton();
@@ -341,7 +342,7 @@ namespace osu_trainer
             this.editHotkeysButton.FlatAppearance.BorderSize = 0;
             this.editHotkeysButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.editHotkeysButton.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editHotkeysButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
+            this.editHotkeysButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
             this.editHotkeysButton.Location = new System.Drawing.Point(328, 11);
             this.editHotkeysButton.Name = "editHotkeysButton";
             this.editHotkeysButton.Size = new System.Drawing.Size(89, 23);
@@ -563,6 +564,7 @@ namespace osu_trainer
             this.extrasPanel.Controls.Add(this.NoSpinnersCheck);
             this.extrasPanel.Controls.Add(this.button1);
             this.extrasPanel.Controls.Add(this.editHotkeysButton);
+            this.extrasPanel.Controls.Add(this.updatesCheck);
             this.extrasPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.extrasPanel.Location = new System.Drawing.Point(0, 451);
             this.extrasPanel.Name = "extrasPanel";
@@ -575,7 +577,7 @@ namespace osu_trainer
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(134)))));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
             this.button1.Location = new System.Drawing.Point(280, 38);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(137, 23);
@@ -628,6 +630,19 @@ namespace osu_trainer
             this.NoSpinnersCheck.TextOnRight = true;
             this.NoSpinnersCheck.UseVisualStyleBackColor = true;
             this.NoSpinnersCheck.CheckedChanged += new System.EventHandler(this.NoSpinnerCheckBox_CheckedChanged);
+            // 
+            // updatesCheck
+            // 
+            this.updatesCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.updatesCheck.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(134)))), ((int)(((byte)(144)))));
+            this.updatesCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(154)))), ((int)(((byte)(233)))));
+            this.updatesCheck.Location = new System.Drawing.Point(251, 69);
+            this.updatesCheck.Name = "updatesCheck";
+            this.updatesCheck.Size = new System.Drawing.Size(160, 24);
+            this.updatesCheck.TabIndex = 20;
+            this.updatesCheck.Text = "Check for updates";
+            this.updatesCheck.UseVisualStyleBackColor = true;
+            this.updatesCheck.CheckedChanged += new System.EventHandler(this.updatesCheck_CheckedChanged);
             // 
             // profileButton4
             // 
@@ -1288,5 +1303,6 @@ namespace osu_trainer
         private System.Windows.Forms.Panel extrasPanel;
         private System.Windows.Forms.Button button1;
         private OsuCheckBox highQualityMp3Check;
+        private OsuCheckBox updatesCheck;
     }
 }

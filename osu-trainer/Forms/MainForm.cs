@@ -118,7 +118,7 @@ namespace osu_trainer
             editor.BeatmapModified += TogglePrettyButtons;
             editor.BeatmapModified += UpdateRateInputControls;
             editor.ControlsModified += UpdateLockButtons;
-            editor.ControlsModified += UpdateChecks;
+            editor.ControlsModified += UpdateCheckBoxes;
             editor.ControlsModified += UpdateProfiles;
 
             // Install keyboard hooks
@@ -310,11 +310,9 @@ namespace osu_trainer
         private void ToggleLockButtons(object sender, EventArgs e)
         {
             bool not_ready = (editor.State == EditorState.NOT_READY);
-            HPLockCheck.Enabled = not_ready ? false : true;
-            CSLockCheck.Enabled = not_ready ? false : true;
-            ARLockCheck.Enabled = not_ready ? false : true;
-            ODLockCheck.Enabled = not_ready ? false : true;
-            BpmLockCheck.Enabled = not_ready ? false : true;
+            foreach (var check in checkControls)
+                check.Enabled = not_ready ? false : true;
+            highQualityMp3Check.ForeColor = not_ready ? highQualityMp3Check.DisabledColor : Color.FromArgb(167, 154, 233);
         }
         private void UpdateLockButtons(object sender, EventArgs e)
         {
@@ -337,20 +335,30 @@ namespace osu_trainer
             ODLockCheck.CheckedChanged += OdLockCheck_CheckedChanged;
             BpmLockCheck.CheckedChanged += BpmLockCheck_CheckedChanged;
         }
+        private bool isCheckForUpdatesEnabled()
+        {
+            try
+            {
+                foreach (string line in File.ReadAllLines("version.txt"))
+                {
+                    string key = line.Split(':')[0].Trim().ToLower();
+                    string value = line.Split(':')[1].Trim().ToLower();
+                    if (key == "check for updates" && new string[]{"no", "false"}.Contains(value))
+                        return false;
+                }
+            }
+            catch { return true; }
+            return true;
+        }
 
-        private void UpdateChecks(object sender, EventArgs e)
+        private void UpdateCheckBoxes(object sender, EventArgs e)
         {
             var enabled = editor.State != EditorState.NOT_READY;
-            NoSpinnersCheck.Enabled = enabled;
-            HRCheck.Enabled = enabled;
-            ChangePitchCheck.Enabled = enabled;
-            ScaleODCheck.Enabled = enabled;
-            ScaleARCheck.Enabled = enabled;
-            NoSpinnersCheck.ForeColor = enabled ? Colors.PaleBlue : Colors.Disabled;
-            HRCheck.ForeColor = enabled ? Colors.PaleBlue : Colors.Disabled;
-            ChangePitchCheck.ForeColor = enabled ? Colors.PaleBlue : Colors.Disabled;
-            ScaleODCheck.ForeColor = enabled ? Colors.PaleBlue : Colors.Disabled;
-            ScaleARCheck.ForeColor = enabled ? Colors.PaleBlue : Colors.Disabled;
+            foreach (var check in checkControls)
+            {
+                check.Enabled = enabled;
+                check.ForeColor = enabled ? Colors.PaleBlue : Colors.Disabled;
+            }
 
             // change checked state without raising any events
             NoSpinnersCheck.CheckedChanged         -= NoSpinnerCheckBox_CheckedChanged;
@@ -359,6 +367,7 @@ namespace osu_trainer
             ScaleODCheck.CheckedChanged            -= ScaleODCheck_CheckedChanged;
             ScaleARCheck.CheckedChanged            -= ScaleARCheck_CheckedChanged;
             highQualityMp3Check.CheckedChanged     -= highQualityCheckBox_CheckedChanged;
+            updatesCheck.CheckedChanged            -= updatesCheck_CheckedChanged;
 
             NoSpinnersCheck.Checked            = editor.NoSpinners;
             HRCheck.Checked                    = editor.ForceHardrockCirclesize;
@@ -366,6 +375,7 @@ namespace osu_trainer
             ScaleODCheck.Checked               = editor.ScaleOD;
             ScaleARCheck.Checked               = editor.ScaleAR;
             highQualityMp3Check.Checked        = editor.HighQualityMp3s;
+            updatesCheck.Checked               = isCheckForUpdatesEnabled();
 
             NoSpinnersCheck.CheckedChanged         += NoSpinnerCheckBox_CheckedChanged;
             HRCheck.CheckedChanged                 += HRCheck_CheckedChanged;
@@ -373,6 +383,7 @@ namespace osu_trainer
             ScaleODCheck.CheckedChanged            += ScaleODCheck_CheckedChanged;
             ScaleARCheck.CheckedChanged            += ScaleARCheck_CheckedChanged;
             highQualityMp3Check.CheckedChanged     += highQualityCheckBox_CheckedChanged;
+            updatesCheck.CheckedChanged            += updatesCheck_CheckedChanged;
         }
 
         private void ToggleHpCsArOdDisplay(object sender, EventArgs e)
@@ -574,6 +585,8 @@ namespace osu_trainer
         private void ScaleARCheck_CheckedChanged(object sender, EventArgs e) => editor.SetScaleAR(!editor.ScaleAR);
 
         private void ChangePitchButton_CheckedChanged(object sender, EventArgs e) => editor.ToggleChangePitchSetting();
+        private void NoSpinnerCheckBox_CheckedChanged(object sender, EventArgs e) => editor.ToggleNoSpinners();
+        private void highQualityCheckBox_CheckedChanged(object sender, EventArgs e) => editor.ToggleHighQualityMp3s();
 
         private void BpmMultiplierTextBox_Submit(object sender, EventArgs e)
         {
@@ -802,10 +815,6 @@ namespace osu_trainer
             e.Graphics.DrawString(Text, new Font(Font, FontStyle.Regular), Brushes.White, 10 + 16 + 4, 10);
         }
 
-        private void NoSpinnerCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            editor.ToggleNoSpinners();
-        }
 
         private void BpmMultiplierTextBox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -1001,9 +1010,39 @@ namespace osu_trainer
             ApplyHotkeys();
         }
 
-        private void highQualityCheckBox_CheckedChanged(object sender, EventArgs e)
+
+        private void updatesCheck_CheckedChanged(object sender, EventArgs e)
         {
-            editor.ToggleHighQualityMp3s();
+            if (!ToggleCheckForUpdates())
+                MessageBox.Show("version.txt missing or corrupt.");
+            UpdateCheckBoxes(this, EventArgs.Empty);
+        }
+        /// <summary>
+        /// return false on failure
+        /// </summary>
+        private bool ToggleCheckForUpdates()
+        {
+            string getKey(string s) { return s.Split(':')[0].Trim().ToLower(); }
+            string getValue(string s) { return s.Split(':')[1].Trim().ToLower(); }
+
+            List<string> lines;
+            try { lines = File.ReadAllLines("version.txt").ToList(); } catch { return false; }
+
+            var checkForUpdatesLineIndex = lines.FindIndex(l => getKey(l) == "check for updates");
+            if (checkForUpdatesLineIndex == -1)
+                return false;
+
+            string checkForUpdatesLine = lines[checkForUpdatesLineIndex];
+            string checkForUpdatesValue = getValue(lines[checkForUpdatesLineIndex]);
+            bool toggleToTrue = new string[] { "no", "false" }.Contains(checkForUpdatesValue);
+
+            string replacementLine = $"check for updates: {(toggleToTrue ? "true" : "false")}";
+            int replaceIndex = lines.FindIndex(l => l.Split(':')[0].Trim().ToLower() == "check for updates");
+            if (replaceIndex != -1)
+                lines[replaceIndex] = replacementLine;
+
+            try { File.WriteAllLines("version.txt", lines); } catch { return false; }
+            return true;
         }
     }
 }
