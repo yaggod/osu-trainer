@@ -1043,7 +1043,6 @@ namespace osu_trainer
             this.SongDisplay.Difficulty = null;
             this.SongDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SongDisplay.ErrorMessage = null;
-            this.SongDisplay.GameMode = FsBeatmapProcessor.GameMode.osu;
             this.SongDisplay.Location = new System.Drawing.Point(10, 10);
             this.SongDisplay.Name = "SongDisplay";
             this.SongDisplay.Size = new System.Drawing.Size(407, 101);
