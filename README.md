@@ -4,9 +4,9 @@ A program that allows you to modify the difficulty of a beatmap **very quickly a
 ![](osu-trainer/images/gui.png)
 
 ### Additional Notes
++ Maps can be created without alt tabbing if you make good use of the profiles and hotkeys
 + Search "osutrainer" in osu! to find all your generated maps
 + If you use this application a lot, you can end up using a lot of disk space. (333 mp3s * 3MB/mp3 = 1GB). To free up this space, delete the generated maps in osu, then click the Clean Up button in osu trainer.
-+ The lock buttons are intended to be used alongside the create map shortcut in order to easily create multiple similar maps. Eg. Lock bpm to 220 bpm, then in osu! press Ctrl+Shift+X to quickly create a 220 bpm version of the beatmap without ever alt-tabbing.
 
 Special thanks to [Craftplacer](https://github.com/Craftplacer) for making the UI really nice and pretty
 
