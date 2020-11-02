@@ -1,5 +1,5 @@
 # osu-trainer
-The main feature is the bpm controls, but you can also change other stuff too.
+A program that allows you to *very quickly* modify the difficulty of a beatmap.
 ![](osu-trainer/images/gui.png)
 
 ### Additional Notes
