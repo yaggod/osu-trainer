@@ -229,6 +229,12 @@
     <Content Include="binaries\oppai.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="updater.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="version.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="resources\Comfortaa-Bold.ttf" />
     <None Include="resources\lock-solid.png" />
     <None Include="resources\catch.png" />
