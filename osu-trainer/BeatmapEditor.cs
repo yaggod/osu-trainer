@@ -275,7 +275,8 @@ namespace osu_trainer
             {
                 if (e.Message.Contains("associated"))
                     MessageBox.Show(".osz files have not been configured to open with osu!.exe on this system." + Environment.NewLine + Environment.NewLine + 
-                        "To fix this, download any map from the website, right click the .osz file, click properties, beside Opens with... click Change..., and select to osu!", "Error");
+                        "To fix this, download any map from the website, right click the .osz file, click properties, beside Opens with... click Change..., and select osu!. " +
+                        "You'll know the problem is fixed when you can double click .osz files to import them into osu!", "Error");
             }
         }
 
@@ -977,6 +978,28 @@ namespace osu_trainer
             UserProfiles[i].lockedCS = lockedCS;
             UserProfiles[i].lockedAR = lockedAR;
             UserProfiles[i].lockedOD = lockedOD;
+            // If HP/CS/AR/OD has been changed, save it as locked regardless of locked state
+            // After testing this is just the way I expected it to work
+            if (NewBeatmap.HPDrainRate != OriginalBeatmap.HPDrainRate)
+            {
+                UserProfiles[i].HpIsLocked = true;
+                UserProfiles[i].lockedHP = NewBeatmap.HPDrainRate;
+            }
+            if (NewBeatmap.CircleSize != OriginalBeatmap.CircleSize)
+            {
+                UserProfiles[i].CsIsLocked = true;
+                UserProfiles[i].lockedCS = NewBeatmap.CircleSize;
+            }
+            if (NewBeatmap.ApproachRate != OriginalBeatmap.ApproachRate)
+            {
+                UserProfiles[i].ArIsLocked = true;
+                UserProfiles[i].lockedAR = NewBeatmap.ApproachRate;
+            }
+            if (NewBeatmap.OverallDifficulty != OriginalBeatmap.OverallDifficulty)
+            {
+                UserProfiles[i].OdIsLocked = true;
+                UserProfiles[i].lockedOD = NewBeatmap.OverallDifficulty;
+            }
             UserProfiles[i].ScaleAR = ScaleAR;
             UserProfiles[i].ScaleOD = ScaleOD;
 
