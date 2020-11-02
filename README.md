@@ -1,5 +1,6 @@
 # osu-trainer
-A program that allows you to *very quickly* modify the difficulty of a beatmap.
+A program that allows you to **very quickly** modify the difficulty of a beatmap.  
+
 ![](osu-trainer/images/gui.png)
 
 ### Additional Notes
