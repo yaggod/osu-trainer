@@ -798,6 +798,8 @@ namespace osu_trainer
                 foreach (string diff in Directory.GetFiles(Path.GetDirectoryName(retMap.Filename), "*.osu"))
                 {
                     Beatmap map = BeatmapConstructorWrapper(diff);
+                    // FIXME: Earlier beatmaps will not contain a beatmap ID tag, and BeatmapID will be 0.
+                    // What is the method for determining the original diff in this case?
                     if (!map.Tags.Contains("osutrainer") && map.BeatmapID == retMap.BeatmapID)
                     {
                         retMap = map;
@@ -840,10 +842,14 @@ namespace osu_trainer
             if (NewBeatmap.HPDrainRate != OriginalBeatmap.HPDrainRate)
                 HPCSAROD += $" HP{NewBeatmap.HPDrainRate:0.#}";
 
-            if (NewBeatmap.CircleSize != OriginalBeatmap.CircleSize)
+            if (   OriginalBeatmap.Mode != GameMode.Taiko
+                && OriginalBeatmap.Mode != GameMode.Mania
+                && NewBeatmap.CircleSize != OriginalBeatmap.CircleSize)
                 HPCSAROD += $" CS{NewBeatmap.CircleSize:0.#}";
 
-            if (NewBeatmap.ApproachRate != GetScaledAR() || NewBeatmap.ApproachRate > 10M)
+            if (   OriginalBeatmap.Mode != GameMode.Taiko
+                && OriginalBeatmap.Mode != GameMode.Mania
+                && (NewBeatmap.ApproachRate != GetScaledAR() || NewBeatmap.ApproachRate > 10M))
                 HPCSAROD += $" AR{NewBeatmap.ApproachRate:0.#}";
 
             if (NewBeatmap.OverallDifficulty != GetScaledOD() || NewBeatmap.OverallDifficulty > 10M)
