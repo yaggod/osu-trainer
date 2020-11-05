@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace osu_trainer
 {
-    class UserProfile
+    public class UserProfile
     {
         public string Name = "";
 

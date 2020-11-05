@@ -128,6 +128,9 @@ namespace osu_trainer
             formAnimationTimer.Start();
 
             Focus();
+#if DEBUG
+            spectrogramButton_Click(this, EventArgs.Empty);
+#endif
         }
 
         private void ApplyHotkeys()
@@ -162,7 +165,7 @@ namespace osu_trainer
             NewBpmRangeTextBox.Font = new Font(comforta, 9, FontStyle.Regular);
         }
 
-        #region Callbacks for updating GUI controls
+#region Callbacks for updating GUI controls
 
         private void UpdateRateInputControls(object sender, EventArgs e)
         {
@@ -553,9 +556,9 @@ namespace osu_trainer
             ResetButton.Color = enabled ? Color.SteelBlue : Colors.TextBoxBg;
         }
 
-        #endregion Callbacks for updating GUI controls
+#endregion Callbacks for updating GUI controls
 
-        #region User input event handlers
+#region User input event handlers
 
         private void HpSlider_ValueChanged(object sender, EventArgs e) => editor.SetHP(HPSlider.Value);
 
@@ -667,9 +670,9 @@ namespace osu_trainer
             }
         }
 
-        #endregion User input event handlers
+#endregion User input event handlers
 
-        #region Timer events
+#region Timer events
 
         private void BeatmapUpdateTimer_Tick(object sender, EventArgs e)
         {
@@ -747,9 +750,9 @@ namespace osu_trainer
             }
         }
 
-        #endregion Timer events
+#endregion Timer events
 
-        #region borderless window title bar
+#region borderless window title bar
 
         private bool Drag;
         private int MouseX;
@@ -777,9 +780,9 @@ namespace osu_trainer
 
         private void minimizeButton_Click(object sender, EventArgs e) => WindowState = FormWindowState.Minimized;
 
-        #endregion borderless window title bar
+#endregion borderless window title bar
 
-        #region Background Worker
+#region Background Worker
 
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -798,7 +801,7 @@ namespace osu_trainer
             }
         }
 
-        #endregion Background Worker
+#endregion Background Worker
 
         private void titlePanel_Paint(object sender, PaintEventArgs e)
         {
@@ -858,7 +861,7 @@ namespace osu_trainer
             Properties.Settings.Default.Save();
         }
 
-        #region User Profile Buttons
+#region User Profile Buttons
         private void profileButton1_Click(object sender, EventArgs e) => editor.LoadProfile(0);
         private void profileButton2_Click(object sender, EventArgs e) => editor.LoadProfile(1);
         private void profileButton3_Click(object sender, EventArgs e) => editor.LoadProfile(2);
@@ -959,7 +962,7 @@ namespace osu_trainer
                 }
             }
         }
-        #endregion
+#endregion
 
         private void RearrangeLayout(object sender, EventArgs e)
         {
@@ -1056,6 +1059,12 @@ namespace osu_trainer
                 return;
             }
             return;
+        }
+
+        private void spectrogramButton_Click(object sender, EventArgs e)
+        {
+            SpectrogramForm specForm = new SpectrogramForm(editor);
+            specForm.Show();
         }
     }
 }
