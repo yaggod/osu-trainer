@@ -129,7 +129,7 @@ namespace osu_trainer
 
             Focus();
 #if DEBUG
-            spectrogramButton_Click(this, EventArgs.Empty);
+            //spectrogramButton_Click(this, EventArgs.Empty);
 #endif
         }
 

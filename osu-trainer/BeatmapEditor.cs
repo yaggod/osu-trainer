@@ -898,7 +898,7 @@ namespace osu_trainer
             BeatmapModified?.Invoke(this, EventArgs.Empty);
         }
 
-        #region User Profile Management
+#region User Profile Management
         const string UserProfilesFile = "userprofiles.txt";
         public void SaveProfilesToDisk()
         {
@@ -1104,6 +1104,6 @@ namespace osu_trainer
             ControlsModified?.Invoke(this, EventArgs.Empty);
         }
 
-        #endregion
+#endregion
     }
 }

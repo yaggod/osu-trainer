@@ -45,7 +45,7 @@ namespace osu_trainer.Forms
             speedPlot.plt.PlotVSpan(y1: 14.67 - w, y2: 14.67 + w, label: "220 bpm streams");
             speedPlot.plt.PlotVSpan(y1: 13.33 - w, y2: 13.33 + w, label: "200 bpm streams");
             speedPlot.plt.PlotVSpan(y1: 12.00 - w, y2: 12.00 + w, label: "180 bpm streams");
-            speedPlot.plt.PlotScatter(times, originalKps, lineWidth: 0, color: Color.Red);
+            speedPlot.plt.PlotScatter(times, originalKps, lineWidth: 0, color: Color.Red, markerSize: 3);
             //speedPlot.plt.PlotScatter(times, newKps, lineWidth: 0, color: Color.Red);
             speedPlot.plt.Axis(null, null, 0, 20);
             speedPlot.Render();
@@ -57,12 +57,29 @@ namespace osu_trainer.Forms
             var kps = new double[hitTimes.Count - 1];
             for (int i = 1; i < hitTimes.Count; i++)
             {
-                float hitTime = hitTimes[i];
-                float previousHitTime = hitTimes[i - 1];
-                times[i - 1] = hitTime / 1000;
-                kps[i - 1] = (1000 / (hitTime - previousHitTime));
+                // Need to change kps algorithm
+                // Proposal:
+                // For each note,
+                //    If first note, use distance to next note
+                //    If last note, use distance from previous note
+                //    Else, use minimum neighbouring distance
+                double hitTime = hitTimes[i];
+                double previousHitTime = hitTimes[i - 1];
+                times[i - 1] = hitTime / 1000.0;
+                kps[i - 1] = 1000.0f / (hitTime - previousHitTime);
+                // Note: There is a ±1ms variance for (hitTime - previousHitTime) for notes of the same rhythm.
+                // This is due to ms precision issues
+                // Should use an algorithm to quantize these points to the same value
+                // Proposal:
+                // 1. Extract all unique bpms from beatmap timing points
+                // 2. For each bpm, create bins corresponding to 1/1, 1/2, and 1/4 notes, spanning ±2ms
+                // 3. Quantize all points lying in these bins
             }
             return (times, kps);
+        }
+
+        public void LloydMaxCluster3()
+        {
         }
     }
 }
