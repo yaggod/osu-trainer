@@ -34,18 +34,21 @@
             // 
             // speedPlot
             // 
-            this.speedPlot.Location = new System.Drawing.Point(12, 12);
+            this.speedPlot.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.speedPlot.Location = new System.Drawing.Point(0, 0);
             this.speedPlot.Name = "speedPlot";
-            this.speedPlot.Size = new System.Drawing.Size(500, 350);
+            this.speedPlot.Size = new System.Drawing.Size(525, 121);
             this.speedPlot.TabIndex = 0;
             // 
             // SpectrogramForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(525, 377);
+            this.ClientSize = new System.Drawing.Size(525, 121);
             this.Controls.Add(this.speedPlot);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SpectrogramForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "SpectrogramForm";
             this.ResumeLayout(false);
 
