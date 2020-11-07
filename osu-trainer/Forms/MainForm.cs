@@ -1063,8 +1063,14 @@ namespace osu_trainer
 
         private void spectrogramButton_Click(object sender, EventArgs e)
         {
-            SpectrogramForm specForm = new SpectrogramForm(editor);
-            specForm.Show();
+            if (SpectrogramForm.Instance != null)
+                SpectrogramForm.Instance.Close();
+            else
+            {
+                var form = new SpectrogramForm(editor);
+                form.Show();
+                Location = new Point(Location.X, Math.Max(form.Height, Location.Y));
+            }
         }
     }
 }

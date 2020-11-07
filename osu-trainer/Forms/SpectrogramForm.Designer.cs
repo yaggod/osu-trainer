@@ -50,6 +50,7 @@
             this.Name = "SpectrogramForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "SpectrogramForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SpectrogramForm_FormClosed);
             this.ResumeLayout(false);
 
         }

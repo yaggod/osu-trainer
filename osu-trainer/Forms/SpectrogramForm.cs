@@ -14,6 +14,9 @@ namespace osu_trainer.Forms
 {
     public partial class SpectrogramForm : Form
     {
+        // singleton instance
+        public static SpectrogramForm Instance = null;
+
         private BeatmapEditor Editor;
         public SpectrogramForm(BeatmapEditor editor)
         {
@@ -23,6 +26,7 @@ namespace osu_trainer.Forms
             Editor.BeatmapModified += UpdateSpectrogram;
             Editor.BeatmapSwitched += UpdateSpectrogram;
             UpdateSpectrogram(this, EventArgs.Empty);
+            Instance = this;
         }
 
         public void UpdateSpectrogram(object sender, EventArgs e)
@@ -52,7 +56,7 @@ namespace osu_trainer.Forms
                 markerSize: 14,
                 markerShape: MarkerShape.filledCircle
             );
-            speedPlot.plt.Axis(null, null, 5, null);
+            speedPlot.plt.Axis(null, null, 0, null);
             speedPlot.plt.TightenLayout(padding: 0);
             speedPlot.Render();
         }
@@ -129,6 +133,11 @@ namespace osu_trainer.Forms
                 }
             }
             return ret;
+        }
+
+        private void SpectrogramForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Instance = null;
         }
     }
 }
