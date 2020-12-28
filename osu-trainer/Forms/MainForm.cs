@@ -794,6 +794,7 @@ namespace osu_trainer
             if (e.Error != null)
             {
                 MessageBox.Show($"Your map couldn't be generated because of the following error:\n{e.Error.ToString()}", "Generating Map failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // TODO: Catch UnauthorizedAccessException
             }
             else
             {

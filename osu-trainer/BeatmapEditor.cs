@@ -245,13 +245,15 @@ namespace osu_trainer
         {
             // 1. Create osz (just a regular zip file with file ext. renamed to .osz)
             string outputOsz = Path.GetFileNameWithoutExtension(songFolder) + ".osz";
+            if (File.Exists(outputOsz))
+                File.Delete(outputOsz);
             try
             {
                 ZipFile.CreateFromDirectory(songFolder, outputOsz);
             }
             catch (Exception e)
             {
-                MessageBox.Show($"Failed to create {outputOsz}... {Environment.NewLine}{e.Message}", "Error");
+                MessageBox.Show($"Failed to create {outputOsz} {Environment.NewLine}{Environment.NewLine}{e.Message}", "Error");
             }
             // 2. Add new files to zip/osz
             using (ZipArchive archive = ZipFile.Open(outputOsz, ZipArchiveMode.Update))
@@ -273,10 +275,21 @@ namespace osu_trainer
             }
             catch (Win32Exception e)
             {
-                if (e.Message.Contains("associated"))
-                    MessageBox.Show(".osz files have not been configured to open with osu!.exe on this system." + Environment.NewLine + Environment.NewLine + 
+                if (File.Exists(outputOsz))
+                    File.Delete(outputOsz);
+                if (e.NativeErrorCode == 1155)
+                {
+                    MessageBox.Show(".osz files have not been configured to open with osu!.exe on this system." + Environment.NewLine + Environment.NewLine +
                         "To fix this, download any map from the website, right click the .osz file, click properties, beside Opens with... click Change..., and select osu!. " +
                         "You'll know the problem is fixed when you can double click .osz files to import them into osu!", "Error");
+                }
+                else throw;
+            }
+            catch
+            {
+                if (File.Exists(outputOsz))
+                    File.Delete(outputOsz);
+                throw;
             }
         }
 
