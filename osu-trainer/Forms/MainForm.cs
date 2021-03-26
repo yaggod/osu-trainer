@@ -56,6 +56,22 @@ namespace osu_trainer
             InitializeComponent();
             Height = 493;
 
+            // Read version number from version.txt
+            try
+            {
+                string[] lines = File.ReadAllLines("version.txt");
+                foreach (string line in lines)
+                {
+                    string attribute = line.Split(':')[0].Trim();
+                    string value = line.Split(':')[1].Trim();
+                    if (attribute == "current version")
+                    {
+                        this.Text = $"osu trainer {value}"; // set window title
+                    }
+                }
+            }
+            catch {}
+
             // init control lists
             dumbLabels = new List<Label>
             {
@@ -128,9 +144,6 @@ namespace osu_trainer
             formAnimationTimer.Start();
 
             Focus();
-#if DEBUG
-            //spectrogramButton_Click(this, EventArgs.Empty);
-#endif
         }
 
         private void ApplyHotkeys()

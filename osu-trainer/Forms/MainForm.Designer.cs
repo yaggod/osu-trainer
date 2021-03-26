@@ -1239,7 +1239,7 @@ namespace osu_trainer
             this.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "osu trainer v1.5.1";
+            this.Text = "osu trainer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.middlePanel.ResumeLayout(false);
             this.middlePanel.PerformLayout();
