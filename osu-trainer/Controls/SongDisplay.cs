@@ -208,7 +208,7 @@ namespace osu_trainer.Controls
             _difficultyFont = new Font(Font.FontFamily, 12, FontStyle.Bold, GraphicsUnit.Pixel);
             _artistFont = new Font(Font.FontFamily, 14, FontStyle.Bold, GraphicsUnit.Pixel);
             _titleFont = new Font(Font.FontFamily, 20.8f, FontStyle.Bold, GraphicsUnit.Pixel);
-            _starsFont = new Font(Font.FontFamily, 17f, FontStyle.Regular, GraphicsUnit.Pixel);
+            _starsFont = new Font(Font.FontFamily, 17f, FontStyle.Bold, GraphicsUnit.Pixel);
         }
 
         #region Star rating display

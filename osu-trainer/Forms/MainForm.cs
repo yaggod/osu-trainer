@@ -150,19 +150,19 @@ namespace osu_trainer
             var comforta = Program.FontCollection.Families[0];
 
             foreach (var textbox in diffDisplays)
-                textbox.Font = new Font(comforta, 11, FontStyle.Regular);
+                textbox.Font = new Font(comforta, 11, FontStyle.Bold);
             foreach (var label in dumbLabels)
-                label.Font = new Font(comforta, 10, FontStyle.Regular);
+                label.Font = new Font(comforta, 10, FontStyle.Bold);
             foreach (var check in checkControls)
-                check.Font = new Font(comforta, 9, FontStyle.Regular);
-            updatesCheck.Font = new Font(comforta, 9, FontStyle.Regular);
+                check.Font = new Font(comforta, 9, FontStyle.Bold);
+            updatesCheck.Font = new Font(comforta, 9, FontStyle.Bold);
 
             BpmMultiplierTextBox.Font = new Font(comforta, 11, FontStyle.Bold);
-            OriginalBpmTextBox.Font = new Font(comforta, 10, FontStyle.Regular);
-            NewBpmTextBox.Font = new Font(comforta, 10, FontStyle.Regular);
+            OriginalBpmTextBox.Font = new Font(comforta, 10, FontStyle.Bold);
+            NewBpmTextBox.Font = new Font(comforta, 10, FontStyle.Bold);
 
-            OriginalBpmRangeTextBox.Font = new Font(comforta, 9, FontStyle.Regular);
-            NewBpmRangeTextBox.Font = new Font(comforta, 9, FontStyle.Regular);
+            OriginalBpmRangeTextBox.Font = new Font(comforta, 9, FontStyle.Bold);
+            NewBpmRangeTextBox.Font = new Font(comforta, 9, FontStyle.Bold);
         }
 
 #region Callbacks for updating GUI controls
@@ -390,28 +390,28 @@ namespace osu_trainer
             HPDisplay.Enabled = enabled ? true : false;
             HPDisplay.BackColor = enabled ? Colors.ReadOnlyBg : SystemColors.ControlDark;
             HPDisplay.ForeColor = Colors.ReadOnlyFg;
-            HPDisplay.Font = new Font(HPDisplay.Font, FontStyle.Regular);
+            HPDisplay.Font = new Font(HPDisplay.Font, FontStyle.Bold);
 
             enabled = (editor.State != EditorState.NOT_READY) && (editor.GetMode() == GameMode.osu || editor.GetMode() == GameMode.CatchtheBeat);
             CSSlider.Enabled = enabled;
             CSDisplay.Enabled = enabled ? true : false;
             CSDisplay.BackColor = enabled ? Colors.ReadOnlyBg : SystemColors.ControlDark;
             CSDisplay.ForeColor = Colors.ReadOnlyFg;
-            CSDisplay.Font = new Font(CSDisplay.Font, FontStyle.Regular);
+            CSDisplay.Font = new Font(CSDisplay.Font, FontStyle.Bold);
 
             enabled = (editor.State != EditorState.NOT_READY) && (editor.GetMode() == GameMode.osu || editor.GetMode() == GameMode.CatchtheBeat);
             ARSlider.Enabled = enabled;
             ARDisplay.Enabled = enabled ? true : false;
             ARDisplay.BackColor = enabled ? Colors.ReadOnlyBg : SystemColors.ControlDark;
             ARDisplay.ForeColor = Colors.ReadOnlyFg;
-            ARDisplay.Font = new Font(ARDisplay.Font, FontStyle.Regular);
+            ARDisplay.Font = new Font(ARDisplay.Font, FontStyle.Bold);
 
             enabled = (editor.State != EditorState.NOT_READY);
             ODSlider.Enabled = enabled;
             ODDisplay.Enabled = enabled ? true : false;
             ODDisplay.BackColor = enabled ? Colors.ReadOnlyBg : SystemColors.ControlDark;
             ODDisplay.ForeColor = Colors.ReadOnlyFg;
-            ODDisplay.Font = new Font(ODDisplay.Font, FontStyle.Regular);
+            ODDisplay.Font = new Font(ODDisplay.Font, FontStyle.Bold);
         }
 
         private void UpdateHpCsArOdDisplay(object sender, EventArgs e)
@@ -434,7 +434,7 @@ namespace osu_trainer
             else
             {
                 HPDisplay.ForeColor = Colors.TextBoxFg;
-                HPDisplay.Font = new Font(HPDisplay.Font, FontStyle.Regular);
+                HPDisplay.Font = new Font(HPDisplay.Font, FontStyle.Bold);
             }
 
             // CS
@@ -455,7 +455,7 @@ namespace osu_trainer
             else
             {
                 CSDisplay.ForeColor = Colors.TextBoxFg;
-                CSDisplay.Font = new Font(CSDisplay.Font, FontStyle.Regular);
+                CSDisplay.Font = new Font(CSDisplay.Font, FontStyle.Bold);
             }
 
             // AR
@@ -475,7 +475,7 @@ namespace osu_trainer
             else
             {
                 ARDisplay.ForeColor = Colors.TextBoxFg;
-                ARDisplay.Font = new Font(ARDisplay.Font, FontStyle.Regular);
+                ARDisplay.Font = new Font(ARDisplay.Font, FontStyle.Bold);
             }
             if (newAR > 10)
             {
@@ -501,7 +501,7 @@ namespace osu_trainer
             else
             {
                 ODDisplay.ForeColor = Colors.TextBoxFg;
-                ODDisplay.Font = new Font(ODDisplay.Font, FontStyle.Regular);
+                ODDisplay.Font = new Font(ODDisplay.Font, FontStyle.Bold);
             }
             if (newOD > 10)
             {
