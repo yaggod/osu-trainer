@@ -999,6 +999,7 @@ namespace osu_trainer
             UserProfiles[i].lockedOD = lockedOD;
             // If HP/CS/AR/OD has been changed, save it as locked regardless of locked state
             // After testing this is just the way I expected it to work
+            // However, if scale AR/OD is selected, locked setting must be off
             if (NewBeatmap.HPDrainRate != OriginalBeatmap.HPDrainRate)
             {
                 UserProfiles[i].HpIsLocked = true;
@@ -1009,18 +1010,26 @@ namespace osu_trainer
                 UserProfiles[i].CsIsLocked = true;
                 UserProfiles[i].lockedCS = NewBeatmap.CircleSize;
             }
-            if (NewBeatmap.ApproachRate != OriginalBeatmap.ApproachRate)
+            if (ScaleAR)
             {
+                UserProfiles[i].ScaleAR = true;
+                UserProfiles[i].ArIsLocked = false;
+            } else if (NewBeatmap.ApproachRate != OriginalBeatmap.ApproachRate)
+            {
+                UserProfiles[i].ScaleAR = false;
                 UserProfiles[i].ArIsLocked = true;
                 UserProfiles[i].lockedAR = NewBeatmap.ApproachRate;
             }
-            if (NewBeatmap.OverallDifficulty != OriginalBeatmap.OverallDifficulty)
+            if (ScaleOD)
             {
+                UserProfiles[i].ScaleOD = true;
+                UserProfiles[i].OdIsLocked = false;
+            } else if (NewBeatmap.OverallDifficulty != OriginalBeatmap.OverallDifficulty)
+            {
+                UserProfiles[i].ScaleOD = false;
                 UserProfiles[i].OdIsLocked = true;
                 UserProfiles[i].lockedOD = NewBeatmap.OverallDifficulty;
             }
-            UserProfiles[i].ScaleAR = ScaleAR;
-            UserProfiles[i].ScaleOD = ScaleOD;
 
             UserProfiles[i].ForceHardrockCirclesize = ForceHardrockCirclesize;
             UserProfiles[i].ChangePitch = ChangePitch;
@@ -1085,9 +1094,6 @@ namespace osu_trainer
                 NewBeatmap.OverallDifficulty = OriginalBeatmap.OverallDifficulty;
             }
 
-            ScaleAR = UserProfiles[i].ScaleAR;
-            ScaleOD = UserProfiles[i].ScaleOD;
-
             ForceHardrockCirclesize = UserProfiles[i].ForceHardrockCirclesize;
             if (ForceHardrockCirclesize) NewBeatmap.CircleSize = OriginalBeatmap.CircleSize * 1.3M;
             ChangePitch = UserProfiles[i].ChangePitch;
@@ -1105,6 +1111,12 @@ namespace osu_trainer
                 BpmIsLocked = false;
                 ApplyBpmMultiplier(UserProfiles[i].BpmMultiplier);
             }
+
+            // Scaled settings
+            ScaleAR = UserProfiles[i].ScaleAR;
+            ScaleOD = UserProfiles[i].ScaleOD;
+            if (ScaleAR) NewBeatmap.ApproachRate = DifficultyCalculator.CalculateMultipliedAR(OriginalBeatmap, BpmRate);
+            if (ScaleOD) NewBeatmap.OverallDifficulty = DifficultyCalculator.CalculateMultipliedOD(OriginalBeatmap, BpmRate);
 
             RequestDiffCalc();
             BeatmapModified?.Invoke(this, EventArgs.Empty);
