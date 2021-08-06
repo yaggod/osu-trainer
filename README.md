@@ -4,7 +4,7 @@ A program that allows you to modify the difficulty of a beatmap **very quickly a
 ![](osu-trainer/images/gui.png)
 
 # Download
-[https://github.com/FunOrange/osu-trainer/releases/latest]
+https://github.com/FunOrange/osu-trainer/releases/latest
 
 ### Additional Notes
 + Maps can be created without alt tabbing if you make good use of the profiles and hotkeys
