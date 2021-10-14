@@ -12,9 +12,6 @@ using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Media;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -289,14 +286,14 @@ namespace osu_trainer
                 case EditorState.GENERATING_BEATMAP:
                     (decimal oldbpm, decimal oldmin, decimal oldmax) = editor.GetOriginalBpmData();
                     decimal newbpm, newmin, newmax;
-                    if (Math.Abs(editor.BpmRate - 1.0M) > 0.001M)
+                    if (System.Math.Abs(editor.BpmRate - 1.0M) > 0.001M)
                         (newbpm, newmin, newmax) = editor.GetNewBpmData();
                     else
                         (newbpm, newmin, newmax) = (oldbpm, oldmin, oldmax);
 
                     // bpm textboxes
-                    OriginalBpmTextBox.Text = Math.Round(oldbpm).ToString("0");
-                    NewBpmTextBox.Text = Math.Round(newbpm).ToString("0");
+                    OriginalBpmTextBox.Text = System.Math.Round(oldbpm).ToString("0");
+                    NewBpmTextBox.Text = System.Math.Round(newbpm).ToString("0");
                     if (newbpm > oldbpm + 0.001M)
                         NewBpmTextBox.ForeColor = Colors.AccentRed;
                     else if (newbpm < oldbpm - 0.001M)
@@ -305,8 +302,8 @@ namespace osu_trainer
                         NewBpmTextBox.ForeColor = Colors.TextBoxFg;
 
                     // bpm range
-                    OriginalBpmRangeTextBox.Text = $"({Math.Round(oldmin).ToString("0")} - {Math.Round(oldmax).ToString("0")})";
-                    NewBpmRangeTextBox.Text = $"({Math.Round(newmin).ToString("0")} - {Math.Round(newmax).ToString("0")})";
+                    OriginalBpmRangeTextBox.Text = $"({System.Math.Round(oldmin).ToString("0")} - {System.Math.Round(oldmax).ToString("0")})";
+                    NewBpmRangeTextBox.Text = $"({System.Math.Round(newmin).ToString("0")} - {System.Math.Round(newmax).ToString("0")})";
                     OriginalBpmRangeTextBox.Visible = (oldmin != oldmax);
                     NewBpmRangeTextBox.Visible = (oldmin != oldmax);
 
@@ -1083,7 +1080,7 @@ namespace osu_trainer
             {
                 var form = new SpectrogramForm(editor);
                 form.Show();
-                Location = new Point(Location.X, Math.Max(form.Height, Location.Y));
+                Location = new Point(Location.X, System.Math.Max(form.Height, Location.Y));
             }
         }
     }
