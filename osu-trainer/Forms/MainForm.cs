@@ -708,7 +708,7 @@ namespace osu_trainer
             previousBeatmapRead = beatmapFilename;
 
             // Try to locate the beatmap
-            string absoluteFilename = Path.Combine(userSongsFolder, beatmapFolder, beatmapFilename);
+            string absoluteFilename = Path.Combine(userSongsFolder, beatmapFolder.TrimEnd(), beatmapFilename);
             if (!File.Exists(absoluteFilename))
                 return;
 

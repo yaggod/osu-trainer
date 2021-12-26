@@ -101,7 +101,8 @@ namespace osu_trainer
             catch
             {
                 return (0, 0, 0);
-            }            string errstr     = oppaiData.GetValue("errstr").ToObject<string>();
+            }
+            string errstr = oppaiData.GetValue("errstr").ToObject<string>();
             if (errstr != "no error")
             {
                 // TODO: An error occurs when opening a non-osu!standard map (mania, taiko, etc)
