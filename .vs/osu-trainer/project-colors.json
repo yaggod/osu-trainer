@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "88026f3a-2bc2-4542-87ce-6a7e796fd2dd": {
+      "ProjectGuid": "88026f3a-2bc2-4542-87ce-6a7e796fd2dd",
+      "DisplayName": "osu-trainer",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

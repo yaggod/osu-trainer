@@ -691,13 +691,15 @@ namespace osu_trainer
 
             // this can be cleaned up...
             // Read memory for current map
-            string beatmapFolder = osuReader.GetMapFolderName();
             string beatmapFilename = osuReader.GetOsuFileName();
+            string beatmapFolder = osuReader.GetMapFolderName();
 
             var invalidChars = Path.GetInvalidFileNameChars();
 
             // Read unsuccessful
             if (string.IsNullOrWhiteSpace(beatmapFilename) || beatmapFilename.Any(c => invalidChars.Contains(c)))
+                return;
+            if (string.IsNullOrWhiteSpace(beatmapFolder) || beatmapFolder.Any(c => invalidChars.Contains(c)))
                 return;
 
             // Beatmap name hasn't changed since last read

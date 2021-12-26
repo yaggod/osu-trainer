@@ -40,25 +40,26 @@ namespace osu_trainer.Forms
 
             // Plot speed spectrogram of original beatmap
             // points => (time, kps)
-            var (times, originalKps) = GetSpeedSpectrogramData(Editor.OriginalBeatmap);
-            //var newKps = GetSpeedSpectrogramData(Editor.NewBeatmap).Item2;
-            speedPlot.plt.Clear();
-            speedPlot.plt.Ticks(false, false);
-            speedPlot.plt.Frame(false);
-            speedPlot.plt.Style(Style.Blue2);
-            speedPlot.plt.YLabel("KPS");
-            float w = 0.05f;
-            //speedPlot.plt.PlotVSpan(y1: 13.33 - w, y2: 13.33 + w, label: "200 bpm streams");
-            speedPlot.plt.PlotScatter(
-                times, originalKps,
-                lineWidth: 0,
-                color: Color.FromArgb(15, 255, 85, 85),
-                markerSize: 14,
-                markerShape: MarkerShape.filledCircle
-            );
-            speedPlot.plt.Axis(null, null, 0, null);
-            speedPlot.plt.TightenLayout(padding: 0);
-            speedPlot.Render();
+            //var (times, originalKps) = GetSpeedSpectrogramData(Editor.OriginalBeatmap);
+            ////var newKps = GetSpeedSpectrogramData(Editor.NewBeatmap).Item2;
+            //speedPlot.plt.Clear();
+            //speedPlot.plt.XAxis.Ticks(false, false);
+            //speedPlot.plt.YAxis.Ticks(false, false);
+            //speedPlot.plt.Frame(false);
+            //speedPlot.plt.Style(Style.Blue2);
+            //speedPlot.plt.YLabel("KPS");
+            //float w = 0.05f;
+            ////speedPlot.plt.PlotVSpan(y1: 13.33 - w, y2: 13.33 + w, label: "200 bpm streams");
+            //speedPlot.plt.PlotScatter(
+            //    times, originalKps,
+            //    lineWidth: 0,
+            //    color: Color.FromArgb(15, 255, 85, 85),
+            //    markerSize: 14,
+            //    markerShape: MarkerShape.filledCircle
+            //);
+            //speedPlot.plt.Axis(null, null, 0, null);
+            //speedPlot.plt.TightenLayout(padding: 0);
+            //speedPlot.Render();
         }
         public (double[], double[]) GetSpeedSpectrogramData(Beatmap map)
         {

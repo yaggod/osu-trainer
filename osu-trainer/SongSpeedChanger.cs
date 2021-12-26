@@ -1,9 +1,8 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using NAudio.Wave;
-using NAudio.Lame; 
+using NAudio.Lame;
 
 namespace osu_trainer
 {
