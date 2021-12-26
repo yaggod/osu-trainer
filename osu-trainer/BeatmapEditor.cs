@@ -273,23 +273,11 @@ namespace osu_trainer
             {
                 proc.Start();
             }
-            catch (Win32Exception e)
-            {
-                if (File.Exists(outputOsz))
-                    File.Delete(outputOsz);
-                if (e.NativeErrorCode == 1155)
-                {
-                    MessageBox.Show(".osz files have not been configured to open with osu!.exe on this system." + Environment.NewLine + Environment.NewLine +
-                        "To fix this, download any map from the website, right click the .osz file, click properties, beside Opens with... click Change..., and select osu!. " +
-                        "You'll know the problem is fixed when you can double click .osz files to import them into osu!", "Error");
-                }
-                else throw;
-            }
             catch
             {
-                if (File.Exists(outputOsz))
-                    File.Delete(outputOsz);
-                throw;
+                MessageBox.Show("There was an error opening the generated .osz file. This is probably because .osz files have not been configured to open with osu!.exe on this system." + Environment.NewLine + Environment.NewLine +
+                    "To fix this, download any map from the website, right click the .osz file, click properties, beside Opens with... click Change..., and select osu!. " +
+                    "You'll know the problem is fixed when you can double click .osz files to open them with osu!", "Error");
             }
         }
 

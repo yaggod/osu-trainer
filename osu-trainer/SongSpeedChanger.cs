@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using NAudio.Wave;
 using NAudio.Lame;
+using NAudio.Vorbis;
 
 namespace osu_trainer
 {
@@ -12,16 +13,29 @@ namespace osu_trainer
         {
             decimal DTCompensatedMultiplier = effectiveMultiplier / 1.5M;
 
-            string temp1 = Path.Combine(Guid.NewGuid().ToString() + ".mp3"); // audio copy
+            string ext = Path.GetExtension(inFile);
+            string temp1 = Path.Combine(Guid.NewGuid().ToString() + ext); // audio copy
             string temp2 = Path.Combine(Guid.NewGuid().ToString() + ".wav"); // decoded wav
             string temp3 = Path.Combine(Guid.NewGuid().ToString() + ".wav"); // stretched file
 
             File.Copy(inFile, temp1);
 
-            // mp3 => wav
-            using (Mp3FileReader mp3 = new Mp3FileReader(temp1))
-            using (WaveStream wav = WaveFormatConversionStream.CreatePcmStream(mp3))
-                WaveFileWriter.CreateWaveFile(temp2, wav);
+            // mp3/ogg => wav
+            if (ext == ".mp3")
+            {
+                using (Mp3FileReader mp3 = new Mp3FileReader(temp1))
+                using (WaveStream wav = WaveFormatConversionStream.CreatePcmStream(mp3))
+                    WaveFileWriter.CreateWaveFile(temp2, wav);
+            }
+            else if (ext == ".ogg")
+            {
+                using (VorbisWaveReader vorbis = new VorbisWaveReader(temp1))
+                    WaveFileWriter.CreateWaveFile(temp2, vorbis.ToWaveProvider16());
+            }
+            else
+            {
+                throw new Exception($"audio file not supported: {ext}");
+            }
 
 
             // stretch (or speed up) wav
