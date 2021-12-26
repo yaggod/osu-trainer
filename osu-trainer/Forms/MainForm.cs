@@ -1061,12 +1061,12 @@ namespace osu_trainer
             try {
                 File.WriteAllLines("version.txt", lines);
             }
-            catch (UnauthorizedAccessException e)
+            catch (UnauthorizedAccessException)
             {
                 MessageBox.Show("Permission to write to version.txt was denied. Check your antivirus, or try running osu trainer with administrator priveledges.");
                 return;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 MessageBox.Show("Unable to write to version.txt");
                 return;

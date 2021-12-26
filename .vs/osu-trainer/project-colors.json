@@ -5,6 +5,11 @@
       "ProjectGuid": "88026f3a-2bc2-4542-87ce-6a7e796fd2dd",
       "DisplayName": "osu-trainer",
       "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
     }
   },
   "NextColorIndex": 1
