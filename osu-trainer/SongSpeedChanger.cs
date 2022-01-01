@@ -21,13 +21,13 @@ namespace osu_trainer
             File.Copy(inFile, temp1);
 
             // mp3/ogg => wav
-            if (ext == ".mp3")
+            if (ext.ToLower() == ".mp3")
             {
                 using (Mp3FileReader mp3 = new Mp3FileReader(temp1))
                 using (WaveStream wav = WaveFormatConversionStream.CreatePcmStream(mp3))
                     WaveFileWriter.CreateWaveFile(temp2, wav);
             }
-            else if (ext == ".ogg")
+            else if (ext.ToLower() == ".ogg")
             {
                 using (VorbisWaveReader vorbis = new VorbisWaveReader(temp1))
                     WaveFileWriter.CreateWaveFile(temp2, vorbis.ToWaveProvider16());
