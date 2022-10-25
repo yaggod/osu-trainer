@@ -694,7 +694,7 @@ namespace osu_trainer
             string beatmapFilename = osuReader.GetOsuFileName();
             string beatmapFolder = osuReader.GetMapFolderName();
 
-            var invalidChars = Path.GetInvalidFileNameChars();
+            var invalidChars = Path.GetInvalidPathChars();
 
             // Read unsuccessful
             if (string.IsNullOrWhiteSpace(beatmapFilename) || beatmapFilename.Any(c => invalidChars.Contains(c)))
@@ -710,7 +710,7 @@ namespace osu_trainer
             // Try to locate the beatmap
             string absoluteFilename = Path.Combine(userSongsFolder, beatmapFolder.TrimEnd(), beatmapFilename);
             if (!File.Exists(absoluteFilename))
-                return;
+                return; 
 
             // signal the editor class to load this beatmap sometime in the future
             editor.RequestBeatmapLoad(absoluteFilename);
