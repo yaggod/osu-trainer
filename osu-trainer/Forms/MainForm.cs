@@ -735,6 +735,7 @@ namespace osu_trainer
                 if (userSongsFolder == null || userSongsFolder == "")
                 {
                     // Try to get osu songs folder
+                    // TODO: wrap with try catch
                     var osuExePath = processes[0].MainModule.FileName;
                     userSongsFolder = Path.Combine(Path.GetDirectoryName(osuExePath), "Songs");
                     Properties.Settings.Default.SongsFolder = userSongsFolder;
