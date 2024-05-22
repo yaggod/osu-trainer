@@ -777,9 +777,13 @@ namespace osu_trainer
             {
                 retMap = BeatmapConstructorWrapper(beatmapPath);
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("Bad .osu file format");
+                Console.WriteLine($"An error occurred while reading {beatmapPath}");
+                Console.WriteLine("Exception Type: " + ex.GetType().Name);
+                Console.WriteLine("Message: " + ex.Message);
+                Console.WriteLine("Stack Trace: " + ex.StackTrace);
+
                 OriginalBeatmap = null;
                 NewBeatmap = null;
                 return null;
