@@ -1,4 +1,4 @@
 github repository name: FunOrange/osu-trainer
 application name: osu-trainer.exe
-current version: 1.7.0
+current version: 1.8.0
 check for updates: true
