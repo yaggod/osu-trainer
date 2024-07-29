@@ -188,8 +188,7 @@ namespace osu_trainer
 
             SetState(EditorState.GENERATING_BEATMAP);
 
-            bool dtScaleMakesSense = (NewBeatmap.Mode != GameMode.Mania); // the only gamemode where nothing (including OD) is not scaled with DT
-			bool compensateForDT = dtScaleMakesSense && (NewBeatmap.ApproachRate > 10 || NewBeatmap.OverallDifficulty > 10);
+            bool compensateForDT = (NewBeatmap.ApproachRate > 10 || NewBeatmap.OverallDifficulty > 10);
 
             // Set metadata
             Beatmap exportBeatmap = new Beatmap(NewBeatmap);
