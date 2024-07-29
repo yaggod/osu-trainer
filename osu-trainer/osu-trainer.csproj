@@ -211,6 +211,7 @@
     <Compile Include="Controls\ToggleIconButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Extensions\GameModeExtension.cs" />
     <Compile Include="Forms\DeleteMp3sForm.cs">
       <SubType>Form</SubType>
     </Compile>
