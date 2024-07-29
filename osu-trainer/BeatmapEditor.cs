@@ -188,7 +188,8 @@ namespace osu_trainer
 
             SetState(EditorState.GENERATING_BEATMAP);
 
-            bool compensateForDT = (NewBeatmap.ApproachRate > 10 || NewBeatmap.OverallDifficulty > 10);
+            bool dtScaleMakesSense = (NewBeatmap.Mode != GameMode.Taiko && NewBeatmap.Mode != GameMode.Mania);
+			bool compensateForDT = dtScaleMakesSense && (NewBeatmap.ApproachRate > 10 || NewBeatmap.OverallDifficulty > 10);
 
             // Set metadata
             Beatmap exportBeatmap = new Beatmap(NewBeatmap);
